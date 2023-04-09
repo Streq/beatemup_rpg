@@ -1,0 +1,6 @@
+# Godot-specific ignores
+exports/
+#github secrets
+secrets.sh
+#project sensitive
+sensitive/

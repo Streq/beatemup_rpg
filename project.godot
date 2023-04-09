@@ -1,0 +1,210 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Achievement",
+"language": "GDScript",
+"path": "res://src/util/global/Achievements/achievement.gd"
+}, {
+"base": "Reference",
+"class": "Aiming",
+"language": "GDScript",
+"path": "res://src/util/AI/aiming.gd"
+}, {
+"base": "Node",
+"class": "AudioCrossfadePlayer",
+"language": "GDScript",
+"path": "res://src/util/audio/music_player.gd"
+}, {
+"base": "Reference",
+"class": "Bool",
+"language": "GDScript",
+"path": "res://src/util/bool/bool.gd"
+}, {
+"base": "Reference",
+"class": "ButtonState",
+"language": "GDScript",
+"path": "res://src/util/controller/button_state.gd"
+}, {
+"base": "Reference",
+"class": "CircularBuffer",
+"language": "GDScript",
+"path": "res://src/util/data_structure/circular_buffer.gd"
+}, {
+"base": "Reference",
+"class": "ColorUtils",
+"language": "GDScript",
+"path": "res://src/util/color/pool_color_utils.gd"
+}, {
+"base": "Node",
+"class": "GeometryUtils",
+"language": "GDScript",
+"path": "res://src/util/geometry/geometry_utils.gd"
+}, {
+"base": "Reference",
+"class": "InputUtils",
+"language": "GDScript",
+"path": "res://src/util/input/input_utils.gd"
+}, {
+"base": "Reference",
+"class": "Math",
+"language": "GDScript",
+"path": "res://src/util/math/math.gd"
+}, {
+"base": "Reference",
+"class": "NodeUtils",
+"language": "GDScript",
+"path": "res://src/util/node/node_utils.gd"
+}, {
+"base": "Node",
+"class": "Palette",
+"language": "GDScript",
+"path": "res://src/util/color/palette.gd"
+}, {
+"base": "Node",
+"class": "PauseState",
+"language": "GDScript",
+"path": "res://src/util/global/pause/pause.gd"
+}, {
+"base": "Reference",
+"class": "PointComparatorByAngleWithSegment",
+"language": "GDScript",
+"path": "res://src/util/geometry/point_comparator_by_angle_with_segment.gd"
+}, {
+"base": "Node",
+"class": "PoolArray",
+"language": "GDScript",
+"path": "res://src/util/pool_array/pool_array.gd"
+}, {
+"base": "Reference",
+"class": "RenderUtils",
+"language": "GDScript",
+"path": "res://src/util/render/render_utils.gd"
+}, {
+"base": "Node2D",
+"class": "Rope",
+"language": "GDScript",
+"path": "res://src/util/geometry/rope/wrappable_rope_2d.gd"
+}, {
+"base": "Node",
+"class": "RopeUtils",
+"language": "GDScript",
+"path": "res://src/util/geometry/rope/rope_utils.gd"
+}, {
+"base": "Node",
+"class": "StackFiniteStateMachine",
+"language": "GDScript",
+"path": "res://src/util/state_machine/stack_finite_state_machine.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/util/state_machine/state.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/util/state_machine/state_machine.gd"
+}, {
+"base": "Node",
+"class": "StringUtils",
+"language": "GDScript",
+"path": "res://src/util/string/string_utils.gd"
+}, {
+"base": "Reference",
+"class": "TilemapUtils",
+"language": "GDScript",
+"path": "res://src/util/tilemap/tilemap_utils.gd"
+} ]
+_global_script_class_icons={
+"Achievement": "",
+"Aiming": "",
+"AudioCrossfadePlayer": "",
+"Bool": "",
+"ButtonState": "",
+"CircularBuffer": "",
+"ColorUtils": "",
+"GeometryUtils": "",
+"InputUtils": "",
+"Math": "",
+"NodeUtils": "",
+"Palette": "",
+"PauseState": "",
+"PointComparatorByAngleWithSegment": "",
+"PoolArray": "",
+"RenderUtils": "",
+"Rope": "",
+"RopeUtils": "",
+"StackFiniteStateMachine": "",
+"State": "",
+"StateMachine": "",
+"StringUtils": "",
+"TilemapUtils": ""
+}
+
+[application]
+
+config/name="skel"
+run/main_scene="res://src/main.tscn"
+config/icon="res://assets/texture/icon.png"
+
+[autoload]
+
+ObjectPool="*res://src/util/global/object_pool/ObjectPool.tscn"
+Music="*res://src/util/global/music/Music.tscn"
+Group="*res://src/util/global/group/group.gd"
+Pause="*res://src/util/global/pause/Pause.tscn"
+GifRecorder="res://src/util/global/gif_recorder/gif_recorder.tscn"
+FPS="res://src/util/global/FPS/FPS.tscn"
+SFX="*res://src/util/global/audio_pool/AudioPool.tscn"
+ParticlePool="*res://src/util/global/particle_pool/ParticlePool.tscn"
+NGIO="*res://src/util/global/newgrounds.io/NGIO.gd"
+Achievements="*res://src/util/global/Achievements/Achievements.tscn"
+
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
+
+[input]
+
+fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+record={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":71,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+exit={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

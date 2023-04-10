@@ -152,7 +152,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="skel"
+config/name="beatemup_rpg"
 run/main_scene="res://src/main.tscn"
 config/icon="res://assets/texture/icon.png"
 
@@ -168,6 +168,14 @@ SFX="*res://src/util/global/audio_pool/AudioPool.tscn"
 ParticlePool="*res://src/util/global/particle_pool/ParticlePool.tscn"
 NGIO="*res://src/util/global/newgrounds.io/NGIO.gd"
 Achievements="*res://src/util/global/Achievements/Achievements.tscn"
+GlobalInputs="res://src/util/global/input/global_inputs.gd"
+
+[display]
+
+window/size/width=256
+window/size/height=144
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/font.png-ccd17c74875decee0f5501cfd78a5340.stex"
+path="res://.import/ZX Eurostile.png-0329a9c6d6e98996635c7a58fdc546a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/font/font.png"
-dest_files=[ "res://.import/font.png-ccd17c74875decee0f5501cfd78a5340.stex" ]
+source_file="res://assets/font/Eurostile/ZX Eurostile.png"
+dest_files=[ "res://.import/ZX Eurostile.png-0329a9c6d6e98996635c7a58fdc546a4.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

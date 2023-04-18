@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/fighter/input_state.gd" type="Script" id=1]
+
+[node name="input_state" type="Node"]
+unique_name_in_owner = true
+process_priority = 1410065408
+script = ExtResource( 1 )

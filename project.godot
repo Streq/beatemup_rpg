@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/util/controller/button_state.gd"
 }, {
+"base": "State",
+"class": "CharacterState",
+"language": "GDScript",
+"path": "res://src/fighter/CharacterState.gd"
+}, {
 "base": "Reference",
 "class": "CircularBuffer",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "GeometryUtils",
 "language": "GDScript",
 "path": "res://src/util/geometry/geometry_utils.gd"
+}, {
+"base": "Node",
+"class": "InputState",
+"language": "GDScript",
+"path": "res://src/fighter/input_state.gd"
 }, {
 "base": "Reference",
 "class": "InputUtils",
@@ -130,9 +140,11 @@ _global_script_class_icons={
 "AudioCrossfadePlayer": "",
 "Bool": "",
 "ButtonState": "",
+"CharacterState": "",
 "CircularBuffer": "",
 "ColorUtils": "",
 "GeometryUtils": "",
+"InputState": "",
 "InputUtils": "",
 "Math": "",
 "NodeUtils": "",
@@ -169,13 +181,20 @@ ParticlePool="*res://src/util/global/particle_pool/ParticlePool.tscn"
 NGIO="*res://src/util/global/newgrounds.io/NGIO.gd"
 Achievements="*res://src/util/global/Achievements/Achievements.tscn"
 GlobalInputs="res://src/util/global/input/global_inputs.gd"
+Controller="*res://src/util/global/controller/Controller.tscn"
 
 [display]
 
 window/size/width=256
 window/size/height=144
+window/size/test_width=1536
+window/size/test_height=864
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg" )
 
 [importer_defaults]
 
@@ -203,6 +222,16 @@ record={
 exit={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+A={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+B={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":88,"unicode":0,"echo":false,"script":null)
  ]
 }
 

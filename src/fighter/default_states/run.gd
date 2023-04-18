@@ -6,16 +6,15 @@ func _physics_update(delta: float):
 		root.speed*root.facing_dir, 
 		root.horizontal_acceleration * delta
 	)
-
-
 	if !root.is_on_floor():
 		goto("air")
 		return
+	var dir = root.input_state.dir
 	
-	var x_dir = root.input_state.dir.x
-	
-	if !x_dir:
+	if dir.y < 0.0:
+		root.jump()
+	if !dir.x:
 		goto("idle")
 		return
 	else:
-		root.facing_dir = x_dir
+		root.facing_dir = dir.x

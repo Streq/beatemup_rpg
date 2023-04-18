@@ -182,6 +182,7 @@ NGIO="*res://src/util/global/newgrounds.io/NGIO.gd"
 Achievements="*res://src/util/global/Achievements/Achievements.tscn"
 GlobalInputs="res://src/util/global/input/global_inputs.gd"
 Controller="*res://src/util/global/controller/Controller.tscn"
+Global="*res://src/global/global.tscn"
 
 [display]
 
@@ -242,6 +243,7 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

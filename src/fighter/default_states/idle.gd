@@ -9,9 +9,11 @@ func _physics_update(delta: float):
 	if !root.is_on_floor():
 		goto("air")
 		return
-	var x_dir  = root.input_state.dir.x
-	if x_dir:
-		root.facing_dir = x_dir
+	var dir = root.input_state.dir
+	if dir.y < 0.0:
+		root.jump()
+	if dir.x:
+		root.facing_dir = dir.x
 		goto("run")
 		return
 	

@@ -5,6 +5,8 @@ export var gravity := Vector2()
 
 export var horizontal_decceleration = 0.0
 export var horizontal_acceleration = 0.0
+export var horizontal_air_acceleration = 0.0
+export var horizontal_air_decceleration = 0.0
 export var speed = 75.0
 export var jump_speed = 100.0
 export (float, -1.0, 1.0, 2.0) var facing_dir := 1.0 setget set_facing_dir
@@ -29,7 +31,12 @@ func _ready() -> void:
 	state_machine.initialize()
 
 func _physics_process(delta: float) -> void:
-	move_and_slide(velocity, Vector2.UP)
+	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity += gravity*delta
 	state_animation.advance(delta)
 	state_machine.physics_update(delta)
+
+
+func jump():
+	velocity.y -= jump_speed
+	pass

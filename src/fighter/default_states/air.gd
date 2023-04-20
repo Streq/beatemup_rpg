@@ -4,6 +4,14 @@ func _physics_update(delta: float):
 	if root.is_on_floor():
 		goto("idle")
 	
+	if root.input_state.B.is_just_pressed():
+		goto("jab")
+		return
+	
+	if root.input_state.A.is_pressed():
+		goto("block")
+		return
+	
 	
 	var dir = root.input_state.dir
 	var acceleration = (
@@ -16,4 +24,3 @@ func _physics_update(delta: float):
 		root.speed*dir.x, 
 		acceleration * delta
 	)
-	

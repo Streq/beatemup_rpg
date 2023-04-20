@@ -6,6 +6,14 @@ func _physics_update(delta: float):
 		0, 
 		root.horizontal_decceleration * delta
 	)
+	if root.input_state.B.is_just_pressed():
+		goto("jab")
+		return
+	
+	if root.input_state.A.is_pressed():
+		goto("block")
+		return
+	
 	if !root.is_on_floor():
 		goto("air")
 		return
@@ -16,4 +24,5 @@ func _physics_update(delta: float):
 		root.facing_dir = dir.x
 		goto("run")
 		return
+	
 	

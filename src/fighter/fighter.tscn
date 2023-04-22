@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/fighter2.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/fighter/states/jab.gd" type="Script" id=10]
 [ext_resource path="res://src/fighter/default_states/block.gd" type="Script" id=11]
 [ext_resource path="res://src/fighter/input_buffer.gd" type="Script" id=12]
+[ext_resource path="res://src/fighter/hitbox/hitbox.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
@@ -21,6 +22,18 @@ extents = Vector2( 9, 5 )
 
 [sub_resource type="Animation" id=14]
 resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/hitbox/jab:active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=15]
 length = 0.1
@@ -461,6 +474,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 18.0, 17.0, 16.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pivot/hitbox/jab:active")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -991,7 +1016,7 @@ unique_name_in_owner = true
 texture = ExtResource( 2 )
 hframes = 6
 vframes = 5
-frame = 12
+frame = 18
 __meta__ = {
 "_aseprite_wizard_config_": {
 "layer": "",
@@ -1008,6 +1033,8 @@ __meta__ = {
 [node name="hurtbox" type="Node2D" parent="pivot"]
 
 [node name="main" type="Area2D" parent="pivot/hurtbox"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="terrain_collision" type="CollisionShape2D" parent="pivot/hurtbox/main"]
 position = Vector2( 0, 2 )
@@ -1016,6 +1043,9 @@ shape = SubResource( 1 )
 [node name="hitbox" type="Node2D" parent="pivot"]
 
 [node name="jab" type="Area2D" parent="pivot/hitbox"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/jab"]
 position = Vector2( 13, 0 )

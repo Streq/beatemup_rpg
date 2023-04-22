@@ -165,7 +165,7 @@ _global_script_class_icons={
 [application]
 
 config/name="beatemup_rpg"
-run/main_scene="res://src/main.tscn"
+run/main_scene="res://src/test/fighter/fighter_test.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [autoload]

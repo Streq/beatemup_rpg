@@ -10,7 +10,10 @@ func set_active(val):
 func _on_area_entered(hurtbox):
 	if owner == hurtbox.owner:
 		return
-	hurtbox.owner.velocity = Vector2(owner.facing_dir*100.0, -50.0)
-	hurtbox.owner.health.value -= 10.0
+	var target = hurtbox.owner
+	target.velocity = Vector2(owner.facing_dir*100.0, -50.0)
+	target.health.value -= 10.0
+	target.facing_dir = -owner.facing_dir
+
 func _ready() -> void:
 	connect("area_entered",self,"_on_area_entered")

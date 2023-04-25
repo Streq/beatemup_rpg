@@ -21,6 +21,6 @@ func _physics_update(delta: float):
 	)
 	root.velocity.x = move_toward(
 		root.velocity.x, 
-		root.speed*dir.x, 
+		root.speed*sign(dir.x), 
 		acceleration * delta
 	)

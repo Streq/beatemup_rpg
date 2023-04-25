@@ -7,7 +7,6 @@ func _physics_update(delta: float):
 		root.horizontal_acceleration * delta
 	)
 	
-	
 	if root.input_state.B.is_just_pressed():
 		goto("jab")
 		return

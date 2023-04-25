@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal dead
+
 export var velocity := Vector2() 
 export var gravity := Vector2()
 
@@ -17,11 +19,14 @@ func set_facing_dir(val):
 	facing_dir = val
 	if !is_inside_tree():
 		return
+	update_facing_dir()
+
+func update_facing_dir():
 	pivot.scale.x = abs(pivot.scale.x)*facing_dir
 
 onready var state_animation: AnimationPlayer = $"%state_animation"
 onready var status_animation: AnimationPlayer = $"%status_animation"
-onready var input_state: Node = $"%input_state"
+onready var input_state: InputState = $"%input_state"
 onready var health: Node = $"%health"
 onready var display: Node2D = $"%display"
 onready var pivot: Node2D = $"%pivot"
@@ -29,6 +34,8 @@ onready var state_machine: Node = $"%state_machine"
 
 func _ready() -> void:
 	state_machine.initialize()
+	health.connect("empty", self, "die")
+	update_facing_dir()
 
 func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -40,3 +47,8 @@ func _physics_process(delta: float) -> void:
 func jump():
 	velocity.y -= jump_speed
 	pass
+
+func die():
+	if !state_machine.current.is_dead_state:
+		state_machine.current.goto("dead_air")
+		emit_signal("dead")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/fighter2.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/fighter/default_states/block.gd" type="Script" id=11]
 [ext_resource path="res://src/fighter/input_buffer.gd" type="Script" id=12]
 [ext_resource path="res://src/fighter/hitbox/hitbox.gd" type="Script" id=13]
+[ext_resource path="res://src/util/HUD/hud_bar.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
@@ -1046,6 +1047,7 @@ shape = SubResource( 1 )
 collision_layer = 8
 collision_mask = 4
 script = ExtResource( 13 )
+active = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/jab"]
 position = Vector2( 13, 0 )
@@ -1129,6 +1131,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 4 )
 value = 50.0
+script = ExtResource( 14 )
 
 [node name="debug_info" type="MarginContainer" parent="."]
 margin_left = -50.0
@@ -1210,3 +1213,4 @@ align = 2
 
 [connection signal="animation_started" from="state_animation" to="debug_info/list/GridContainer/animation_value" method="set_text"]
 [connection signal="state_changed" from="state_machine" to="debug_info/list/GridContainer/state_value" method="set_text"]
+[connection signal="value_changed" from="health" to="health_value" method="change_value"]

@@ -11,5 +11,6 @@ func _on_area_entered(hurtbox):
 	if owner == hurtbox.owner:
 		return
 	hurtbox.owner.velocity = Vector2(owner.facing_dir*100.0, -50.0)
+	hurtbox.owner.health.value -= 10.0
 func _ready() -> void:
 	connect("area_entered",self,"_on_area_entered")

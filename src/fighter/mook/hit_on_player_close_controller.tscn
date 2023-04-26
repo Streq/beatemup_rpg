@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/test/fighter/hit_on_player_close_controller.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 23, 6 )
+
+[node name="hit_on_player_close_controller" type="Node2D"]
+process_priority = -100000000
+script = ExtResource( 1 )
+
+[node name="sight" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
+shape = SubResource( 19 )
+
+[node name="attack_cooldown" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+one_shot = true

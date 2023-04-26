@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/texture/simple_tileset.png" type="Texture" id=1]
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=2]
@@ -9,7 +9,9 @@
 [ext_resource path="res://src/fighter/mook/walk_forward_controller.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/fighter/mook/walk_jump_controller.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/test/fighter/walk_back_and_forth_controller.gd" type="Script" id=9]
-[ext_resource path="res://src/test/fighter/hit_on_player_close_controller.gd" type="Script" id=10]
+[ext_resource path="res://src/fighter/mook/hit_on_player_close_controller.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/fighter/mook/long_hit_mook_fighter.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -185,7 +187,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 extents = Vector2( 464.5, 10 )
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 23, 6 )
+extents = Vector2( 42, 6 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -216,41 +218,43 @@ position = Vector2( 464.5, 165 )
 shape = SubResource( 18 )
 
 [node name="mook_fighter" parent="." instance=ExtResource( 6 )]
-position = Vector2( 314, 108 )
+position = Vector2( 483, 8 )
+__meta__ = {
+"_edit_group_": true
+}
 facing_dir = -1.0
 
 [node name="walk_forward_controller" parent="mook_fighter" instance=ExtResource( 7 )]
 
-[node name="hit_on_player_close_controller" type="Node2D" parent="mook_fighter"]
-process_priority = -100000000
-script = ExtResource( 10 )
-
-[node name="sight" type="Area2D" parent="mook_fighter/hit_on_player_close_controller"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mook_fighter/hit_on_player_close_controller/sight"]
-shape = SubResource( 19 )
-
-[node name="attack_cooldown" type="Timer" parent="mook_fighter/hit_on_player_close_controller"]
-process_mode = 0
-wait_time = 0.5
-one_shot = true
+[node name="hit_on_player_close_controller" parent="mook_fighter" instance=ExtResource( 10 )]
 
 [node name="mook_fighter2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 542, 113 )
+position = Vector2( 550, 9 )
+__meta__ = {
+"_edit_group_": true
+}
 facing_dir = -1.0
 
 [node name="walk_forward_controller" parent="mook_fighter2" instance=ExtResource( 7 )]
 
+[node name="hit_on_player_close_controller" parent="mook_fighter2" instance=ExtResource( 10 )]
+
 [node name="mook_fighter3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 760, 99 )
+position = Vector2( 768, -5 )
+__meta__ = {
+"_edit_group_": true
+}
 facing_dir = -1.0
 
 [node name="walk_jump_controller" parent="mook_fighter3" instance=ExtResource( 8 )]
 
+[node name="hit_on_player_close_controller" parent="mook_fighter3" instance=ExtResource( 10 )]
+
 [node name="mook_fighter4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 760, 99 )
+position = Vector2( 768, -5 )
+__meta__ = {
+"_edit_group_": true
+}
 speed = 40.0
 facing_dir = -1.0
 
@@ -261,3 +265,25 @@ script = ExtResource( 9 )
 [node name="Timer" type="Timer" parent="mook_fighter4/walk_back_and_forth_controller"]
 process_mode = 0
 autostart = true
+
+[node name="hit_on_player_close_controller" parent="mook_fighter4" instance=ExtResource( 10 )]
+
+[node name="long_hit_mook_fighter" parent="." instance=ExtResource( 11 )]
+position = Vector2( 263, 13 )
+__meta__ = {
+"_edit_group_": true
+}
+facing_dir = -1.0
+
+[node name="walk_forward_controller" parent="long_hit_mook_fighter" instance=ExtResource( 7 )]
+
+[node name="hit_on_player_close_controller" parent="long_hit_mook_fighter" instance=ExtResource( 10 )]
+
+[node name="CollisionShape2D" parent="long_hit_mook_fighter/hit_on_player_close_controller/sight" index="0"]
+shape = SubResource( 19 )
+
+[node name="spawner" parent="." instance=ExtResource( 12 )]
+position = Vector2( 351, 118 )
+SPAWN = ExtResource( 11 )
+
+[editable path="long_hit_mook_fighter/hit_on_player_close_controller"]

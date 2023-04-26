@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	var player = Group.get_one("player")
 	if player and sight.overlaps_body(player):
 		var dir_to_target = global_position.direction_to(player.global_position).x
-		var facing_enemy = sign(input.dir.x) == sign(dir_to_target)
+		var facing_enemy = sign(get_parent().facing_dir) == sign(dir_to_target)
 		if turn_to_face_enemy and !facing_enemy:
 			input.dir.x = dir_to_target
 		elif facing_enemy and attack_cooldown.is_stopped():

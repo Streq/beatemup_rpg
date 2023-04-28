@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/enemy_spawner/despawn_when_not_visible.gd" type="Script" id=1]
+
+[node name="despawn_when_not_visible" type="VisibilityNotifier2D"]
+rect = Rect2( -32, -32, 64, 64 )
+script = ExtResource( 1 )

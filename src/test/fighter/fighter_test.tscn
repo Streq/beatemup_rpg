@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/texture/simple_tileset.png" type="Texture" id=1]
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://src/fighter/mook/hit_on_player_close_controller.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/fighter/mook/long_hit_mook_fighter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/enemy_spawner/add_on_spawn.gd" type="Script" id=13]
+[ext_resource path="res://src/enemy_spawner/despawn_when_not_visible.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/fighter/mook/waddle.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/fighter/mook/hit_on_player_close_controller_longrange.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/texture/dark_gray_square.png" type="Texture" id=17]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -191,14 +196,24 @@ extents = Vector2( 42, 6 )
 
 [node name="Node2D" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 196608, 0, 65537, 196609, 0, 2, 196610, 0, 2, 196611, 0, 65538, 196612, 0, 2, 196613, 0, 2, 196614, 0, 2, 196615, 0, 2, 196616, 0, 2, 196617, 0, 2, 196618, 0, 65538, 196619, 0, 2, 196620, 0, 2, 196621, 0, 2, 196622, 0, 2, 196623, 0, 2, 196624, 0, 2, 196625, 0, 2, 196626, 0, 65538, 196627, 0, 2, 196628, 0, 2, 196629, 0, 2, 196630, 0, 2, 196631, 0, 2, 196632, 0, 2, 196633, 0, 65538, 196634, 0, 2, 196635, 0, 2, 196636, 0, 2, 196637, 0, 2, 196638, 0, 2, 196639, 0, 65538, 196640, 0, 2, 196641, 0, 2, 196642, 0, 2, 196643, 0, 2, 196644, 0, 2, 196645, 0, 65538, 196646, 0, 2, 196647, 0, 2, 196648, 0, 2, 196649, 0, 2, 196650, 0, 2, 196651, 0, 2, 196652, 0, 65538, 196653, 0, 2, 196654, 0, 2, 196655, 0, 2, 196656, 0, 2, 196657, 0, 2, 196658, 0, 2, 196659, 0, 65538, 196660, 0, 2, 196661, 0, 2, 196662, 0, 2, 196663, 0, 2, 196664, 0, 2, 196665, 0, 65539, 262144, 0, 131072, 262147, 0, 196608, 262154, 0, 196608, 262162, 0, 196608, 262169, 0, 196608, 262175, 0, 196608, 262181, 0, 196608, 262188, 0, 196608, 262195, 0, 196608, 262201, 0, 131072, 327680, 0, 131072, 327737, 0, 131072, 393216, 0, 131072, 393273, 0, 131072, 458752, 0, 131072, 458809, 0, 131072, 524288, 0, 196609, 524289, 0, 2, 524290, 0, 2, 524291, 0, 2, 524292, 0, 2, 524293, 0, 2, 524294, 0, 2, 524295, 0, 2, 524296, 0, 2, 524297, 0, 2, 524298, 0, 2, 524299, 0, 2, 524300, 0, 2, 524301, 0, 2, 524302, 0, 2, 524303, 0, 2, 524304, 0, 2, 524305, 0, 2, 524306, 0, 2, 524307, 0, 2, 524308, 0, 2, 524309, 0, 2, 524310, 0, 2, 524311, 0, 2, 524312, 0, 2, 524313, 0, 2, 524314, 0, 2, 524315, 0, 2, 524316, 0, 2, 524317, 0, 2, 524318, 0, 2, 524319, 0, 2, 524320, 0, 2, 524321, 0, 2, 524322, 0, 2, 524323, 0, 2, 524324, 0, 2, 524325, 0, 2, 524326, 0, 2, 524327, 0, 2, 524328, 0, 2, 524329, 0, 2, 524330, 0, 2, 524331, 0, 2, 524332, 0, 2, 524333, 0, 2, 524334, 0, 2, 524335, 0, 2, 524336, 0, 2, 524337, 0, 2, 524338, 0, 2, 524339, 0, 2, 524340, 0, 2, 524341, 0, 2, 524342, 0, 2, 524343, 0, 2, 524344, 0, 2, 524345, 0, 196611 )
+tile_data = PoolIntArray( 196608, 0, 65537, 196609, 0, 2, 196610, 0, 2, 196611, 0, 65538, 196612, 0, 2, 196613, 0, 2, 196614, 0, 2, 196615, 0, 2, 196616, 0, 2, 196617, 0, 2, 196618, 0, 65538, 196619, 0, 3, 196623, 0, 1, 196624, 0, 2, 196625, 0, 2, 196626, 0, 65538, 196627, 0, 2, 196628, 0, 2, 196629, 0, 2, 196630, 0, 2, 196631, 0, 2, 196632, 0, 2, 196633, 0, 65538, 196634, 0, 2, 196635, 0, 2, 196636, 0, 2, 196637, 0, 2, 196638, 0, 2, 196639, 0, 65538, 196640, 0, 2, 196641, 0, 2, 196642, 0, 2, 196643, 0, 2, 196644, 0, 2, 196645, 0, 65538, 196646, 0, 2, 196647, 0, 2, 196648, 0, 2, 196649, 0, 2, 196650, 0, 2, 196651, 0, 2, 196652, 0, 65538, 196653, 0, 2, 196654, 0, 2, 196655, 0, 2, 196656, 0, 2, 196657, 0, 2, 196658, 0, 2, 196659, 0, 65538, 196660, 0, 2, 196661, 0, 2, 196662, 0, 2, 196663, 0, 2, 196664, 0, 2, 196665, 0, 65539, 262144, 0, 131072, 262147, 0, 196608, 262154, 0, 196608, 262162, 0, 196608, 262169, 0, 196608, 262175, 0, 196608, 262181, 0, 196608, 262188, 0, 196608, 262195, 0, 196608, 262201, 0, 131072, 327680, 0, 131072, 327737, 0, 131072, 393216, 0, 131072, 393273, 0, 131072, 458752, 0, 131072, 458761, 0, 65537, 458762, 0, 65539, 458809, 0, 131072, 524288, 0, 196609, 524289, 0, 2, 524290, 0, 2, 524291, 0, 2, 524292, 0, 2, 524293, 0, 2, 524294, 0, 2, 524295, 0, 2, 524296, 0, 2, 524297, 0, 196610, 524298, 0, 196610, 524299, 0, 2, 524300, 0, 2, 524301, 0, 2, 524302, 0, 2, 524303, 0, 2, 524304, 0, 2, 524305, 0, 2, 524306, 0, 2, 524307, 0, 2, 524308, 0, 2, 524309, 0, 2, 524310, 0, 2, 524311, 0, 2, 524312, 0, 2, 524313, 0, 2, 524314, 0, 2, 524315, 0, 2, 524316, 0, 2, 524317, 0, 2, 524318, 0, 2, 524319, 0, 2, 524320, 0, 2, 524321, 0, 2, 524322, 0, 2, 524323, 0, 2, 524324, 0, 2, 524325, 0, 2, 524326, 0, 2, 524327, 0, 2, 524328, 0, 2, 524329, 0, 2, 524330, 0, 2, 524331, 0, 2, 524332, 0, 2, 524333, 0, 2, 524334, 0, 2, 524335, 0, 2, 524336, 0, 2, 524337, 0, 2, 524338, 0, 2, 524339, 0, 2, 524340, 0, 2, 524341, 0, 2, 524342, 0, 2, 524343, 0, 2, 524344, 0, 2, 524345, 0, 196611 )
 
 [node name="player" parent="." groups=["player"] instance=ExtResource( 2 )]
 position = Vector2( 109, 116 )
+team = -1
 
 [node name="controller" parent="player" instance=ExtResource( 3 )]
 
@@ -255,7 +270,6 @@ position = Vector2( 768, -5 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 40.0
 facing_dir = -1.0
 
 [node name="walk_back_and_forth_controller" type="Node2D" parent="mook_fighter4"]
@@ -283,7 +297,67 @@ facing_dir = -1.0
 shape = SubResource( 19 )
 
 [node name="spawner" parent="." instance=ExtResource( 12 )]
-position = Vector2( 351, 118 )
+position = Vector2( 226, 115 )
+SPAWN = ExtResource( 15 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 7 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 14 )
+
+[node name="spawner2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 489, 112 )
+SPAWN = ExtResource( 15 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner2"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 7 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner2"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 14 )
+
+[node name="spawner3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 804, 111 )
 SPAWN = ExtResource( 11 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner3"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 7 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner3"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 14 )
+
+[node name="add_hit_on_close" type="Node" parent="spawner3"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 16 )
+
+[node name="spawner4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 640, 110 )
+SPAWN = ExtResource( 15 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner4"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 7 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner4"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 14 )
+
+[node name="spawner5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 328, 115 )
+SPAWN = ExtResource( 15 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner5"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 7 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner5"]
+script = ExtResource( 13 )
+CONTROLLER = ExtResource( 14 )
 
 [editable path="long_hit_mook_fighter/hit_on_player_close_controller"]

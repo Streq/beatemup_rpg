@@ -1,64 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/fighter/fighter2.png" type="Texture" id=2]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends KinematicBody2D
-
-signal dead
-
-export var velocity := Vector2() 
-export var gravity := Vector2()
-
-export var horizontal_decceleration = 0.0
-export var horizontal_acceleration = 0.0
-export var horizontal_air_acceleration = 0.0
-export var horizontal_air_decceleration = 0.0
-export var speed = 75.0
-export var jump_speed = 100.0
-export (float, -1.0, 1.0, 2.0) var facing_dir := 1.0 setget set_facing_dir
-func set_facing_dir(val):
-	val = sign(val)
-	if val == 0.0 or facing_dir == val:
-		return
-	facing_dir = val
-	if !is_inside_tree():
-		return
-	update_facing_dir()
-
-func update_facing_dir():
-	pivot.scale.x = abs(pivot.scale.x)*facing_dir
-
-onready var state_animation: AnimationPlayer = $\"%state_animation\"
-onready var status_animation: AnimationPlayer = $\"%status_animation\"
-onready var input_state: InputState = $\"%input_state\"
-onready var health: Node = $\"%health\"
-onready var display: Node2D = $\"%display\"
-onready var pivot: Node2D = $\"%pivot\"
-onready var state_machine: Node = $\"%state_machine\"
-
-func _ready() -> void:
-	state_machine.initialize()
-	health.connect(\"empty\", self, \"die\")
-	update_facing_dir()
-
-func _physics_process(delta: float) -> void:
-	velocity = move_and_slide(velocity, Vector2.UP)
-	velocity += gravity*delta
-	state_animation.advance(delta)
-	state_machine.physics_update(delta)
-
-
-func jump():
-	velocity.y -= jump_speed
-	pass
-
-func die():
-	if !state_machine.current.is_dead_state:
-		state_machine.current.goto(\"dead_air\")
-		emit_signal(\"dead\")
-"
+[ext_resource path="res://src/fighter/mook/fighter2.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=2]
 resource_name = "RESET"
@@ -135,7 +78,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 21.0 ]
+"values": [ 23.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -198,7 +141,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 4.0, 3.0 ]
+"values": [ 6.0, 5.0 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -261,7 +204,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 17.0, 16.0, 15.0 ]
+"values": [ 19.0, 18.0, 17.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -324,7 +267,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 25.0 ]
+"values": [ 27.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -387,7 +330,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 14.0 ]
+"values": [ 15.0 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -450,7 +393,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 22.0 ]
+"values": [ 24.0 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -525,11 +468,11 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 20.0, 19.0, 18.0 ]
+"values": [ 22.0, 21.0, 20.0 ]
 }
 
 [sub_resource type="Animation" id=10]
-length = 0.266667
+length = 0.2
 step = 0.0166667
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/hitbox/jab:active")
@@ -598,10 +541,10 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.133333, 0.183333 ),
+"times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 2.0, 1.0, 18.0 ]
+"values": [ 4.0, 3.0, 20.0 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -664,7 +607,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5.0 ]
+"values": [ 7.0 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -727,7 +670,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6.0 ]
+"values": [ 8.0 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -790,7 +733,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 9.0, 8.0, 7.0 ]
+"values": [ 11.0, 10.0, 9.0 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -853,7 +796,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0.0, 13.0, 12.0 ]
+"values": [ 16.0, 0.0, 14.0 ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -916,7 +859,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 11.0, 16.0, 10.0 ]
+"values": [ 13.0, 18.0, 12.0 ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -980,7 +923,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 25.0, 24.0, 25.0, 23.0 ]
+"values": [ 27.0, 26.0, 27.0, 25.0 ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -1044,7 +987,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 14.0, 27.0, 14.0, 26.0 ]
+"values": [ 15.0, 29.0, 15.0, 28.0 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -1108,12 +1051,15 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 22.0, 21.0 ]
+"values": [ 24.0, 23.0 ]
 }
 
 [node name="mook_fighter" instance=ExtResource( 1 )]
-script = SubResource( 1 )
-speed = 50.0
+speed = 40.0
+
+[node name="Sprite" parent="pivot/display" index="0"]
+texture = ExtResource( 2 )
+frame = 24
 
 [node name="state_animation" parent="." index="2"]
 playback_speed = 0.5

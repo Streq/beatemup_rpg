@@ -8,7 +8,7 @@ func set_active(val):
 
 
 func _on_area_entered(hurtbox):
-	if owner == hurtbox.owner:
+	if owner == hurtbox.owner or owner.team == hurtbox.owner.team:
 		return
 	var target = hurtbox.owner
 	target.velocity = Vector2(owner.facing_dir*100.0, -50.0)

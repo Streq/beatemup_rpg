@@ -1,5 +1,6 @@
 extends Node2D
 
+signal spawned(instance)
 
 export var SPAWN : PackedScene
 onready var visibility_notifier: VisibilityNotifier2D = $VisibilityNotifier2D
@@ -16,6 +17,6 @@ func _on_screen_entered():
 	var player = Group.get_one("player")
 	if is_instance_valid(player):
 		instance.facing_dir = sign(player.global_position.x - global_position.x)
+	emit_signal("spawned",instance)
 	add_child(instance)
-	
 	pass

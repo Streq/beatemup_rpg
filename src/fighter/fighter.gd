@@ -4,6 +4,7 @@ signal dead
 
 export var velocity := Vector2() 
 export var gravity := Vector2()
+export var team := 0
 
 export var horizontal_decceleration = 0.0
 export var horizontal_acceleration = 0.0

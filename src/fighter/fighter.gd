@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+class_name Fighter
 signal dead
 
 export var velocity := Vector2() 
@@ -28,10 +28,10 @@ func update_facing_dir():
 onready var state_animation: AnimationPlayer = $"%state_animation"
 onready var status_animation: AnimationPlayer = $"%status_animation"
 onready var input_state: InputState = $"%input_state"
-onready var health: Node = $"%health"
+onready var health: Bar = $"%health"
 onready var display: Node2D = $"%display"
 onready var pivot: Node2D = $"%pivot"
-onready var state_machine: Node = $"%state_machine"
+onready var state_machine: StateMachine = $"%state_machine"
 
 func _ready() -> void:
 	state_machine.initialize()

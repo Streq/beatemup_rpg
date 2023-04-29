@@ -1060,6 +1060,18 @@ speed = 40.0
 [node name="Sprite" parent="pivot/display" index="0"]
 texture = ExtResource( 2 )
 frame = 24
+__meta__ = {
+"_aseprite_wizard_config_": {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"player": "state_animation",
+"source": "res://assets/aseprite/fighter2.aseprite"
+}
+}
 
 [node name="state_animation" parent="." index="2"]
 playback_speed = 0.5

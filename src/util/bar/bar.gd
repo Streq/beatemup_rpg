@@ -1,4 +1,5 @@
 extends Node
+class_name Bar
 signal value_changed(value, max_value)
 signal empty
 signal full

@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/util/audio/music_player.gd"
 }, {
+"base": "Node",
+"class": "Bar",
+"language": "GDScript",
+"path": "res://src/util/bar/bar.gd"
+}, {
 "base": "Reference",
 "class": "Bool",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "ColorUtils",
 "language": "GDScript",
 "path": "res://src/util/color/pool_color_utils.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Fighter",
+"language": "GDScript",
+"path": "res://src/fighter/fighter.gd"
 }, {
 "base": "Node",
 "class": "GeometryUtils",
@@ -133,16 +143,23 @@ _global_script_classes=[ {
 "class": "TilemapUtils",
 "language": "GDScript",
 "path": "res://src/util/tilemap/tilemap_utils.gd"
+}, {
+"base": "Node",
+"class": "Transition",
+"language": "GDScript",
+"path": "res://src/fighter/monk/transition_triggers/jab.gd"
 } ]
 _global_script_class_icons={
 "Achievement": "",
 "Aiming": "",
 "AudioCrossfadePlayer": "",
+"Bar": "",
 "Bool": "",
 "ButtonState": "",
 "CharacterState": "",
 "CircularBuffer": "",
 "ColorUtils": "",
+"Fighter": "",
 "GeometryUtils": "",
 "InputState": "",
 "InputUtils": "",
@@ -159,7 +176,8 @@ _global_script_class_icons={
 "State": "",
 "StateMachine": "",
 "StringUtils": "",
-"TilemapUtils": ""
+"TilemapUtils": "",
+"Transition": ""
 }
 
 [application]

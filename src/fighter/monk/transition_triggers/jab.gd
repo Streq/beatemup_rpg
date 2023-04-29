@@ -1,16 +1,14 @@
 extends Node
+class_name Transition
+
+export (PoolStringArray) var states_from
+export var state_to : String
+
+onready var fighter : Fighter = owner
+onready var conditions = $conditions
 
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func conditions_match():
+	if !is_instance_valid(conditions):
+		return false
+	return conditions.check()

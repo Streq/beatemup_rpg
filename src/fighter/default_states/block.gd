@@ -12,10 +12,3 @@ func _physics_update(delta: float):
 		acceleration * delta
 	)
 	var A = root.input_state.A
-	if root.input_state.B.is_just_pressed():
-		goto("jab")
-		return
-	
-	if !A.is_pressed():
-		goto("idle")
-		return

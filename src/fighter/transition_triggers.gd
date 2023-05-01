@@ -29,4 +29,6 @@ func find_first_transition_match():
 func _physics_process(delta: float) -> void:
 	var transition = find_first_transition_match()
 	if transition:
-		owner.state_machine.current.goto(transition)
+		var current = owner.state_machine.current
+		if current.name != transition:
+			current.goto(transition)

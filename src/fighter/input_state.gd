@@ -30,3 +30,16 @@ func _to_string() -> String:
 	return ("InputState (\n\tdir:%s,\n\tA:%s,\n\tB:%s\n)"%[dir,A,B])
 func _ready() -> void:
 	print(self)
+
+func get_direction() -> Vector2:
+	return dir
+
+
+func is_just_pressed(button):
+	return get(button).is_just_pressed()
+
+func is_just_released(button):
+	return get(button).is_just_released()
+
+func is_pressed(button):
+	return get(button).is_pressed()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/fighter/input_buffer.gd" type="Script" id=1]
+
+[node name="input_buffer" type="Node"]
+unique_name_in_owner = true
+script = ExtResource( 1 )
+
+[node name="combo_timer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true

@@ -3,7 +3,7 @@ extends Node
 signal new_input
 signal buffer_changed(val)
 
-export (NodePath) onready var input_state = (get_node(input_state) if has_node(input_state) else null) as InputState 
+onready var input_state : InputState = get_parent()
 
 export var idle_time_to_clear := 0.5
 
@@ -12,6 +12,9 @@ onready var combo_timer: Timer = $combo_timer
 
 #window of time for pressing several keys at the same time
 export var simul_press_frames_threshold := 3
+
+export var buffer_size := 10
+
 var simul_press_frames = simul_press_frames_threshold
 
 
@@ -22,8 +25,6 @@ var simul_press = false
 var is_latest = false
 
 const buttons := ["A", "B"]
-
-
 
 # how directions are gonna be represented in the buffer
 # ↖ ↑ ↗   7 8 9
@@ -38,7 +39,6 @@ var held_direction := Vector2()
 
 func _ready():
 	combo_timer.wait_time = idle_time_to_clear
-
 
 func check():
 	var direction = input_state.get_direction().snapped(Vector2(1,1))
@@ -79,4 +79,6 @@ func set_input_state(val):
 
 func set_buffer(val):
 	buffer = val
+	if buffer.length()>buffer_size:
+		buffer = buffer.right(buffer.length()-buffer_size)
 	emit_signal("buffer_changed", buffer)

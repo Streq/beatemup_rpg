@@ -11,7 +11,7 @@
 [ext_resource path="res://src/fighter/default_states/run.gd" type="Script" id=9]
 [ext_resource path="res://src/fighter/states/jab.gd" type="Script" id=10]
 [ext_resource path="res://src/fighter/default_states/block.gd" type="Script" id=11]
-[ext_resource path="res://src/fighter/input_buffer.gd" type="Script" id=12]
+[ext_resource path="res://src/fighter/input/input_buffer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/fighter/hitbox/hitbox.gd" type="Script" id=13]
 [ext_resource path="res://src/util/HUD/hud_bar.gd" type="Script" id=14]
 [ext_resource path="res://src/fighter/default_states/dead_air.gd" type="Script" id=15]
@@ -1494,9 +1494,7 @@ is_dead_state = true
 
 [node name="input_state" parent="." instance=ExtResource( 5 )]
 
-[node name="input_buffer" type="Node" parent="input_state"]
-unique_name_in_owner = true
-script = ExtResource( 12 )
+[node name="input_buffer" parent="input_state" instance=ExtResource( 12 )]
 
 [node name="transition_triggers" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -1585,9 +1583,9 @@ value = 50.0
 script = ExtResource( 14 )
 
 [node name="debug_info" type="MarginContainer" parent="."]
-margin_left = -50.0
+margin_left = -94.0
 margin_top = -71.0
-margin_right = 50.0
+margin_right = 6.0
 margin_bottom = -15.0
 grow_vertical = 0
 
@@ -1612,7 +1610,6 @@ margin_left = 60.0
 margin_right = 60.0
 margin_bottom = 8.0
 theme = ExtResource( 4 )
-align = 2
 
 [node name="animation_label" type="Label" parent="debug_info/list/GridContainer"]
 margin_top = 12.0
@@ -1628,7 +1625,6 @@ margin_top = 12.0
 margin_right = 60.0
 margin_bottom = 20.0
 theme = ExtResource( 4 )
-align = 2
 
 [node name="buffer_label" type="Label" parent="debug_info/list/GridContainer"]
 margin_top = 24.0
@@ -1644,7 +1640,6 @@ margin_top = 24.0
 margin_right = 60.0
 margin_bottom = 32.0
 theme = ExtResource( 4 )
-align = 2
 
 [node name="combo_label" type="Label" parent="debug_info/list/GridContainer"]
 margin_top = 36.0
@@ -1660,7 +1655,6 @@ margin_top = 36.0
 margin_right = 60.0
 margin_bottom = 44.0
 theme = ExtResource( 4 )
-align = 2
 
 [node name="dead_free_anim" type="Node" parent="."]
 script = ExtResource( 17 )
@@ -1668,4 +1662,5 @@ script = ExtResource( 17 )
 [connection signal="animation_started" from="state_animation" to="debug_info/list/GridContainer/animation_value" method="set_text"]
 [connection signal="state_changed" from="state_machine" to="debug_info/list/GridContainer/state_value" method="set_text"]
 [connection signal="entered" from="state_machine/dead" to="dead_free_anim" method="play"]
+[connection signal="buffer_changed" from="input_state/input_buffer" to="debug_info/list/GridContainer/buffer_value" method="set_text"]
 [connection signal="value_changed" from="health" to="health_value" method="change_value"]

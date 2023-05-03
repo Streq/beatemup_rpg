@@ -4,8 +4,12 @@
 
 [node name="input_buffer" type="Node"]
 unique_name_in_owner = true
+process_priority = 1410065407
 script = ExtResource( 1 )
+simul_press_frames_threshold = 5
+buffer_size = 16
 
 [node name="combo_timer" type="Timer" parent="."]
+process_priority = 1410065407
 process_mode = 0
 one_shot = true

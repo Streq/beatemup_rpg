@@ -1,5 +1,4 @@
 extends Node
-
 export var button := "A"
 export var dir := Vector2()
 export var pressed := true

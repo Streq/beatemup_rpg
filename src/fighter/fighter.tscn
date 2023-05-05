@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transition_triggers.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://src/fighter/transitions/conditions/composite_conditions.gd" type="Script" id=25]
 [ext_resource path="res://src/fighter/transitions/conditions/jab_counter.gd" type="Script" id=26]
 [ext_resource path="res://src/fighter/hurt.gd" type="Script" id=27]
+[ext_resource path="res://src/fighter/hurt_handler.gd" type="Script" id=28]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
@@ -1549,7 +1550,7 @@ collision_mask = 4
 script = ExtResource( 13 )
 active = false
 damage = 2.0
-knockback = Vector2( 50, -20 )
+knockback = Vector2( 10, -20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/jab"]
 position = Vector2( 13, 0 )
@@ -1628,6 +1629,8 @@ change_on_animation_finish = false
 
 [node name="hurt" type="Node" parent="state_machine"]
 script = ExtResource( 27 )
+animation = "hurt"
+on_finish_goto_state = "air"
 
 [node name="jump" type="Node" parent="state_machine"]
 script = ExtResource( 23 )
@@ -1866,6 +1869,9 @@ theme = ExtResource( 4 )
 
 [node name="dead_free_anim" type="Node" parent="."]
 script = ExtResource( 17 )
+
+[node name="hurt_handler" type="Node" parent="."]
+script = ExtResource( 28 )
 
 [connection signal="animation_started" from="state_animation" to="debug_info/list/GridContainer/animation_value" method="set_text"]
 [connection signal="state_changed" from="state_machine" to="debug_info/list/GridContainer/state_value" method="set_text"]

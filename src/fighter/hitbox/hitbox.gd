@@ -19,6 +19,6 @@ func _on_area_entered(hurtbox):
 	target.velocity = Vector2(owner.facing_dir*knockback.x, knockback.y)
 	target.health.value -= damage
 	target.facing_dir = -owner.facing_dir
-
+	target.get_hurt()
 func _ready() -> void:
 	connect("area_entered",self,"_on_area_entered")

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Fighter
 signal dead
+signal hurt
 
 export var velocity := Vector2() 
 export var gravity := Vector2()
@@ -53,3 +54,6 @@ func die():
 	if !state_machine.current.is_dead_state:
 		state_machine.current.goto("dead_air")
 		emit_signal("dead")
+
+func get_hurt():
+	emit_signal("hurt")

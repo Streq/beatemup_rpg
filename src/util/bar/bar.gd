@@ -33,3 +33,6 @@ func is_full():
 
 func fill() -> void:
 	set_value(max_value)
+
+func empty():
+	return value == 0.0

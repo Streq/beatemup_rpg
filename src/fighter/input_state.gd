@@ -28,8 +28,6 @@ func clear():
 
 func _to_string() -> String:
 	return ("InputState (\n\tdir:%s,\n\tA:%s,\n\tB:%s\n)"%[dir,A,B])
-func _ready() -> void:
-	print(self)
 
 func get_direction() -> Vector2:
 	return dir

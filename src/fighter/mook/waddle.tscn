@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/fighter/mook/fighter2.png" type="Texture" id=2]
 [ext_resource path="res://src/fighter/mook/waddle.png" type="Texture" id=3]
 [ext_resource path="res://src/fighter/hitbox/hitbox.gd" type="Script" id=4]
 [ext_resource path="res://src/fighter/mook/fighter2.png" type="Texture" id=5]
@@ -917,7 +916,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("pivot/display/Sprite:hframes")
@@ -1167,7 +1166,7 @@ speed = 40.0
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 3
-frame = 7
+frame = 9
 __meta__ = {
 "_aseprite_wizard_config_": {
 "layer": "",

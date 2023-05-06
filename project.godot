@@ -105,6 +105,11 @@ _global_script_classes=[ {
 "path": "res://src/util/pool_array/pool_array.gd"
 }, {
 "base": "Reference",
+"class": "RegexMatcher",
+"language": "GDScript",
+"path": "res://src/test/regex_test/regex_matcher.gd"
+}, {
+"base": "Reference",
 "class": "RenderUtils",
 "language": "GDScript",
 "path": "res://src/util/render/render_utils.gd"
@@ -169,6 +174,7 @@ _global_script_class_icons={
 "PauseState": "",
 "PointComparatorByAngleWithSegment": "",
 "PoolArray": "",
+"RegexMatcher": "",
 "RenderUtils": "",
 "Rope": "",
 "RopeUtils": "",
@@ -207,8 +213,6 @@ GlobalPalette="*res://src/util/color/GlobalPalette.tscn"
 
 window/size/width=256
 window/size/height=144
-window/size/test_width=1536
-window/size/test_height=864
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

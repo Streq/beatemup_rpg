@@ -16,9 +16,22 @@ func _on_area_entered(hurtbox):
 	if owner == hurtbox.owner or owner.team == hurtbox.owner.team:
 		return
 	var target = hurtbox.owner
-	target.velocity = Vector2(owner.facing_dir*knockback.x, knockback.y)
+	apply_knockback(target)
+	apply_damage(target)
+	apply_hitstun(target)
+	stun_caster()
+
+
+
+func apply_damage(target):
 	target.health.value -= damage
+func apply_knockback(target):
+	target.velocity = Vector2(owner.facing_dir*knockback.x, knockback.y)
 	target.facing_dir = -owner.facing_dir
+func apply_hitstun(target):
 	target.get_hurt()
+func stun_caster():
+	pass
+
 func _ready() -> void:
 	connect("area_entered",self,"_on_area_entered")

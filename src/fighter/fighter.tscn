@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transition_triggers.gd" type="Script" id=2]
@@ -28,6 +28,8 @@
 [ext_resource path="res://src/fighter/transitions/conditions/jab_counter.gd" type="Script" id=26]
 [ext_resource path="res://src/fighter/hurt.gd" type="Script" id=27]
 [ext_resource path="res://src/fighter/hurt_handler.gd" type="Script" id=28]
+[ext_resource path="res://src/fighter/transitions/conditions/on_empty_health.gd" type="Script" id=29]
+[ext_resource path="res://src/fighter/hitstun.gd" type="Script" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
@@ -430,6 +432,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 28.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pivot/hitbox/hurt_touch:active")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -1690,10 +1704,23 @@ is_dead_state = true
 
 [node name="transition_triggers" type="Node" parent="."]
 script = ExtResource( 2 )
+state_machine_path = NodePath("../state_machine")
+
+[node name="dead" type="Node" parent="transition_triggers"]
+script = ExtResource( 18 )
+accept_regex_states_from = PoolStringArray( ".*" )
+reject_regex_states_from = PoolStringArray( "hurt", "dead_air", "dead" )
+state_to = "dead_air"
+
+[node name="conditions" type="Node" parent="transition_triggers/dead"]
+script = ExtResource( 25 )
+
+[node name="on_empty_health" type="Node" parent="transition_triggers/dead/conditions"]
+script = ExtResource( 29 )
 
 [node name="uppercut" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run", "block", "air", "jump" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump" )
 state_to = "uppercut"
 
 [node name="conditions" type="Node" parent="transition_triggers/uppercut"]
@@ -1703,7 +1730,7 @@ dir = Vector2( 0, -1 )
 
 [node name="lowercut" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run", "block", "air", "jump" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump" )
 state_to = "lowercut"
 
 [node name="conditions" type="Node" parent="transition_triggers/lowercut"]
@@ -1713,7 +1740,7 @@ dir = Vector2( 0, 1 )
 
 [node name="cross" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run", "block", "air" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air" )
 state_to = "cross"
 
 [node name="conditions" type="Node" parent="transition_triggers/cross"]
@@ -1732,7 +1759,7 @@ process_mode = 0
 
 [node name="jab" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run", "block", "air" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air" )
 state_to = "jab"
 
 [node name="conditions" type="Node" parent="transition_triggers/jab"]
@@ -1741,7 +1768,7 @@ button = "B"
 
 [node name="block" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run", "block", "air" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air" )
 state_to = "block"
 
 [node name="conditions" type="Node" parent="transition_triggers/block"]
@@ -1750,7 +1777,7 @@ allow_hold = true
 
 [node name="air" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run", "block" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block" )
 state_to = "air"
 
 [node name="conditions" type="Node" parent="transition_triggers/air"]
@@ -1758,7 +1785,7 @@ script = ExtResource( 21 )
 
 [node name="jump" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "idle", "run" )
+accept_regex_states_from = PoolStringArray( "idle", "run" )
 state_to = "jump"
 
 [node name="conditions" type="Node" parent="transition_triggers/jump"]
@@ -1768,7 +1795,7 @@ just_pressed = true
 
 [node name="idle" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-states_from = PoolStringArray( "air", "block" )
+accept_regex_states_from = PoolStringArray( "air", "block" )
 state_to = "idle"
 
 [node name="conditions" type="Node" parent="transition_triggers/idle"]
@@ -1872,6 +1899,9 @@ script = ExtResource( 17 )
 
 [node name="hurt_handler" type="Node" parent="."]
 script = ExtResource( 28 )
+
+[node name="hitstun" type="Node" parent="."]
+script = ExtResource( 30 )
 
 [connection signal="animation_started" from="state_animation" to="debug_info/list/GridContainer/animation_value" method="set_text"]
 [connection signal="state_changed" from="state_machine" to="debug_info/list/GridContainer/state_value" method="set_text"]

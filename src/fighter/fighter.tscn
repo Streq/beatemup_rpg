@@ -1530,7 +1530,7 @@ unique_name_in_owner = true
 texture = ExtResource( 19 )
 hframes = 7
 vframes = 6
-frame = 11
+frame = 3
 __meta__ = {
 "_aseprite_wizard_config_": {
 "layer": "",
@@ -1644,6 +1644,7 @@ change_on_animation_finish = false
 [node name="hurt" type="Node" parent="state_machine"]
 script = ExtResource( 27 )
 animation = "hurt"
+change_on_animation_finish = false
 on_finish_goto_state = "air"
 
 [node name="jump" type="Node" parent="state_machine"]
@@ -1901,6 +1902,7 @@ script = ExtResource( 17 )
 script = ExtResource( 28 )
 
 [node name="hitstun" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource( 30 )
 
 [connection signal="animation_started" from="state_animation" to="debug_info/list/GridContainer/animation_value" method="set_text"]

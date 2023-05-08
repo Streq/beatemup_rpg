@@ -1,16 +1,19 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+export var frames := 0
 
+func is_stunned():
+	return frames > 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func hitstun(stun_frames):
+	frames = stun_frames
+	if frames:
+		owner.state_machine.current.goto("hurt")
 
+func _ready():
+	owner.connect("hitstun",self,"hitstun")
+	owner.connect("frame",self,"frame")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func frame(delta):
+	frames = max(frames-1, 0)

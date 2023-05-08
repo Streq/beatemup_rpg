@@ -2,6 +2,8 @@ extends KinematicBody2D
 class_name Fighter
 signal dead
 signal hurt
+signal frame(delta)
+signal hitstun(frames)
 
 export var velocity := Vector2() 
 export var gravity := Vector2()
@@ -33,6 +35,7 @@ onready var health: Bar = $"%health"
 onready var display: Node2D = $"%display"
 onready var pivot: Node2D = $"%pivot"
 onready var state_machine: StateMachine = $"%state_machine"
+onready var hitstun = $"%hitstun"
 
 func _ready() -> void:
 	state_machine.initialize()
@@ -40,11 +43,19 @@ func _ready() -> void:
 	update_facing_dir()
 
 func _physics_process(delta: float) -> void:
+	if shake_frames:
+		shake_frames -= 1
+		shake_frame()
+	else:
+		display.position = Vector2()
+	if freeze_frames:
+		freeze_frames -= 1
+		return
 	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity += gravity*delta
 	state_animation.advance(delta)
 	state_machine.physics_update(delta)
-
+	emit_signal("frame",delta)
 
 func jump():
 	velocity.y -= jump_speed
@@ -55,5 +66,24 @@ func die():
 		state_machine.current.goto("dead_air")
 		emit_signal("dead")
 
-func get_hurt():
-	emit_signal("hurt")
+#func get_hurt():
+#	emit_signal("hurt")
+
+var freeze_frames := 0
+func freeze(frames):
+	freeze_frames = frames
+
+var shake_frames := 0
+func shake(frames):
+	shake_frames = frames
+
+const shake_interval := 5
+var shake_sign = 1
+func shake_frame():
+	if shake_frames%shake_interval == 0:
+		shake_sign = -shake_sign
+	display.position = Vector2(1,1)*shake_sign
+
+
+func hitstun(frames):
+	emit_signal("hitstun",frames)

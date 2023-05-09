@@ -77,12 +77,16 @@ var shake_frames := 0
 func shake(frames):
 	shake_frames = frames
 
-const shake_interval := 5
+const shake_interval := 1
 var shake_sign = 1
 func shake_frame():
 	if shake_frames%shake_interval == 0:
 		shake_sign = -shake_sign
-	display.position = Vector2(1,1)*shake_sign
+	#either 1 or -1 at random
+	var x = (randi()%2)*2-1
+	#flips between frames
+	var y = shake_sign
+	display.position = Vector2(x,y)*shake_frames/4
 
 
 func hitstun(frames):

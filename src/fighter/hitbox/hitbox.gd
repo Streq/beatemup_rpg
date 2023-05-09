@@ -8,8 +8,8 @@ export var knockback := Vector2(100,-50)
 
 func set_active(val):
 	active = val
-	monitorable = active
-	monitoring = active
+	set_deferred("monitorable",active)
+	set_deferred("monitoring",active)
 
 
 func _on_area_entered(hurtbox):
@@ -21,7 +21,7 @@ func _on_area_entered(hurtbox):
 	notify_hit(target)
 
 	var hitstop_frames = calculate_hitstop_frames(damage, knockback)
-	apply_hitstop(owner, hitstop_frames)
+	apply_hitstop(owner, hitstop_frames/2)
 	apply_hitstop(target, hitstop_frames)
 	apply_shake(target, hitstop_frames)
 
@@ -33,9 +33,9 @@ func _on_area_entered(hurtbox):
 
 
 func calculate_hitstop_frames(damage, knockback):
-	return 10
+	return 12
 func calculate_hitstun_frames(damage, knockback):
-	return 20
+	return 24
 
 func apply_damage(target):
 	target.health.value -= damage

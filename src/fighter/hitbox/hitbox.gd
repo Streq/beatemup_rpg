@@ -4,7 +4,8 @@ export var active := true setget set_active
 
 export var damage := 10.0
 export var knockback := Vector2(100,-50)
-
+export var touch_level := 1
+export var knockback_horizontal_away_from := false
 
 func set_active(val):
 	active = val
@@ -13,9 +14,12 @@ func set_active(val):
 
 
 func _on_area_entered(hurtbox):
-	if owner == hurtbox.owner or owner.team == hurtbox.owner.team:
-		return
 	var target = hurtbox.owner
+	if (owner == target or 
+		owner.team == target.team or
+		target.hitbox_touch_level > touch_level
+		):
+		return
 	var caster = owner
 	
 	notify_hit(target)
@@ -41,8 +45,14 @@ func apply_damage(target):
 	target.health.value -= damage
 
 func apply_knockback(target):
-	target.velocity = Vector2(owner.facing_dir*knockback.x, knockback.y)
-	target.facing_dir = -owner.facing_dir
+	var sign_x 
+	if knockback_horizontal_away_from:
+		sign_x = sign(target.global_position.x-owner.global_position.x)
+	else:
+		sign_x = owner.facing_dir
+	
+	target.velocity = Vector2(knockback.x*sign_x, knockback.y)
+	target.facing_dir = -sign_x
 
 func apply_hitstun(target, frames):
 	target.hitstun(frames)

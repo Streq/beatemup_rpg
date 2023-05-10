@@ -3,25 +3,37 @@ extends CharacterState
 export var delay := 0.1
 
 var current_delay := 0.0
+var accum_press := 0.0
 var jumped = false
+var holding_jump := false
 func _enter(params):
 	current_delay = delay
 	jumped = false
+	holding_jump = true
+	accum_press = 0.0
 	pass
 
 func _physics_update(delta: float):
-	if !root.is_on_floor():
-		goto("air")
-		return
+#	if !root.is_on_floor():
+#		goto("air")
+#		return
 	
 	if current_delay <= 0:
+		print(accum_press)
 		if !jumped:
 			jumped = true
-			root.jump()
+			var modifier = 1.0
+			if accum_press<delay:
+				modifier = 0.75
+#			if accum_press < delay*0.33:
+#				modifier = 0.5
+			root.velocity.y -= root.jump_speed*modifier
 			return
 		else:
 			goto("idle")
 			return
-	
+	holding_jump = holding_jump and root.input_state.dir.y < 0.0
+	if holding_jump:
+		accum_press += delta
 	current_delay -= delta
 	

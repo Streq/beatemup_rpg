@@ -1,6 +1,9 @@
 extends Node
-
+var played = false
 func play():
+	if played:
+		return
+	played = true
 	get_node("%hurtbox").queue_free()
 	get_node("%hitbox").queue_free()
 	var tween = create_tween()

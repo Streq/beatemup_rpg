@@ -1382,6 +1382,7 @@ horizontal_acceleration = 1000.0
 horizontal_air_acceleration = 500.0
 
 [node name="terrain_collision" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 

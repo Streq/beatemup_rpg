@@ -15,6 +15,9 @@ export var horizontal_air_acceleration = 0.0
 export var horizontal_air_decceleration = 0.0
 export var speed = 75.0
 export var jump_speed = 100.0
+
+export var hitbox_touch_level := 0
+
 export (float, -1.0, 1.0, 2.0) var facing_dir := 1.0 setget set_facing_dir
 func set_facing_dir(val):
 	val = sign(val)
@@ -57,9 +60,6 @@ func _physics_process(delta: float) -> void:
 	state_machine.physics_update(delta)
 	emit_signal("frame",delta)
 
-func jump():
-	velocity.y -= jump_speed
-	pass
 
 func die():
 	if !state_machine.current.is_dead_state:

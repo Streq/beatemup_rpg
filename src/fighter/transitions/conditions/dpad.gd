@@ -9,6 +9,6 @@ onready var input_state : InputState = get_node("%input_state")
 
 func check():
 	return (
-		(!dir.x or sign(dir.x) == sign(input_state.dir.x)) and
-		(!dir.y or sign(dir.y) == sign(input_state.dir.y))
+		(!dir.x or input_state.is_x_just_pressed(dir.x)) and
+		(!dir.y or input_state.is_y_just_pressed(dir.y))
 	)

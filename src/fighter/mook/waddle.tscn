@@ -1502,6 +1502,7 @@ tracks/4/keys = {
 }
 
 [node name="waddle" instance=ExtResource( 1 )]
+gravity = 200.0
 speed = 40.0
 
 [node name="terrain_collision" parent="." index="0"]

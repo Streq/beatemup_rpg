@@ -6,7 +6,7 @@ signal frame(delta)
 signal hitstun(frames)
 
 export var velocity := Vector2() 
-export var gravity := Vector2()
+export var gravity := 200.0
 export var team := 0
 
 export var horizontal_decceleration = 0.0
@@ -15,6 +15,8 @@ export var horizontal_air_acceleration = 0.0
 export var horizontal_air_decceleration = 0.0
 export var speed = 75.0
 export var jump_speed = 100.0
+export var fast_fall_speed = 100.0
+export var fall_speed = 75.0
 
 export var hitbox_touch_level := 0
 
@@ -55,7 +57,10 @@ func _physics_process(delta: float) -> void:
 		freeze_frames -= 1
 		return
 	velocity = move_and_slide(velocity, Vector2.UP)
-	velocity += gravity*delta
+	
+	if velocity.y < fall_speed:
+		velocity.y += gravity*delta
+		
 	state_animation.advance(delta)
 	state_machine.physics_update(delta)
 	emit_signal("frame",delta)
@@ -91,3 +96,4 @@ func shake_frame():
 
 func hitstun(frames):
 	emit_signal("hitstun",frames)
+

@@ -8,8 +8,8 @@ func _physics_update(delta: float):
 		root.horizontal_air_decceleration
 	)
 	
-	if dir.y>0:
-		root.velocity += root.gravity*delta
+	if dir.y>0 and root.velocity.y>-25.0:
+		root.velocity.y = root.fast_fall_speed
 	
 	root.velocity.x = move_toward(
 		root.velocity.x, 

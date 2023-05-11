@@ -25,8 +25,6 @@ func _physics_update(delta: float):
 			var modifier = 1.0
 			if accum_press<delay:
 				modifier = 0.75
-#			if accum_press < delay*0.33:
-#				modifier = 0.5
 			root.velocity.y -= root.jump_speed*modifier
 			return
 		else:

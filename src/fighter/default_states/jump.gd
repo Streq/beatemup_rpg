@@ -14,10 +14,6 @@ func _enter(params):
 	pass
 
 func _physics_update(delta: float):
-#	if !root.is_on_floor():
-#		goto("air")
-#		return
-	
 	if current_delay <= 0:
 		print(accum_press)
 		if !jumped:

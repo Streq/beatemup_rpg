@@ -18,6 +18,9 @@ export var jump_speed = 100.0
 export var fast_fall_speed = 100.0
 export var fall_speed = 75.0
 
+export var air_jumps := 0
+export var available_air_jumps := 0
+
 export var hitbox_touch_level := 0
 
 export (float, -1.0, 1.0, 2.0) var facing_dir := 1.0 setget set_facing_dir
@@ -48,6 +51,9 @@ func _ready() -> void:
 	update_facing_dir()
 
 func _physics_process(delta: float) -> void:
+	if is_on_floor():
+		available_air_jumps = air_jumps
+	
 	if shake_frames:
 		shake_frames -= 1
 		shake_frame()

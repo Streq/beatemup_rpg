@@ -1630,6 +1630,7 @@ tracks/4/keys = {
 
 [node name="pelado" instance=ExtResource( 1 )]
 jump_speed = 115.0
+air_jumps = 1
 
 [node name="Sprite" parent="pivot/display" index="0"]
 texture = ExtResource( 12 )
@@ -1748,7 +1749,7 @@ change_on_animation_finish = false
 
 [node name="uppercut" type="Node" parent="transition_triggers" index="1"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump", "air_fast_fall" )
 state_to = "uppercut"
 
 [node name="conditions" type="Node" parent="transition_triggers/uppercut" index="0"]
@@ -1758,7 +1759,7 @@ dir = Vector2( 0, -1 )
 
 [node name="lowercut" type="Node" parent="transition_triggers" index="2"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump", "air_fast_fall" )
 state_to = "lowercut"
 
 [node name="conditions" type="Node" parent="transition_triggers/lowercut" index="0"]
@@ -1768,7 +1769,7 @@ dir = Vector2( 0, 1 )
 
 [node name="cross" type="Node" parent="transition_triggers" index="3"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "air_fast_fall" )
 state_to = "cross"
 
 [node name="conditions" type="Node" parent="transition_triggers/cross" index="0"]
@@ -1787,16 +1788,16 @@ process_mode = 0
 
 [node name="jab" type="Node" parent="transition_triggers" index="4"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "air_fast_fall" )
 state_to = "jab"
 
 [node name="conditions" type="Node" parent="transition_triggers/jab" index="0"]
 script = ExtResource( 2 )
 button = "B"
 
-[node name="block" type="Node" parent="transition_triggers" index="5"]
+[node name="block" type="Node" parent="transition_triggers" index="6"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block" )
 state_to = "block"
 
 [node name="conditions" type="Node" parent="transition_triggers/block" index="0"]

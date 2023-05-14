@@ -6,12 +6,6 @@ func _physics_update(delta: float):
 		0, 
 		root.horizontal_decceleration * delta
 	)
-	
-	var dir = root.input_state.dir
-	if dir.x:
-		if root.facing_dir == sign(dir.x):
-			goto("run")
-			return
-		else:
-			goto("turn")
-			return
+func _on_animation_finished(name):
+	root.facing_dir = -root.facing_dir
+	._on_animation_finished(name)

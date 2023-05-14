@@ -11,5 +11,6 @@ func _physics_update(delta: float):
 	if !dir.x:
 		goto("idle")
 		return
-	else:
-		root.facing_dir = dir.x
+	elif root.facing_dir != sign(dir.x):
+		goto("turn")
+		return

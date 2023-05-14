@@ -4,8 +4,8 @@ extends CharacterState
 func _enter(params):
 	var bump = -root.jump_speed*0.75
 #	root.velocity.y = min(0, root.velocity.y)+bump
-	root.velocity.y = max(min(0, root.velocity.y)+bump,-root.jump_speed)
-#	root.velocity.y = bump
+#	root.velocity.y = max(min(0, root.velocity.y)+bump,-root.jump_speed)
+	root.velocity.y = bump
 	root.available_air_jumps -= 1
 
 

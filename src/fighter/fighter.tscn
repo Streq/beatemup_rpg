@@ -8,7 +8,7 @@
 [ext_resource path="res://src/util/bar/bar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/fighter/default_states/idle.gd" type="Script" id=7]
 [ext_resource path="res://src/fighter/default_states/air.gd" type="Script" id=8]
-[ext_resource path="res://src/fighter/default_states/run.gd" type="Script" id=9]
+[ext_resource path="res://src/fighter/default_states/walk.gd" type="Script" id=9]
 [ext_resource path="res://src/fighter/default_states/air_jump.gd" type="Script" id=10]
 [ext_resource path="res://src/fighter/monk/fighter2.png" type="Texture" id=11]
 [ext_resource path="res://src/fighter/input/input_buffer.tscn" type="PackedScene" id=12]
@@ -157,7 +157,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 20.0 ]
+"values": [ 22.0 ]
 }
 
 [sub_resource type="Animation" id=47]
@@ -220,7 +220,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 28.0 ]
+"values": [ 32.0 ]
 }
 
 [sub_resource type="Animation" id=27]
@@ -346,7 +346,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 19.0 ]
+"values": [ 21.0 ]
 }
 
 [sub_resource type="Animation" id=28]
@@ -1684,7 +1684,7 @@ script = ExtResource( 10 )
 animation = "air_jump"
 on_finish_goto_state = "air"
 
-[node name="run" type="Node" parent="state_machine"]
+[node name="walk" type="Node" parent="state_machine"]
 script = ExtResource( 9 )
 animation = "walk_side"
 change_on_animation_finish = false
@@ -1728,7 +1728,7 @@ script = ExtResource( 29 )
 
 [node name="air" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-accept_regex_states_from = PoolStringArray( "idle", "run", "block" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "block", "walk" )
 state_to = "air"
 
 [node name="conditions" type="Node" parent="transition_triggers/air"]
@@ -1736,7 +1736,7 @@ script = ExtResource( 21 )
 
 [node name="jump" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-accept_regex_states_from = PoolStringArray( "idle", "run" )
+accept_regex_states_from = PoolStringArray( "idle", "run", "walk" )
 state_to = "jump"
 
 [node name="conditions" type="Node" parent="transition_triggers/jump"]

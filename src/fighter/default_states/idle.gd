@@ -10,7 +10,7 @@ func _physics_update(delta: float):
 	var dir = root.input_state.dir
 	if dir.x:
 		if root.facing_dir == sign(dir.x):
-			goto("run")
+			goto("walk")
 			return
 		else:
 			goto("turn")

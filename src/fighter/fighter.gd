@@ -14,6 +14,7 @@ export var horizontal_acceleration = 0.0
 export var horizontal_air_acceleration = 0.0
 export var horizontal_air_decceleration = 0.0
 export var speed = 75.0
+export var run_speed = 125.0
 export var jump_speed = 100.0
 export var fast_fall_speed = 100.0
 export var fall_speed = 75.0

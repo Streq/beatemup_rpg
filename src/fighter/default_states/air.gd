@@ -4,7 +4,7 @@ func _physics_update(delta: float):
 	var input_state = root.input_state
 	var dir = input_state.dir
 	var velx = root.velocity.x
-	var can_go_faster = sign(dir.x) == sign(velx) and root.speed < abs(root.velocity.x)
+	var can_go_faster = sign(dir.x) != sign(velx) or root.speed > abs(root.velocity.x)
 	
 	var acceleration = (
 		root.horizontal_air_acceleration 

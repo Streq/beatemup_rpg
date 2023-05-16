@@ -51,9 +51,12 @@ func _ready() -> void:
 	health.connect("empty", self, "die")
 	update_facing_dir()
 
+func refill_air_jumps():
+	available_air_jumps = air_jumps
+
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
-		available_air_jumps = air_jumps
+		refill_air_jumps()
 	
 	if shake_frames:
 		shake_frames -= 1

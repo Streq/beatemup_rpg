@@ -3,6 +3,9 @@ class_name InputState
 
 var A : ButtonState = ButtonState.new()
 var B : ButtonState = ButtonState.new()
+
+#exists for debug purposes
+var C : ButtonState = ButtonState.new()
 var dir := Vector2() setget set_dir
 var _prev_dir := Vector2()
 
@@ -16,17 +19,20 @@ func _physics_process(delta: float) -> void:
 func stale():
 	A.stale()
 	B.stale()
+	C.stale()
 	_prev_dir = dir
 
 func copy_from(input_state: InputState):
 	A.copy_from(input_state.A)
 	B.copy_from(input_state.B)
+	C.copy_from(input_state.C)
 	_prev_dir = input_state._prev_dir
 	dir = input_state.dir
 
 func clear():
 	A.clear()
 	B.clear()
+	C.clear()
 	dir = Vector2()
 	_prev_dir = Vector2()
 func _to_string() -> String:

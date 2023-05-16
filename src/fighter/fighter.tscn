@@ -157,7 +157,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 22.0 ]
+"values": [ 21.0 ]
 }
 
 [sub_resource type="Animation" id=47]
@@ -346,7 +346,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 21.0 ]
+"values": [ 20.0 ]
 }
 
 [sub_resource type="Animation" id=28]

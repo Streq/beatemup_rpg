@@ -19,7 +19,6 @@ func _physics_update(delta: float):
 	if input_state.is_y_just_pressed(-1.0) and root.available_air_jumps:
 		goto("air_jump")
 		return
-
 	root.velocity.x = move_toward(
 		root.velocity.x, 
 		root.speed*sign(dir.x), 

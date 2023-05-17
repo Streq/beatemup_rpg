@@ -6,6 +6,7 @@ signal frame(delta)
 signal hitstun(frames)
 
 export var velocity := Vector2() 
+export var previous_frame_velocity := Vector2() 
 export var gravity := 200.0
 export var team := 0
 
@@ -55,6 +56,7 @@ func refill_air_jumps():
 	available_air_jumps = air_jumps
 
 func _physics_process(delta: float) -> void:
+
 	if is_on_floor():
 		refill_air_jumps()
 	
@@ -66,6 +68,7 @@ func _physics_process(delta: float) -> void:
 	if freeze_frames:
 		freeze_frames -= 1
 		return
+	previous_frame_velocity = velocity
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	if velocity.y < fall_speed:

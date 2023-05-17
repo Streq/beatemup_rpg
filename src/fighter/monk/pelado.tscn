@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transitions/conditions/button_press.gd" type="Script" id=2]
@@ -16,6 +16,11 @@
 [ext_resource path="res://src/fighter/default_states/run.gd" type="Script" id=14]
 [ext_resource path="res://src/fighter/transitions/conditions/buffer_check.gd" type="Script" id=15]
 [ext_resource path="res://src/fighter/default_states/ledge_grab.gd" type="Script" id=16]
+[ext_resource path="res://src/fighter/ledge/ledge_detect.gd" type="Script" id=17]
+[ext_resource path="res://src/fighter/transitions/conditions/on_ledge_grab_detect.gd" type="Script" id=18]
+[ext_resource path="res://src/fighter/default_states/wall_bounce.gd" type="Script" id=19]
+[ext_resource path="res://src/fighter/default_states/wall_jump.gd" type="Script" id=20]
+[ext_resource path="res://src/fighter/monk/transition_triggers/wall_bounce.gd" type="Script" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 5 )
@@ -1888,6 +1893,7 @@ tracks/4/keys = {
 
 [node name="pelado" instance=ExtResource( 1 )]
 horizontal_air_acceleration = 250.0
+horizontal_air_decceleration = 10.0
 speed = 65.0
 run_speed = 115.0
 jump_speed = 115.0
@@ -1970,7 +1976,32 @@ shape = SubResource( 28 )
 
 [node name="ledge_grab_point" type="Position2D" parent="pivot" index="3"]
 unique_name_in_owner = true
-position = Vector2( 5, 1 )
+position = Vector2( 4, -1 )
+
+[node name="ledge_detect" type="Node2D" parent="pivot" index="4"]
+unique_name_in_owner = true
+position = Vector2( 6, 1 )
+script = ExtResource( 17 )
+
+[node name="gap_detect" type="RayCast2D" parent="pivot/ledge_detect" index="0"]
+unique_name_in_owner = true
+position = Vector2( -3, -3 )
+rotation = -1.57079
+enabled = true
+cast_to = Vector2( 0, 4 )
+
+[node name="floor_detect" type="RayCast2D" parent="pivot/ledge_detect" index="1"]
+unique_name_in_owner = true
+position = Vector2( -1, -2 )
+enabled = true
+cast_to = Vector2( 0, 4 )
+
+[node name="wall_detect" type="RayCast2D" parent="pivot/ledge_detect" index="2"]
+unique_name_in_owner = true
+position = Vector2( -3, 0 )
+rotation = -1.57079
+enabled = true
+cast_to = Vector2( 0, 4 )
 
 [node name="state_animation" parent="." index="2"]
 anims/RESET = SubResource( 5 )
@@ -2034,17 +2065,28 @@ script = ExtResource( 11 )
 animation = "retreat_jump"
 on_finish_goto_state = "air"
 
-[node name="turn" parent="state_machine" index="15"]
+[node name="wall_jump" type="Node" parent="state_machine" index="15"]
+script = ExtResource( 20 )
+animation = "air"
+on_finish_goto_state = "air"
+
+[node name="turn" parent="state_machine" index="16"]
 animation = "turn"
 
-[node name="run" type="Node" parent="state_machine" index="16"]
+[node name="run" type="Node" parent="state_machine" index="17"]
 script = ExtResource( 14 )
 animation = "run_side"
 
-[node name="ledge_grab" type="Node" parent="state_machine" index="17"]
+[node name="ledge_grab" type="Node" parent="state_machine" index="18"]
 script = ExtResource( 16 )
 animation = "ledge_grab"
 change_on_animation_finish = false
+
+[node name="wall_bounce" type="Node" parent="state_machine" index="19"]
+script = ExtResource( 19 )
+animation = "ledge_grab"
+change_on_animation_finish = false
+DURATION_FRAMES = 8
 
 [node name="ledge_grab" type="Node" parent="transition_triggers" index="1"]
 script = ExtResource( 6 )
@@ -2052,11 +2094,25 @@ accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "air_
 state_to = "ledge_grab"
 
 [node name="conditions" type="Node" parent="transition_triggers/ledge_grab" index="0"]
+script = ExtResource( 4 )
+
+[node name="on_button_press" type="Node" parent="transition_triggers/ledge_grab/conditions" index="0"]
 script = ExtResource( 2 )
-button = "C"
+pressed = false
 allow_hold = true
 
-[node name="uppercut" type="Node" parent="transition_triggers" index="2"]
+[node name="on_ledge_grab_detect" type="Node" parent="transition_triggers/ledge_grab/conditions" index="1"]
+script = ExtResource( 18 )
+
+[node name="wall_bounce" type="Node" parent="transition_triggers" index="2"]
+script = ExtResource( 6 )
+accept_regex_states_from = PoolStringArray( "air" )
+state_to = "wall_bounce"
+
+[node name="conditions" type="Node" parent="transition_triggers/wall_bounce" index="0"]
+script = ExtResource( 21 )
+
+[node name="uppercut" type="Node" parent="transition_triggers" index="3"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump", "air_fast_fall", "walk" )
 state_to = "uppercut"
@@ -2066,7 +2122,7 @@ script = ExtResource( 8 )
 button = "B"
 dir = Vector2( 0, -1 )
 
-[node name="lowercut" type="Node" parent="transition_triggers" index="3"]
+[node name="lowercut" type="Node" parent="transition_triggers" index="4"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "jump", "air_fast_fall", "walk" )
 state_to = "lowercut"
@@ -2076,7 +2132,7 @@ script = ExtResource( 8 )
 button = "B"
 dir = Vector2( 0, 1 )
 
-[node name="cross" type="Node" parent="transition_triggers" index="4"]
+[node name="cross" type="Node" parent="transition_triggers" index="5"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "air_fast_fall", "walk", "jump" )
 state_to = "cross"
@@ -2095,7 +2151,7 @@ time_before_reset = 0.25
 [node name="timeout" type="Timer" parent="transition_triggers/cross/conditions/jab_counter" index="0"]
 process_mode = 0
 
-[node name="jab" type="Node" parent="transition_triggers" index="5"]
+[node name="jab" type="Node" parent="transition_triggers" index="6"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "air_fast_fall", "walk", "jump" )
 state_to = "jab"
@@ -2104,7 +2160,7 @@ state_to = "jab"
 script = ExtResource( 2 )
 button = "B"
 
-[node name="retreat_jump" type="Node" parent="transition_triggers" index="7"]
+[node name="retreat_jump" type="Node" parent="transition_triggers" index="8"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "block" )
 state_to = "retreat_jump"
@@ -2114,7 +2170,7 @@ script = ExtResource( 13 )
 dir = Vector2( -1, 0 )
 just_pressed = true
 
-[node name="block" type="Node" parent="transition_triggers" index="8"]
+[node name="block" type="Node" parent="transition_triggers" index="9"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "turn", "walk" )
 state_to = "block"
@@ -2123,7 +2179,7 @@ state_to = "block"
 script = ExtResource( 2 )
 allow_hold = true
 
-[node name="run" type="Node" parent="transition_triggers" index="9"]
+[node name="run" type="Node" parent="transition_triggers" index="10"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "turn", "walk" )
 state_to = "run"
@@ -2132,7 +2188,7 @@ state_to = "run"
 script = ExtResource( 15 )
 sequence = "66"
 
-[node name="jump" parent="transition_triggers" index="10"]
+[node name="jump" parent="transition_triggers" index="11"]
 accept_regex_states_from = PoolStringArray( "idle", "run", "walk", "turn" )
 
 [connection signal="entered" from="state_machine/jab" to="transition_triggers/cross/conditions/jab_counter" method="increment_count"]

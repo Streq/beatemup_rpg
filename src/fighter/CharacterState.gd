@@ -1,6 +1,8 @@
 extends State
 class_name CharacterState
 
+signal pre_enter()
+
 export var animation := ""
 export var change_on_animation_finish := true
 export var on_finish_goto_state := ""
@@ -8,6 +10,7 @@ export var on_finish_goto_state := ""
 export var is_dead_state := false
 
 func enter(params):
+	emit_signal("pre_enter")
 	root.state_animation.play("RESET")
 	root.state_animation.advance(0.0)
 	root.state_animation.play(animation)

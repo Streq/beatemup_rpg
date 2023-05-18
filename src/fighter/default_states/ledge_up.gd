@@ -1,8 +1,8 @@
 extends CharacterState
 
 var global_ledge_position := Vector2()
-onready var ledge_grab_point := $"%ledge_grab_point"
-onready var ledge_detect: Node2D = $"%ledge_detect"
+onready var ledge_grab_point := $"%up_ledge_point"
+onready var ledge_detect: Node2D = $"%chest_ledge_detect"
 
 func _enter(params):
 	global_ledge_position = ledge_detect.get_ledge()

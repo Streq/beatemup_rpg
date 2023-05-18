@@ -5,6 +5,7 @@ export var DURATION_FRAMES := 15
 var frames := 0
 
 func _enter(params):
+	root.facing_dir = root.previous_frame_velocity.x
 	frames = 0
 
 func _physics_update(delta: float):

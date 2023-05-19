@@ -1,0 +1,3 @@
+[gd_scene format=2]
+
+[node name="test_first_room" type="Node2D"]

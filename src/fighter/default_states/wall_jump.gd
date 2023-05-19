@@ -1,7 +1,7 @@
 extends CharacterState
 
 func _enter(params):
-	root.facing_dir = -root.facing_dir
+#	root.facing_dir = -root.facing_dir
 	root.velocity = Vector2(root.facing_dir*100.0,-75.0)
 
 func _physics_update(delta: float):

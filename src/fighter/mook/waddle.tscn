@@ -1570,9 +1570,3 @@ __meta__ = {
 "_edit_pinned_properties_": [ "max_value" ]
 }
 max_value = 10.0
-
-[node name="health_value" parent="." index="8"]
-visible = false
-
-[node name="debug_info" parent="." index="9"]
-visible = false

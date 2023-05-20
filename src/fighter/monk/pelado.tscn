@@ -2219,21 +2219,7 @@ air_jumps = 1
 
 [node name="Sprite" parent="pivot/display" index="0"]
 texture = ExtResource( 12 )
-hframes = 8
-vframes = 7
 frame = 27
-__meta__ = {
-"_aseprite_wizard_config_": {
-"layer": "",
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": true,
-"op_exp": false,
-"player": "state_animation",
-"source": "res://assets/aseprite/fighter2.aseprite"
-}
-}
 
 [node name="hurtbox" parent="pivot" index="1"]
 visible = false

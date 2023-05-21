@@ -208,6 +208,7 @@ GlobalInputs="res://src/util/global/input/global_inputs.gd"
 Controller="*res://src/util/global/controller/Controller.tscn"
 Global="*res://src/global/global.tscn"
 GlobalPalette="*res://src/util/color/GlobalPalette.tscn"
+PaletteFilter="*res://src/global/palette_filter/palette_filter.tscn"
 
 [display]
 
@@ -271,6 +272,7 @@ C={
 2d_physics/layer_3="hurtbox"
 2d_physics/layer_4="hitbox"
 2d_physics/layer_5="player"
+2d_physics/layer_6="one_way_terrain"
 
 [physics]
 

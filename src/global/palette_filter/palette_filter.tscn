@@ -30,7 +30,7 @@ void fragment(){
 
 [sub_resource type="Image" id=11]
 data = {
-"data": PoolByteArray( 255, 255, 255, 255, 173, 173, 173, 255, 82, 82, 82, 255, 0, 0, 0, 255 ),
+"data": PoolByteArray( 255, 255, 255, 255, 172, 172, 172, 255, 82, 82, 82, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -52,7 +52,7 @@ shader_param/palette = SubResource( 8 )
 
 [sub_resource type="Image" id=12]
 data = {
-"data": PoolByteArray( 255, 255, 255, 255, 165, 214, 255, 255, 140, 165, 247, 255, 0, 0, 0, 255 ),
+"data": PoolByteArray( 255, 255, 255, 255, 165, 214, 255, 255, 140, 165, 246, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -76,6 +76,7 @@ shader_param/palette = SubResource( 10 )
 layer = 128
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 2 )
@@ -88,7 +89,7 @@ anchor_bottom = 1.0
 script = ExtResource( 1 )
 palette = PoolColorArray( 1, 1, 1, 1, 0.678431, 0.678431, 0.678431, 1, 0.321569, 0.321569, 0.321569, 1, 0, 0, 0, 1 )
 
-[node name="black_white2" type="ColorRect" parent="."]
+[node name="blue" type="ColorRect" parent="."]
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0

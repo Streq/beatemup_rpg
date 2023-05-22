@@ -1,7 +1,7 @@
 extends ColorRect
 tool
 
-export var palette : PoolColorArray
+export var palette : PoolColorArray setget set_palette
 
 var tex = ImageTexture.new()
 
@@ -36,7 +36,6 @@ func update_tex(img):
 
 
 func _ready():
-	
 	ready = true
 	set_palette(palette)
 #	shader_offset = material.get_shader_param("offset")

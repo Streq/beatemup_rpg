@@ -5,7 +5,7 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 uniform int palette_size = 4;
-uniform float offset : hint_range(0, 8, 1);
+uniform float offset : hint_range(-3, 3, 1);
 uniform sampler2D palette;
 uniform float blue_index_offset = 0.0;
 
@@ -16,7 +16,7 @@ void fragment(){
 	//used as index for the palette texture
 	float blue_1 = screen_tex.b;
 	
-	float palette_index = mod(blue_1 * (255.0) - blue_index_offset + offset+0.5,float(palette_size));
+	float palette_index = clamp(blue_1 * (255.0) - blue_index_offset + offset+0.5, 0.0, float(palette_size));
 	float h_pixel_size = 1.0/float(palette_size);
 	vec2 palette_pixel = vec2(palette_index*(h_pixel_size), 0.0);
 	
@@ -27,7 +27,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=5]
+[sub_resource type="Image" id=7]
 data = {
 "data": PoolByteArray( 255, 255, 255, 255, 172, 172, 172, 255, 82, 82, 82, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
@@ -39,7 +39,7 @@ data = {
 [sub_resource type="ImageTexture" id=6]
 flags = 0
 flags = 0
-image = SubResource( 5 )
+image = SubResource( 7 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=4]

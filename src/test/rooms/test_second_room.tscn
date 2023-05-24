@@ -22,7 +22,8 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="door" parent="." instance=ExtResource( 9 )]
-room = "res://src/test/rooms/test_second_room.tscn"
+position = Vector2( -104, 120 )
+room = "res://src/test/rooms/test_first_room.tscn"
 
 [node name="one_way_terrain" parent="." instance=ExtResource( 5 )]
 tile_data = PoolIntArray( 327689, 1, 1, 327690, 1, 2, 327691, 1, 3, 393225, 3, 1, 393226, 3, 2, 393227, 3, 3, 458760, 1, 1, 458761, 1, 2, 458762, 1, 2, 458763, 1, 2, 458764, 1, 3, 524296, 1, 65537, 524297, 1, 65538, 524298, 1, 65538, 524299, 1, 65538, 524300, 1, 65539 )

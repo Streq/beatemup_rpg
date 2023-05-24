@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	
 	mutex.unlock()
 	
-	if Input.is_action_just_pressed("save_recording"):
+	if Input.is_action_just_pressed("record"):
 		
 		thread = Thread.new()
 		thread.start(self, "save_frames")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/global/HUD/HUD_theme.tres" type="Theme" id=2]
+[ext_resource path="res://src/HUD/heart_bar/heart_bar.gd" type="Script" id=3]
+
+[node name="heart_bar" type="PanelContainer"]
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="bar" type="HBoxContainer" parent="."]
+unique_name_in_owner = true

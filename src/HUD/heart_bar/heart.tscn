@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/texture/heart_sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/HUD/heart_bar/heart.gd" type="Script" id=2]
+
+[node name="heart" type="Control"]
+margin_right = 8.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 8, 9 )
+script = ExtResource( 2 )
+progress = 4
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 5
+frame = 4

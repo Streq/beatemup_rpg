@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transitions/conditions/button_press.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://src/fighter/default_states/modifiers/animate_depending_dir.gd" type="Script" id=24]
 [ext_resource path="res://src/fighter/default_states/go_through_door.gd" type="Script" id=25]
 [ext_resource path="res://src/fighter/transitions/conditions/is_on_door.gd" type="Script" id=26]
+[ext_resource path="res://src/fighter/default_states/come_through_door.gd" type="Script" id=27]
 
 [sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 0.5, 1 )
@@ -372,6 +373,69 @@ tracks/4/keys = {
 "values": [ 2.0, 3.0 ]
 }
 
+[sub_resource type="Animation" id=39]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/display/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/display/Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/display/Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pivot/display/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("pivot/display/Sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 30.0, 31.0, 30.0 ]
+}
+
 [sub_resource type="Animation" id=8]
 length = 0.4
 tracks/0/type = "value"
@@ -510,6 +574,69 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 7.0, 8.0, 9.0 ]
+}
+
+[sub_resource type="Animation" id=40]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/display/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/display/Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/display/Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pivot/display/Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("pivot/display/Sprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 33.0, 34.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -2234,18 +2361,6 @@ shape = SubResource( 38 )
 [node name="Sprite" parent="pivot/display" index="0"]
 texture = ExtResource( 12 )
 frame = 33
-__meta__ = {
-"_aseprite_wizard_config_": {
-"layer": "",
-"o_ex_p": "",
-"o_folder": "",
-"o_name": "",
-"only_visible": true,
-"op_exp": false,
-"player": "state_animation",
-"source": "res://assets/aseprite/fighter2.aseprite"
-}
-}
 
 [node name="hurtbox" parent="pivot" index="1"]
 visible = false
@@ -2337,8 +2452,10 @@ anims/air = SubResource( 6 )
 anims/air_jump_spin = SubResource( 33 )
 anims/air_jump_spin_backwards = SubResource( 36 )
 anims/block = SubResource( 7 )
+anims/come_through_door = SubResource( 39 )
 anims/cross = SubResource( 8 )
 anims/cross2 = SubResource( 9 )
+anims/go_through_door = SubResource( 40 )
 anims/hurt = SubResource( 10 )
 anims/idle_back = SubResource( 11 )
 anims/idle_front = SubResource( 12 )
@@ -2440,12 +2557,17 @@ DURATION_FRAMES = 10
 
 [node name="go_through_door" type="Node" parent="state_machine" index="22"]
 script = ExtResource( 25 )
-animation = "walk_back"
+animation = "go_through_door"
 change_on_animation_finish = false
+
+[node name="come_through_door" type="Node" parent="state_machine" index="23"]
+script = ExtResource( 27 )
+animation = "come_through_door"
+on_finish_goto_state = "idle"
 
 [node name="go_through_door" type="Node" parent="transition_triggers" index="1"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "air", "air_fast_fall", "air_jump", "idle", "walk", "run" )
+accept_regex_states_from = PoolStringArray( "air", "air_fast_fall", "air_jump", "idle", "walk", "run", "jump" )
 state_to = "go_through_door"
 
 [node name="conditions" type="Node" parent="transition_triggers/go_through_door" index="0"]
@@ -2454,7 +2576,6 @@ script = ExtResource( 4 )
 [node name="dpad" type="Node" parent="transition_triggers/go_through_door/conditions" index="0"]
 script = ExtResource( 13 )
 dir = Vector2( 0, -1 )
-just_pressed = true
 
 [node name="is_on_door" type="Node" parent="transition_triggers/go_through_door/conditions" index="1"]
 script = ExtResource( 26 )

@@ -1,7 +1,9 @@
 extends Node
 
 func goto_room(path: String, door_id: int):
-	var player = Group.get_one("player")
+	var player : Fighter = Group.get_one("player")
+	player.hide()
+	yield(Fade.fade_to_darkness_level(-3,0.3),"finished")
 	if player:
 		player.get_parent().remove_child(player)
 	var tree = get_tree()
@@ -13,5 +15,6 @@ func goto_room(path: String, door_id: int):
 			if door.id == door_id:
 				door.get_parent().add_child(player)
 				player.position = door.position
-	
-	yield(Fade.fade_to_darkness_level(0,1.0),"finished")
+		player.show()
+		player.state_machine.current.goto("come_through_door")
+	yield(Fade.fade_to_darkness_level(0,0.3),"finished")

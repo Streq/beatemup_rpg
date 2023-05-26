@@ -1,9 +1,10 @@
-extends CanvasLayer
+extends Node
 
 
 var current : int = 0
 var darkness_offset : int = 0
-onready var palettes = $palettes.get_children()
+onready var palettes = $palette_layer.get_children()
+onready var light: ColorRect = $"%light"
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("R",true):
@@ -22,9 +23,8 @@ func set_palette(index):
 
 func set_darkness_offset(val:int):
 	darkness_offset = clamp(val,-3,3)
-	update_palette()
+	light.material.set_shader_param("offset",darkness_offset)
 	
 func update_palette():
 	var palette : ColorRect = palettes[current]
-	palette.material.set_shader_param("offset",darkness_offset)
 	palettes[current].show()

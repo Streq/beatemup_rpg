@@ -1,10 +1,9 @@
 extends Node
-tool
 
 export var current : int = 0 setget set_palette
 export var current_name : String setget set_palette_by_name
 var darkness_offset : int = 0
-onready var palettes = $palettes
+onready var palettes = $"%palettes"
 onready var light: ColorRect = $"%light"
 onready var palette_filter: ColorRect = $"%palette_filter"
 

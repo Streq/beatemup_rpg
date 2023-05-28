@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/test/fighter/restart_on_death.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/enemy_spawner/despawn_when_not_visible.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/enemy_spawner/add_on_spawn.gd" type="Script" id=14]
+[ext_resource path="res://src/test/rooms/track_hud.gd" type="Script" id=15]
 
 [node name="test_first_room" type="Node2D"]
 
@@ -49,6 +50,9 @@ current = true
 
 [node name="restart_on_death" type="Node" parent="pelado"]
 script = ExtResource( 2 )
+
+[node name="track_hud" type="Node" parent="pelado"]
+script = ExtResource( 15 )
 
 [node name="camera_limits" type="ReferenceRect" parent="."]
 margin_left = -160.0

@@ -14,4 +14,5 @@ progress = 4
 texture = ExtResource( 1 )
 centered = false
 hframes = 5
+vframes = 5
 frame = 4

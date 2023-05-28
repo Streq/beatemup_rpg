@@ -2373,7 +2373,7 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource( 9 )
 active = false
-damage = 2.0
+damage = 1.0
 knockback = Vector2( 10, -20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/jab" index="0"]
@@ -2385,6 +2385,7 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource( 9 )
 active = false
+damage = 4.0
 knockback = Vector2( 200, -50 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/cross" index="0"]
@@ -2396,6 +2397,7 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource( 9 )
 active = false
+damage = 4.0
 knockback = Vector2( 50, -100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/uppercut" index="0"]
@@ -2407,6 +2409,7 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource( 9 )
 active = false
+damage = 4.0
 knockback = Vector2( 50, 100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/hitbox/lowercut" index="0"]
@@ -2417,7 +2420,7 @@ shape = SubResource( 3 )
 collision_layer = 8
 collision_mask = 4
 script = ExtResource( 9 )
-damage = 5.0
+damage = 1.0
 knockback = Vector2( 50, -20 )
 touch_level = 0
 knockback_horizontal_away_from = true
@@ -2716,6 +2719,10 @@ accept_regex_states_from = PoolStringArray( "idle", "run", "walk", "turn" )
 
 [node name="idle" parent="transition_triggers" index="15"]
 accept_regex_states_from = PoolStringArray( "air", "block", "air_fast_fall", "air_jump" )
+
+[node name="health" parent="." index="8"]
+max_value = 12.0
+value = 12.0
 
 [node name="list" parent="debug_info" index="0"]
 margin_right = 132.0

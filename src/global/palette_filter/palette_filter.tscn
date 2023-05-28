@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/global/palette_filter/palettes/black_white.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/mockup/mockup_mapa.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://src/global/palette_filter/bad_shader_rounding_workaround.gd" type="Script" id=4]
 [ext_resource path="res://src/global/palette_filter/palette_filter.gd" type="Script" id=5]
 [ext_resource path="res://assets/mockup/HUD.png" type="Texture" id=6]
+[ext_resource path="res://src/global/palette_filter/palettes.gd" type="Script" id=7]
+[ext_resource path="res://src/global/palette_filter/palette.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Shader" id=46]
 code = "shader_type canvas_item;
@@ -32,19 +34,19 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=63]
+[sub_resource type="Image" id=70]
 data = {
-"data": PoolByteArray( 255, 255, 0, 255, 126, 126, 1, 255, 60, 60, 2, 255, 0, 0, 3, 255 ),
+"data": PoolByteArray( 255, 255, 0, 255, 126, 126, 1, 255, 59, 59, 2, 255, 0, 0, 3, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=48]
+[sub_resource type="ImageTexture" id=67]
 flags = 0
 flags = 0
-image = SubResource( 63 )
+image = SubResource( 70 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=43]
@@ -52,7 +54,7 @@ shader = SubResource( 46 )
 shader_param/palette_size = 4
 shader_param/offset = 0.0
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 48 )
+shader_param/palette = SubResource( 67 )
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -79,159 +81,27 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=64]
+[sub_resource type="Image" id=71]
 data = {
-"data": PoolByteArray( 255, 255, 255, 255, 165, 214, 255, 255, 140, 165, 246, 255, 23, 16, 16, 255 ),
+"data": PoolByteArray( 255, 255, 255, 255, 173, 173, 173, 255, 82, 82, 82, 255, 0, 0, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=50]
+[sub_resource type="ImageTexture" id=69]
 flags = 0
 flags = 0
-image = SubResource( 64 )
+image = SubResource( 71 )
 size = Vector2( 4, 1 )
 
-[sub_resource type="ShaderMaterial" id=45]
+[sub_resource type="ShaderMaterial" id=65]
 shader = SubResource( 1 )
 shader_param/palette_size = 4
 shader_param/offset = null
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 50 )
-
-[sub_resource type="Image" id=65]
-data = {
-"data": PoolByteArray( 255, 255, 255, 255, 161, 196, 127, 255, 52, 96, 54, 255, 23, 16, 16, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 4
-}
-
-[sub_resource type="ImageTexture" id=52]
-flags = 0
-flags = 0
-image = SubResource( 65 )
-size = Vector2( 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 1 )
-shader_param/palette_size = 4
-shader_param/offset = null
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 52 )
-
-[sub_resource type="Image" id=66]
-data = {
-"data": PoolByteArray( 255, 255, 255, 255, 165, 214, 255, 255, 172, 230, 89, 255, 23, 16, 16, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 4
-}
-
-[sub_resource type="ImageTexture" id=54]
-flags = 0
-flags = 0
-image = SubResource( 66 )
-size = Vector2( 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=26]
-shader = SubResource( 1 )
-shader_param/palette_size = 4
-shader_param/offset = 0.0
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 54 )
-
-[sub_resource type="Image" id=67]
-data = {
-"data": PoolByteArray( 255, 255, 255, 255, 225, 189, 105, 255, 63, 175, 165, 255, 23, 16, 16, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 4
-}
-
-[sub_resource type="ImageTexture" id=56]
-flags = 0
-flags = 0
-image = SubResource( 67 )
-size = Vector2( 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=23]
-shader = SubResource( 1 )
-shader_param/palette_size = 4
-shader_param/offset = null
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 56 )
-
-[sub_resource type="Image" id=68]
-data = {
-"data": PoolByteArray( 255, 255, 255, 255, 165, 214, 255, 255, 73, 154, 42, 255, 23, 16, 16, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 4
-}
-
-[sub_resource type="ImageTexture" id=58]
-flags = 0
-flags = 0
-image = SubResource( 68 )
-size = Vector2( 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=19]
-shader = SubResource( 1 )
-shader_param/palette_size = 4
-shader_param/offset = null
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 58 )
-
-[sub_resource type="Image" id=69]
-data = {
-"data": PoolByteArray( 255, 255, 255, 255, 255, 163, 163, 255, 255, 0, 0, 255, 23, 16, 16, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 4
-}
-
-[sub_resource type="ImageTexture" id=60]
-flags = 0
-flags = 0
-image = SubResource( 69 )
-size = Vector2( 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=20]
-shader = SubResource( 1 )
-shader_param/palette_size = 4
-shader_param/offset = 0.0
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 60 )
-
-[sub_resource type="Image" id=70]
-data = {
-"data": PoolByteArray( 255, 255, 255, 255, 255, 212, 121, 255, 255, 151, 0, 255, 23, 16, 16, 255 ),
-"format": "RGBA8",
-"height": 1,
-"mipmaps": false,
-"width": 4
-}
-
-[sub_resource type="ImageTexture" id=62]
-flags = 0
-flags = 0
-image = SubResource( 70 )
-size = Vector2( 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 1 )
-shader_param/palette_size = 4
-shader_param/offset = null
-shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 62 )
+shader_param/palette = SubResource( 69 )
 
 [node name="palette_filter" type="Node"]
 script = ExtResource( 5 )
@@ -259,41 +129,164 @@ margin_bottom = 144.0
 texture = ExtResource( 6 )
 
 [node name="palette_layer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 layer = 128
 
-[node name="blue" parent="palette_layer" instance=ExtResource( 1 )]
-material = SubResource( 45 )
-palette = PoolColorArray( 1, 1, 1, 1, 0.647059, 0.839216, 1, 1, 0.54902, 0.647059, 0.968627, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="palette_filter" parent="palette_layer" instance=ExtResource( 1 )]
+unique_name_in_owner = true
+material = SubResource( 65 )
+palette = PoolColorArray( 1, 1, 1, 1, 0.678431, 0.678431, 0.678431, 1, 0.321569, 0.321569, 0.321569, 1, 0, 0, 0, 1 )
 
-[node name="green" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
-material = SubResource( 7 )
-palette = PoolColorArray( 1, 1, 1, 1, 0.63525, 0.77, 0.5005, 1, 0.2052, 0.38, 0.21394, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="palettes" type="Node" parent="."]
+script = ExtResource( 7 )
 
-[node name="route" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
-material = SubResource( 26 )
-palette = PoolColorArray( 1, 1, 1, 1, 0.647059, 0.839216, 1, 1, 0.678431, 0.905882, 0.352941, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="cerulean" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.533333, 0.627451, 0.941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff88a0f0\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.533333, 0.627451, 0.941176, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
-[node name="beach" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
-material = SubResource( 23 )
-palette = PoolColorArray( 1, 1, 1, 1, 0.882353, 0.745098, 0.415686, 1, 0.25098, 0.690196, 0.65098, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="pallet" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.784314, 0.878431, 0.847059, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffc8e0d8\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.784314, 0.878431, 0.847059, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
-[node name="green_blue" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
-material = SubResource( 19 )
-palette = PoolColorArray( 1, 1, 1, 1, 0.647059, 0.839216, 1, 1, 0.290196, 0.603922, 0.164706, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="routes" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.658824, 0.878431, 0.345098, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffa8e058\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.658824, 0.878431, 0.345098, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
-[node name="red" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
-material = SubResource( 20 )
-palette = PoolColorArray( 1, 1, 1, 1, 1, 0.643137, 0.643137, 1, 1, 0, 0, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="viridian" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.533333, 0.815686, 0.0941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff88d018\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.533333, 0.815686, 0.0941176, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
-[node name="orange" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
-material = SubResource( 10 )
-palette = PoolColorArray( 1, 1, 1, 1, 1, 0.835294, 0.478431, 1, 1, 0.592157, 0, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+[node name="pewter" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.533333, 0.627451, 0.941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff88a0f0\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.533333, 0.627451, 0.941176, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
-[node name="black_white" parent="palette_layer" instance=ExtResource( 1 )]
-visible = false
+[node name="lavender" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.847059, 0.627451, 0.847059, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffd8a0d8\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.847059, 0.627451, 0.847059, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="vermilion" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.941176, 0.564706, 0, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"fff09000\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.941176, 0.564706, 0, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="celadon" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.501961, 0.941176, 0.690196, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff80f0b0\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.501961, 0.941176, 0.690196, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="fuchsia" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.972549, 0.470588, 0.690196, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"fff878b0\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.972549, 0.470588, 0.690196, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="cinnabar" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.815686, 0.313726, 0.188235, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffd05030\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.815686, 0.313726, 0.188235, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="indigo" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.690196, 0.439216, 0.752941, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffb070c0\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.690196, 0.439216, 0.752941, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="saffron" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.847059, 0.847059, 0.0941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffd8d818\",\"ff181010\"]"
+color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
+color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
+color2 = Color( 0.847059, 0.847059, 0.0941176, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="green" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 0.635294, 0.768627, 0.501961, 1, 0.203922, 0.380392, 0.215686, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"ffffffff\",\"ffa2c480\",\"ff346137\",\"ff181010\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 0.635294, 0.768627, 0.501961, 1 )
+color2 = Color( 0.203922, 0.380392, 0.215686, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="route" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 0.647059, 0.839216, 1, 1, 0.678431, 0.905882, 0.352941, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"ffffffff\",\"ffa5d6ff\",\"ffade75a\",\"ff181010\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 0.647059, 0.839216, 1, 1 )
+color2 = Color( 0.678431, 0.905882, 0.352941, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="beach" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 0.882353, 0.745098, 0.415686, 1, 0.25098, 0.690196, 0.65098, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"ffffffff\",\"ffe1be6a\",\"ff40b0a6\",\"ff181010\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 0.882353, 0.745098, 0.415686, 1 )
+color2 = Color( 0.25098, 0.690196, 0.65098, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="green_blue" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 0.647059, 0.839216, 1, 1, 0.290196, 0.603922, 0.164706, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"ffffffff\",\"ffa5d6ff\",\"ff4a9a2a\",\"ff181010\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 0.647059, 0.839216, 1, 1 )
+color2 = Color( 0.290196, 0.603922, 0.164706, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="red" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.643137, 0.643137, 1, 1, 0, 0, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"ffffffff\",\"ffffa4a4\",\"ffff0000\",\"ff181010\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 1, 0.643137, 0.643137, 1 )
+color2 = Color( 1, 0, 0, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="orange" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.835294, 0.478431, 1, 1, 0.592157, 0, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
+string_val = "[\"ffffffff\",\"ffffd57a\",\"ffff9700\",\"ff181010\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 1, 0.835294, 0.478431, 1 )
+color2 = Color( 1, 0.592157, 0, 1 )
+color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
+
+[node name="black_white" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 1, 1, 1, 1, 0.678431, 0.678431, 0.678431, 1, 0.321569, 0.321569, 0.321569, 1, 0, 0, 0, 1 )
+string_val = "[\"ffffffff\",\"ffadadad\",\"ff525252\",\"ff000000\"]"
+color0 = Color( 1, 1, 1, 1 )
+color1 = Color( 0.678431, 0.678431, 0.678431, 1 )
+color2 = Color( 0.321569, 0.321569, 0.321569, 1 )

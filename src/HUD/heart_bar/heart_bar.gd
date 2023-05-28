@@ -1,5 +1,5 @@
 extends PanelContainer
-
+tool
 export var HEART : PackedScene = preload("heart.tscn")
 
 onready var bar: HBoxContainer = $"%bar"
@@ -20,14 +20,16 @@ func set_max_value(val):
 
 func update_visible_hearts():
 	var heart_count : int = max_value/HEALTH_PER_HEART
-	if max_value%HEALTH_PER_HEART:
-		heart_count += 1
+
 	var hearts = bar.get_children()
 	for i in heart_count:
-		hearts[i].show()
+		hearts[i].capacity = 4
 	for i in MAX_HEARTS-heart_count:
-		hearts[heart_count+i].hide()
-
+		hearts[heart_count+i].capacity = 0
+	var remainder = max_value%HEALTH_PER_HEART
+	if remainder:
+		hearts[heart_count].capacity = remainder 
+	
 func set_value(val):
 	value = clamp(val, 0, max_value)
 	if bar:
@@ -35,7 +37,7 @@ func set_value(val):
 
 func update_heart_progress():
 	var hearts = bar.get_children()
-	var total_hearts = max_value/HEALTH_PER_HEART
+	var total_hearts = max_value/HEALTH_PER_HEART+int((max_value%HEALTH_PER_HEART)!=0)
 	var full_hearts = value/HEALTH_PER_HEART
 	
 	for i in full_hearts:
@@ -82,9 +84,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("B"):
 		set_value(value+1)
 	if event.is_action_pressed("L"):
-		set_max_value(max_value-4)
+		set_max_value(max_value-1)
 	if event.is_action_pressed("R"):
-		set_max_value(max_value+4)
+		set_max_value(max_value+1)
 	if event.is_action_pressed("X"):
 		set_max_hearts(MAX_HEARTS-1)
 	if event.is_action_pressed("Y"):

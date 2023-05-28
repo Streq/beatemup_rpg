@@ -25,9 +25,7 @@ func set_string_val(val):
 	for color in json:
 		res.append(Color(color))
 #		print(color)
-	var palette = PoolColorArray()
-	for color in res:
-		palette.append(color)
+	var palette = PoolColorArray(res)
 	string_val = val
 	set_palette(palette)
 

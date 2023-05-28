@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/global/palette_filter/palette.gd" type="Script" id=1]
+
+[node name="palette" type="Node"]
+script = ExtResource( 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1 )
+string_val = "[\"ff000000\",\"ff000000\",\"ff000000\",\"ff000000\"]"

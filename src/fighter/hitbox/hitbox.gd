@@ -34,6 +34,7 @@ func _on_area_entered(hurtbox):
 
 	var hitstun_frames = calculate_hitstun_frames(damage, knockback)
 	apply_hitstun(target, hitstun_frames)
+	owner.target_hit(target)
 
 
 func calculate_hitstop_frames(damage, knockback):

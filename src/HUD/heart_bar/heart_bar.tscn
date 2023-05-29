@@ -11,4 +11,4 @@ MAX_HEARTS = 12
 [node name="bar" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 margin_right = 96.0
-margin_bottom = 9.0
+margin_bottom = 8.0

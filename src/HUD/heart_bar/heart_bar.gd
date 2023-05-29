@@ -78,17 +78,17 @@ func update_max_hearts():
 func _ready() -> void:
 	set_max_hearts(MAX_HEARTS)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("A"):
-		set_value(value-1)
-	if event.is_action_pressed("B"):
-		set_value(value+1)
-	if event.is_action_pressed("L"):
-		set_max_value(max_value-1)
-	if event.is_action_pressed("R"):
-		set_max_value(max_value+1)
-	if event.is_action_pressed("X"):
-		set_max_hearts(MAX_HEARTS-1)
-	if event.is_action_pressed("Y"):
-		set_max_hearts(MAX_HEARTS+1)
+#func _input(event: InputEvent) -> void:
+#	if event.is_action_pressed("A"):
+#		set_value(value-1)
+#	if event.is_action_pressed("B"):
+#		set_value(value+1)
+#	if event.is_action_pressed("L"):
+#		set_max_value(max_value-1)
+#	if event.is_action_pressed("R"):
+#		set_max_value(max_value+1)
+#	if event.is_action_pressed("X"):
+#		set_max_hearts(MAX_HEARTS-1)
+#	if event.is_action_pressed("Y"):
+#		set_max_hearts(MAX_HEARTS+1)
 	

@@ -1,5 +1,7 @@
 extends Node
 
+signal room_changed()
+
 func goto_room(path: String, door_id: int):
 	var player : Fighter = Group.get_one("player")
 	player.hide()
@@ -8,6 +10,7 @@ func goto_room(path: String, door_id: int):
 		player.get_parent().remove_child(player)
 	var tree = get_tree()
 	tree.change_scene(path)
+	emit_signal("room_changed")
 	yield(tree, "idle_frame")
 	if player:
 		tree.call_group("player", "queue_free")

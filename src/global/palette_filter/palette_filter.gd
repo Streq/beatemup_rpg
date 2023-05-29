@@ -1,4 +1,5 @@
 extends Node
+tool
 
 export var current : int = 0 setget set_palette
 export var current_name : String setget set_palette_by_name

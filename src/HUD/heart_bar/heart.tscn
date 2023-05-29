@@ -5,8 +5,8 @@
 
 [node name="heart" type="Control"]
 margin_right = 8.0
-margin_bottom = 9.0
-rect_min_size = Vector2( 8, 9 )
+margin_bottom = 8.0
+rect_min_size = Vector2( 8, 8 )
 script = ExtResource( 2 )
 progress = 4
 

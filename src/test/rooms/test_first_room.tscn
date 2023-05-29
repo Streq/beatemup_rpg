@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/test/fighter/restart_on_death.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/enemy_spawner/add_on_spawn.gd" type="Script" id=14]
 [ext_resource path="res://src/test/rooms/track_hud.gd" type="Script" id=15]
+[ext_resource path="res://src/test/rooms/track_enemy_hud.gd" type="Script" id=16]
 
 [node name="test_first_room" type="Node2D"]
 
@@ -40,7 +41,7 @@ tile_data = PoolIntArray( 131060, 2, 65537, 131061, 2, 65538, 131062, 2, 2, 1310
 tile_data = PoolIntArray( 196614, 1, 0, 196615, 1, 1, 196630, 1, 0, 196631, 1, 1, 262178, 1, 0, 262179, 1, 1, 327682, 1, 0, 327683, 1, 1, 393232, 1, 0, 393233, 1, 1, 393236, 0, 1, 393237, 0, 2, 393238, 0, 2, 393239, 0, 2, 393240, 0, 3, 393245, 1, 0, 393246, 1, 1, 524285, 0, 1, 524286, 0, 3, 458778, 0, 1, 458779, 0, 3, 524293, 0, 1, 524294, 0, 3, 524302, 0, 1, 524303, 0, 2, 524304, 0, 2, 524305, 0, 3 )
 
 [node name="pelado" parent="." groups=["player"] instance=ExtResource( 4 )]
-position = Vector2( 544, 120 )
+position = Vector2( -120, 120 )
 team = -1
 
 [node name="controller" parent="pelado" instance=ExtResource( 3 )]
@@ -53,6 +54,9 @@ script = ExtResource( 2 )
 
 [node name="track_hud" type="Node" parent="pelado"]
 script = ExtResource( 15 )
+
+[node name="track_enemy_hud" type="Node" parent="pelado"]
+script = ExtResource( 16 )
 
 [node name="camera_limits" type="ReferenceRect" parent="."]
 margin_left = -160.0

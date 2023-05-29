@@ -4,6 +4,9 @@ signal dead
 signal hurt
 signal frame(delta)
 signal hitstun(frames)
+signal target_hit(target)
+signal despawned()
+
 
 export var velocity := Vector2() 
 export var previous_frame_velocity := Vector2() 
@@ -108,5 +111,11 @@ func shake_frame():
 
 
 func hitstun(frames):
-	emit_signal("hitstun",frames)
+	emit_signal("hitstun", frames)
 
+func target_hit(target):
+	emit_signal("target_hit", target)
+
+func despawn():
+	queue_free()
+	emit_signal("despawned")

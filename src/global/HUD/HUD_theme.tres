@@ -8,5 +8,6 @@ bg_color = Color( 1, 1, 0, 1 )
 [resource]
 default_font = ExtResource( 1 )
 HBoxContainer/constants/separation = 0
+Label/constants/line_spacing = 0
 PanelContainer/styles/panel = SubResource( 1 )
 VBoxContainer/constants/separation = 0

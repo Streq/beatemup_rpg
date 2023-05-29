@@ -1532,6 +1532,7 @@ shape = SubResource( 45 )
 collision_layer = 8
 collision_mask = 4
 script = ExtResource( 4 )
+damage = 2.0
 knockback = Vector2( 50, -20 )
 touch_level = 0
 knockback_horizontal_away_from = true
@@ -1569,4 +1570,4 @@ anims/walk_side = SubResource( 43 )
 __meta__ = {
 "_edit_pinned_properties_": [ "max_value" ]
 }
-max_value = 10.0
+max_value = 4.0

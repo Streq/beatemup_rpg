@@ -34,7 +34,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=70]
+[sub_resource type="Image" id=71]
 data = {
 "data": PoolByteArray( 255, 255, 0, 255, 126, 126, 1, 255, 59, 59, 2, 255, 0, 0, 3, 255 ),
 "format": "RGBA8",
@@ -46,7 +46,7 @@ data = {
 [sub_resource type="ImageTexture" id=67]
 flags = 0
 flags = 0
-image = SubResource( 70 )
+image = SubResource( 71 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=43]
@@ -56,7 +56,7 @@ shader_param/offset = 0.0
 shader_param/blue_index_offset = 0.0
 shader_param/palette = SubResource( 67 )
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=68]
 code = "shader_type canvas_item;
 uniform int palette_size = 4;
 uniform float offset : hint_range(-3, 3, 1);
@@ -81,7 +81,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=71]
+[sub_resource type="Image" id=72]
 data = {
 "data": PoolByteArray( 255, 255, 255, 255, 255, 230, 66, 255, 221, 147, 82, 255, 33, 16, 16, 255 ),
 "format": "RGBA8",
@@ -90,18 +90,18 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=69]
+[sub_resource type="ImageTexture" id=70]
 flags = 0
 flags = 0
-image = SubResource( 71 )
+image = SubResource( 72 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=65]
-shader = SubResource( 1 )
+shader = SubResource( 68 )
 shader_param/palette_size = 4
 shader_param/offset = null
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 69 )
+shader_param/palette = SubResource( 70 )
 
 [node name="palette_filter" type="Node"]
 script = ExtResource( 5 )

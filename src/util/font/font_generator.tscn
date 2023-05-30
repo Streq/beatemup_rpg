@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/util/font/font_generator.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/Plotter/Plotter Bold chata.res" type="BitmapFont" id=2]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 2 )
+
+[node name="font_generator" type="Label"]
+margin_right = 40.0
+margin_bottom = 14.0
+theme = SubResource( 1 )
+text = " !\"#$%&'()*+,-./0123456789:;<=>?
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_
+£abcdefghijklmnopqrstuvwxyz{|}~©
+áéíóúñÁÉÍÓÚÑ"
+script = ExtResource( 1 )
+font_texture_path = "res://assets/font/Plotter/Plotter Bold chata.png"
+reference_string = " !\"#$%&'()*+,-./0123456789:;<=>?
+@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_
+£abcdefghijklmnopqrstuvwxyz{|}~©
+áéíóúñÁÉÍÓÚÑ"
+output_font = "res://assets/font/Plotter/Plotter Bold chata.res"

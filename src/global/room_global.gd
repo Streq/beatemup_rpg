@@ -1,7 +1,7 @@
 extends Node
 
 signal room_changed()
-
+signal player_entered()
 func goto_room(path: String, door_id: int):
 	var player : Fighter = Group.get_one("player")
 	player.hide()
@@ -20,4 +20,6 @@ func goto_room(path: String, door_id: int):
 				player.position = door.position
 		player.show()
 		player.state_machine.current.goto("come_through_door")
+		yield(get_tree(),"idle_frame")
+		emit_signal("player_entered")
 	yield(Fade.fade_to_darkness_level(0,0.3),"finished")

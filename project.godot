@@ -195,7 +195,7 @@ _global_script_class_icons={
 [application]
 
 config/name="beatemup_rpg"
-run/main_scene="res://src/test/rooms/kirby_first_level.tscn"
+run/main_scene="res://src/test/rooms/kirby_1_1_room.tscn"
 config/icon="res://assets/texture/icon.png"
 
 [autoload]

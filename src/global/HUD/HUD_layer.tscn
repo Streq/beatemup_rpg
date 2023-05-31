@@ -38,7 +38,7 @@ void fragment(){
 
 [sub_resource type="Image" id=8]
 data = {
-"data": PoolByteArray( 0, 0, 3, 255, 64, 64, 2, 255, 127, 127, 1, 255, 255, 255, 0, 255 ),
+"data": PoolByteArray( 0, 0, 3, 255, 127, 127, 1, 255, 64, 64, 2, 255, 255, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -176,7 +176,7 @@ rect_min_size = Vector2( 7, 16 )
 unique_name_in_owner = true
 material = SubResource( 5 )
 margin_top = 128.0
-palette = PoolColorArray( 0, 0, 0.0117647, 1, 0.25098, 0.25098, 0.00784314, 1, 0.498039, 0.498039, 0.00392157, 1, 1, 1, 0, 1 )
+palette = PoolColorArray( 0, 0, 0.0117647, 1, 0.498039, 0.498039, 0.00392157, 1, 0.25098, 0.25098, 0.00784314, 1, 1, 1, 0, 1 )
 
 [node name="bad_shader_rounding_workaround" type="Node" parent="palette_filter"]
 script = ExtResource( 10 )

@@ -1,0 +1,95 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/terrain/one_way_terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/test/rooms/camera_limits.gd" type="Script" id=2]
+[ext_resource path="res://assets/texture/white_square.png" type="Texture" id=3]
+[ext_resource path="res://src/test/rooms/track_hud.gd" type="Script" id=4]
+[ext_resource path="res://src/test/fighter/restart_on_death.gd" type="Script" id=5]
+[ext_resource path="res://src/fighter/mook/walk_forward_controller.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/player/controller.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/fighter/mook/waddle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/enemy_spawner/despawn_when_not_visible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/enemy_spawner/add_on_spawn.gd" type="Script" id=10]
+[ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/fighter/monk/pelado.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/test/rooms/track_enemy_hud.gd" type="Script" id=13]
+[ext_resource path="res://src/terrain/decoration.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/map/door/door.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/terrain/one_way_droppable_terrain.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/mockup/kirby-1-2-1.png" type="Texture" id=18]
+
+[node name="kirby_1_2_room" type="Node2D"]
+
+[node name="background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="TextureRect" parent="background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="decoration" parent="." instance=ExtResource( 14 )]
+tile_data = PoolIntArray( 196600, 1, 0, 196601, 1, 1, 262133, 1, 0, 262134, 1, 1, 262140, 1, 0, 262141, 1, 1, 393207, 1, 0, 393208, 1, 1, 393211, 1, 0, 393212, 1, 1, 524278, 0, 0, 524280, 0, 0 )
+
+[node name="one_way_terrain" parent="." instance=ExtResource( 1 )]
+
+[node name="one_way_droppable_terrain" parent="." instance=ExtResource( 17 )]
+tile_data = PoolIntArray(  )
+
+[node name="terrain" parent="." instance=ExtResource( 16 )]
+tile_data = PoolIntArray( 196606, 0, 0, 131072, 0, 0, 131074, 0, 0, 131075, 4, 8, 131076, 4, 11, 262143, 0, 0, 196609, 0, 0, 196611, 4, 65544, 196612, 4, 131083, 327678, 0, 0, 262144, 0, 0, 262146, 0, 0, 262147, 4, 65544, 262148, 4, 131083, 393215, 0, 0, 327681, 0, 0, 327683, 4, 65544, 327684, 4, 131083, 458750, 0, 0, 393216, 0, 0, 393218, 0, 0, 393219, 4, 65544, 393220, 4, 131083, 458755, 4, 65544, 458756, 4, 131083, 589819, 4, 8, 589820, 4, 10, 589821, 4, 11, 524291, 4, 65544, 524292, 4, 131083, 655355, 4, 65544, 655356, 4, 131081, 655357, 4, 131083, 589827, 4, 65544, 589828, 4, 131083, 720891, 4, 196616, 720892, 4, 196617, 720893, 4, 196619, 655363, 4, 196616, 655364, 4, 196619 )
+
+[node name="terrain2" parent="." instance=ExtResource( 16 )]
+tile_data = PoolIntArray( 131060, 0, 65537, 131061, 0, 2, 131062, 0, 2, 131063, 0, 2, 131064, 0, 2, 131065, 0, 2, 131066, 0, 2, 131067, 0, 2, 131068, 0, 2, 131069, 0, 2, 131070, 0, 2, 131071, 0, 2, 65536, 0, 2, 65537, 0, 2, 65538, 0, 2, 65539, 0, 2, 65540, 0, 2, 65541, 0, 65539, 196596, 0, 131072, 131077, 0, 131072, 262132, 0, 131072, 196613, 0, 131072, 327668, 0, 131072, 262149, 0, 131072, 393204, 0, 131072, 327685, 0, 131072, 458740, 0, 131072, 393221, 0, 131072, 524276, 0, 131072, 524281, 4, 8, 524282, 4, 11, 524286, 4, 8, 524287, 4, 10, 458752, 4, 10, 458753, 4, 10, 458754, 4, 11, 458757, 0, 131072, 589812, 0, 131072, 589813, 4, 8, 589814, 4, 10, 589815, 4, 10, 589816, 4, 10, 589817, 4, 65541, 589818, 4, 131083, 589822, 4, 65544, 589823, 4, 131081, 524288, 4, 131081, 524289, 4, 131081, 524290, 4, 131083, 524293, 0, 131072, 655348, 0, 131072, 655349, 4, 65544, 655350, 4, 131081, 655351, 4, 131081, 655352, 4, 131081, 655353, 4, 131081, 655354, 4, 131083, 655358, 4, 65544, 655359, 4, 131081, 589824, 4, 131081, 589825, 4, 131081, 589826, 4, 131083, 589829, 0, 131072, 720884, 0, 196608, 720885, 4, 196616, 720886, 4, 196617, 720887, 4, 196617, 720888, 4, 196617, 720889, 4, 196617, 720890, 4, 196619, 720894, 4, 196616, 720895, 4, 196617, 655360, 4, 196617, 655361, 4, 196617, 655362, 4, 196619, 655365, 0, 196608 )
+
+[node name="door" parent="." instance=ExtResource( 15 )]
+position = Vector2( -136, 120 )
+dest_door_id = 2
+room = "res://src/test/rooms/kirby_1_2_room.tscn"
+
+[node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
+position = Vector2( -64, 72 )
+team = -1
+
+[node name="controller" parent="pelado" instance=ExtResource( 7 )]
+
+[node name="Camera2D" type="Camera2D" parent="pelado" groups=["player_camera"]]
+current = true
+
+[node name="restart_on_death" type="Node" parent="pelado"]
+script = ExtResource( 5 )
+
+[node name="track_hud" type="Node" parent="pelado"]
+script = ExtResource( 4 )
+
+[node name="track_enemy_hud" type="Node" parent="pelado"]
+script = ExtResource( 13 )
+
+[node name="camera_limits" type="ReferenceRect" parent="."]
+margin_left = -176.0
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 176.0
+script = ExtResource( 2 )
+
+[node name="spawner" parent="." instance=ExtResource( 11 )]
+position = Vector2( -56, 120 )
+SPAWN = ExtResource( 8 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 6 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_left = -176.0
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 176.0
+texture = ExtResource( 18 )

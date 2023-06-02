@@ -53,7 +53,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=47]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
 tracks/0/interp = 1
@@ -633,7 +633,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=56]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/hitbox/hurt_touch:active")
 tracks/0/interp = 1
@@ -720,7 +720,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id=57]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
 tracks/0/interp = 1
@@ -783,7 +783,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=58]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
 tracks/0/interp = 1
@@ -846,7 +846,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=59]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
 tracks/0/interp = 1
@@ -1123,7 +1123,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=63]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/hitbox/hurt_touch:active")
 tracks/0/interp = 1
@@ -1210,7 +1210,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id=64]
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/hitbox/hurt_touch:active")
 tracks/0/interp = 1
@@ -1941,7 +1941,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id=75]
-length = 0.2
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
@@ -1998,14 +1998,14 @@ tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=76]
-length = 0.2
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
@@ -2062,14 +2062,14 @@ tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=77]
-length = 0.2
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
@@ -2126,7 +2126,7 @@ tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
@@ -2258,7 +2258,7 @@ tracks/4/keys = {
 "values": [ 27.0 ]
 }
 
-[node name="waddle" instance=ExtResource( 1 )]
+[node name="walker" instance=ExtResource( 1 )]
 speed = 20.0
 
 [node name="terrain_collision" parent="." index="0"]

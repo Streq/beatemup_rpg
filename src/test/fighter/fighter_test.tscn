@@ -11,7 +11,7 @@
 [ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/enemy_spawner/add_on_spawn.gd" type="Script" id=13]
 [ext_resource path="res://src/enemy_spawner/despawn_when_not_visible.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/fighter/mook/waddle.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/fighter/mook/walker.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/fighter/mook/hit_on_player_close_controller_longrange.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=19]

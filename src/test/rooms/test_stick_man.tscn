@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/terrain/one_way_terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/test/rooms/camera_limits.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/map/door/door.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/fighter/mook/runner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/fighter/mook/stick_man.tscn" type="PackedScene" id=18]
 
 [node name="kirby_1_1_room" type="Node2D"]
 
@@ -45,23 +46,27 @@ tile_data = PoolIntArray( 458742, 0, 1, 458743, 0, 3, 458746, 0, 1, 458747, 0, 3
 position = Vector2( 680, 88 )
 room = "res://src/test/rooms/kirby_1_2_room.tscn"
 
-[node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
-position = Vector2( -168, 104 )
-team = -1
+[node name="stick_man" parent="." instance=ExtResource( 18 )]
+position = Vector2( -112, 104 )
+speed = 30.0
 
-[node name="controller" parent="pelado" instance=ExtResource( 7 )]
+[node name="controller" parent="stick_man" instance=ExtResource( 7 )]
 
-[node name="Camera2D" type="Camera2D" parent="pelado" groups=["player_camera"]]
+[node name="Camera2D" type="Camera2D" parent="stick_man" groups=["player_camera"]]
 current = true
 
-[node name="restart_on_death" type="Node" parent="pelado"]
+[node name="restart_on_death" type="Node" parent="stick_man"]
 script = ExtResource( 5 )
 
-[node name="track_hud" type="Node" parent="pelado"]
+[node name="track_hud" type="Node" parent="stick_man"]
 script = ExtResource( 4 )
 
-[node name="track_enemy_hud" type="Node" parent="pelado"]
+[node name="track_enemy_hud" type="Node" parent="stick_man"]
 script = ExtResource( 13 )
+
+[node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
+position = Vector2( -56, 104 )
+team = -1
 
 [node name="camera_limits" type="ReferenceRect" parent="."]
 margin_left = -192.0
@@ -71,30 +76,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="spawner" parent="." instance=ExtResource( 11 )]
-position = Vector2( -24, 104 )
-SPAWN = ExtResource( 8 )
-
-[node name="add_walk_forward_controller" type="Node" parent="spawner"]
-script = ExtResource( 10 )
-CONTROLLER = ExtResource( 6 )
-
-[node name="add_despawn_when_not_visible" type="Node" parent="spawner"]
-script = ExtResource( 10 )
-CONTROLLER = ExtResource( 9 )
-
-[node name="spawner5" parent="." instance=ExtResource( 11 )]
-position = Vector2( 40, 104 )
-SPAWN = ExtResource( 8 )
-
-[node name="add_walk_forward_controller" type="Node" parent="spawner5"]
-script = ExtResource( 10 )
-CONTROLLER = ExtResource( 6 )
-
-[node name="add_despawn_when_not_visible" type="Node" parent="spawner5"]
-script = ExtResource( 10 )
-CONTROLLER = ExtResource( 9 )
 
 [node name="spawner2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 376, 104 )
@@ -118,5 +99,17 @@ script = ExtResource( 10 )
 CONTROLLER = ExtResource( 6 )
 
 [node name="add_despawn_when_not_visible" type="Node" parent="spawner4"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 9 )
+
+[node name="spawner6" parent="." instance=ExtResource( 11 )]
+position = Vector2( 136, 88 )
+SPAWN = ExtResource( 18 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner6"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 6 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner6"]
 script = ExtResource( 10 )
 CONTROLLER = ExtResource( 9 )

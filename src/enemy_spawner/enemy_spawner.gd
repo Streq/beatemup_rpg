@@ -3,11 +3,22 @@ extends Node2D
 signal spawned(instance)
 
 export var SPAWN : PackedScene
+enum TriggerCondition {
+	ENTERED,
+	EXITED
+}
+export (TriggerCondition) var trigger_on_screen:int
+
 onready var visibility_notifier: VisibilityNotifier2D = $VisibilityNotifier2D
 var instance = null
 
 func _ready() -> void:
-	visibility_notifier.connect("screen_entered",self,"_on_screen_entered")
+	match trigger_on_screen:
+		TriggerCondition.ENTERED:
+			visibility_notifier.connect("screen_entered",self,"_on_screen_entered")
+		TriggerCondition.EXITED:
+			visibility_notifier.connect("screen_exited",self,"_on_screen_entered")
+		
 	
 
 func _on_screen_entered():

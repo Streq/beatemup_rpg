@@ -13,6 +13,8 @@ func _physics_update(delta: float):
 		if root.facing_dir == sign(dir.x):
 			goto("walk")
 			return
+		elif root.input_state.A.is_pressed():
+			goto("walk_back")
 		else:
 			goto("turn")
 			return

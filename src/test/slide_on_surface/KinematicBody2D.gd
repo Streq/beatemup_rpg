@@ -1,22 +1,29 @@
 extends KinematicBody2D
 
-
 var velocity := Vector2()
-var gravity := Vector2(0,100)
+var gravity := Vector2(0, 100)
+
+var is_floor = false
+var move_strategy = null
+onready var move_strategies: Dictionary = $move_strategies.map
+
+
 func _physics_process(delta: float) -> void:
-	velocity += gravity*delta
+	velocity += gravity * delta
 	if is_floor:
-		velocity = move_and_slide_with_snap(velocity,Vector2(0,8), Vector2.UP)
+		move_strategy = move_strategies["move_and_slide_snap_no_fall_strategy"]
 	else:
-		velocity = move_and_slide(velocity, Vector2.UP)
+		move_strategy = move_strategies["move_and_slide_strategy"]
+	move_strategy.move(self)
+	var dirx = Input.get_axis("ui_left", "ui_right")
 	if is_on_floor():
 		is_floor = true
 		var floor_tangent = -get_floor_normal().tangent()
-		var dirx = Input.get_axis("ui_left","ui_right")
+		print(floor_tangent)
 		velocity = floor_tangent * dirx * 100.0
+	else:
+		velocity.x = dirx * 100.0
 #		velocity.x = dirx * 100.0
 	if Input.is_action_just_pressed("A"):
 		velocity.y = -100.0
 		is_floor = false
-	
-var is_floor = false

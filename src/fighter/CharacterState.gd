@@ -6,11 +6,13 @@ signal pre_enter()
 export var animation := ""
 export var change_on_animation_finish := true
 export var on_finish_goto_state := ""
+export var move_strategy := "slide"
 
 export var is_dead_state := false
 
 func enter(params):
 	emit_signal("pre_enter")
+	root.move_strategy = MoveStrategies.map[move_strategy]
 	root.state_animation.play("RESET")
 	root.state_animation.advance(0.0)
 	root.state_animation.play(animation)

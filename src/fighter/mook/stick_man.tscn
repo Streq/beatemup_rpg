@@ -2638,33 +2638,41 @@ script = ExtResource( 12 )
 animation = "idle"
 change_on_animation_finish = true
 
+[node name="walk" parent="state_machine" index="6"]
+move_strategy = "slide_snap_no_fall"
+
 [node name="turn" parent="state_machine" index="9"]
 animation = "turn"
 
 [node name="strike" type="Node" parent="state_machine" index="10"]
 script = ExtResource( 6 )
 animation = "strike"
+move_strategy = "slide_snap_no_fall"
 strike_state = "reverse_strike_intro"
 
 [node name="strike_intro" type="Node" parent="state_machine" index="11"]
 script = ExtResource( 10 )
 animation = "strike_intro"
+move_strategy = "slide_snap_no_fall"
 no_strike_state = "strike"
 
 [node name="reverse_strike" type="Node" parent="state_machine" index="12"]
 script = ExtResource( 6 )
 animation = "reverse_strike"
+move_strategy = "slide_snap_no_fall"
 strike_state = "strike_intro"
 
 [node name="reverse_strike_intro" type="Node" parent="state_machine" index="13"]
 script = ExtResource( 10 )
 animation = "reverse_strike_intro"
+move_strategy = "slide_snap_no_fall"
 strike_state = "reverse_strike"
 no_strike_state = "reverse_strike"
 
 [node name="walk_back" type="Node" parent="state_machine" index="14"]
 script = ExtResource( 11 )
 animation = "walk_side"
+move_strategy = "slide_snap_no_fall"
 
 [node name="strike" type="Node" parent="transition_triggers" index="2"]
 script = ExtResource( 9 )

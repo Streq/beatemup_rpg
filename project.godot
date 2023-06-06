@@ -218,6 +218,7 @@ RoomGlobal="*res://src/global/room_global.tscn"
 Fade="*res://src/global/fade/fade.tscn"
 HudLayer="*res://src/global/HUD/HUD_layer.tscn"
 PaletteFilter="*res://src/global/palette_filter/PaletteFilter.tscn"
+MoveStrategies="*res://src/fighter/move_strategy/MoveStrategies.tscn"
 
 [display]
 
@@ -228,7 +229,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg", "res://addons/gdformat/plugin.cfg" )
 
 [importer_defaults]
 

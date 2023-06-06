@@ -50,6 +50,8 @@ onready var pivot: Node2D = $"%pivot"
 onready var state_machine: StateMachine = $"%state_machine"
 onready var hitstun = $"%hitstun"
 
+var move_strategy
+
 func _ready() -> void:
 	state_machine.initialize()
 	health.connect("empty", self, "die")
@@ -72,7 +74,7 @@ func _physics_process(delta: float) -> void:
 		freeze_frames -= 1
 		return
 	previous_frame_velocity = velocity
-	velocity = move_and_slide(velocity, Vector2.UP)
+	move_strategy.move(self)
 	
 	if velocity.y < fall_speed:
 		velocity.y += gravity*delta

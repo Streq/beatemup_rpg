@@ -3,7 +3,7 @@ extends CharacterState
 func _physics_update(delta: float):
 	var acceleration = (
 		root.horizontal_decceleration
-		if root.is_on_floor() else
+		if root.grounded else
 		root.horizontal_air_decceleration
 	)
 	root.velocity.x = move_toward(
@@ -11,6 +11,6 @@ func _physics_update(delta: float):
 		0, 
 		acceleration * delta
 	)
-	if root.is_on_floor():
+	if root.grounded:
 		goto("dead")
 		return

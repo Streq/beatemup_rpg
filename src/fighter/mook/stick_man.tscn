@@ -2635,8 +2635,8 @@ anims/wall_bounce_backwards = SubResource( 35 )
 
 [node name="idle" parent="state_machine" index="0"]
 script = ExtResource( 12 )
-animation = "idle"
 change_on_animation_finish = true
+move_strategy = "slide_snap_no_fall"
 
 [node name="walk" parent="state_machine" index="6"]
 move_strategy = "slide_snap_no_fall"

@@ -6,7 +6,7 @@ var gravity := Vector2(0, 100)
 var is_floor = false
 var move_strategy = null
 onready var move_strategies: Dictionary = $move_strategies.map
-
+var grounded := false
 
 func _physics_process(delta: float) -> void:
 	velocity += gravity * delta
@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		move_strategy = move_strategies["move_and_slide_strategy"]
 	move_strategy.move(self)
 	var dirx = Input.get_axis("ui_left", "ui_right")
-	if is_on_floor():
+	if grounded:
 		is_floor = true
 		var floor_tangent = -get_floor_normal().tangent()
 		print(floor_tangent)

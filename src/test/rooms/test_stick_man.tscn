@@ -49,7 +49,6 @@ room = "res://src/test/rooms/kirby_1_2_room.tscn"
 [node name="stick_man" parent="." instance=ExtResource( 18 )]
 position = Vector2( -145, 56 )
 team = -1
-horizontal_acceleration = 10000.0
 speed = 30.0
 
 [node name="controller" parent="stick_man" instance=ExtResource( 7 )]

@@ -15,7 +15,7 @@ func _physics_update(delta: float):
 	
 	var acceleration = (
 		root.horizontal_decceleration
-		if root.is_on_floor() else
+		if root.grounded else
 		root.horizontal_decceleration
 	)
 	root.velocity.x = move_toward(

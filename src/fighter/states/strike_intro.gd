@@ -8,6 +8,7 @@ func _enter(params):
 		on_finish_goto_state = strike_state
 	else:
 		on_finish_goto_state = no_strike_state
+	owner.facing_dir = owner.input_state.dir.x
 
 func _physics_update(delta: float):
 	if owner.input_state.B.is_just_pressed():
@@ -15,7 +16,7 @@ func _physics_update(delta: float):
 	
 	var acceleration = (
 		root.horizontal_decceleration
-		if root.is_on_floor() else
+		if root.grounded else
 		root.horizontal_air_decceleration
 	)
 	root.velocity.x = move_toward(

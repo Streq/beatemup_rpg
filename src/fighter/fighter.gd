@@ -52,6 +52,8 @@ onready var hitstun = $"%hitstun"
 
 var move_strategy
 
+var grounded = false
+
 func _ready() -> void:
 	state_machine.initialize()
 	health.connect("empty", self, "die")
@@ -62,7 +64,7 @@ func refill_air_jumps():
 
 func _physics_process(delta: float) -> void:
 
-	if is_on_floor():
+	if grounded:
 		refill_air_jumps()
 	
 	if shake_frames:

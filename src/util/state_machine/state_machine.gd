@@ -1,6 +1,7 @@
 extends Node
 class_name StateMachine
 signal state_changed(state)
+
 signal initialized
 
 export (String) var start_state

@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://src/test/fighter/walk_forward_controller.gd" type="Script" id=1]
+[ext_resource path="res://src/fighter/mook/stick_man_controller.gd" type="Script" id=1]
 
-[node name="walk_forward_controller" type="Node2D"]
+[node name="stick_man_controller" type="Node2D"]
 process_priority = -100000000
 script = ExtResource( 1 )

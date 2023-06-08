@@ -2540,7 +2540,7 @@ tracks/4/keys = {
 
 [node name="stick_man" instance=ExtResource( 1 )]
 horizontal_air_acceleration = 0.0
-speed = 20.0
+speed = 30.0
 
 [node name="Sprite" parent="pivot/display" index="0"]
 texture = ExtResource( 4 )
@@ -2684,8 +2684,8 @@ script = ExtResource( 8 )
 button = "B"
 
 [node name="health" parent="." index="7"]
-max_value = 8.0
-value = 8.0
+max_value = 4.0
+value = 4.0
 
 [node name="stepping" type="Node" parent="." index="13"]
 script = ExtResource( 7 )

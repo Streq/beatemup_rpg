@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/fighter2.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/fighter/states/strike_intro.gd" type="Script" id=10]
 [ext_resource path="res://src/fighter/default_states/walk_back.gd" type="Script" id=11]
 [ext_resource path="res://src/fighter/states/idle_can_walk_back.gd" type="Script" id=12]
+[ext_resource path="res://src/fighter/mook/walk_can_walk_back.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 10, 5 )
@@ -2639,7 +2640,10 @@ change_on_animation_finish = true
 move_strategy = "slide_snap_no_fall"
 
 [node name="walk" parent="state_machine" index="6"]
-move_strategy = "slide_snap_no_fall"
+script = ExtResource( 13 )
+animation = ""
+change_on_animation_finish = true
+move_strategy = "slide"
 
 [node name="turn" parent="state_machine" index="9"]
 animation = "turn"

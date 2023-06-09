@@ -1,5 +1,8 @@
 extends CharacterState
 
+func _enter(params):
+	pass
+
 func _physics_update(delta: float):
 	root.velocity.x = move_toward(
 		root.velocity.x, 

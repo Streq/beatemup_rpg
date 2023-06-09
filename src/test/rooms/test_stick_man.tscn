@@ -48,11 +48,15 @@ position = Vector2( 680, 88 )
 room = "res://src/test/rooms/kirby_1_2_room.tscn"
 
 [node name="stick_man" parent="." instance=ExtResource( 18 )]
-position = Vector2( -163, 53 )
+position = Vector2( 128, 21 )
 team = -1
 
+[node name="Camera2D" type="Camera2D" parent="stick_man" groups=["player_camera"]]
+
+[node name="controller" parent="stick_man" instance=ExtResource( 7 )]
+
 [node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
-position = Vector2( -56, 104 )
+position = Vector2( -158, 52 )
 team = -1
 
 [node name="controller" parent="pelado" instance=ExtResource( 7 )]
@@ -104,7 +108,7 @@ script = ExtResource( 10 )
 CONTROLLER = ExtResource( 9 )
 
 [node name="spawner6" parent="." instance=ExtResource( 11 )]
-position = Vector2( 136, 88 )
+position = Vector2( -122, 103 )
 SPAWN = ExtResource( 18 )
 
 [node name="add_stick_man_controller" type="Node" parent="spawner6"]

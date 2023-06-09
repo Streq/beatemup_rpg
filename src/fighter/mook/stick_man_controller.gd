@@ -12,8 +12,8 @@ var dir := 1.0
 var state : int = ADVANCE 
 var retreat_frames = 0
 var dirx = 0.0
-var dist = Vector2()
-const RETREAT_FRAMES = 120
+const RETREAT_FRAMES = 90
+
 
 func _ready() -> void:
 	yield(get_parent(),"ready")
@@ -22,11 +22,13 @@ func _ready() -> void:
 	state_machine.connect("state_changed", self, "on_character_state_changed")
 
 func _physics_process(delta: float) -> void:
-	var input = get_parent().input_state
-	dist = get_dist_to_player()
+	var fighter : Fighter = get_parent()
+	var input = fighter.input_state
+	var dist = get_dist_to_player()
+	var facing_dir_to_player = sign(dist.x)
 	match state:
 		ADVANCE:
-			input.dir.x = sign(dist.x)
+			input.dir.x = facing_dir_to_player
 			input.B.pressed = false
 			input.A.pressed = false
 			
@@ -38,11 +40,21 @@ func _physics_process(delta: float) -> void:
 			input.A.pressed = false
 
 		RETREAT:
-			input.dir.x = dirx
 			input.B.pressed = false
-			input.A.pressed = true
 			
-			retreat_frames+=1
+			if fighter.facing_dir == dirx:
+				input.dir.x = -dirx
+				input.A.pressed = false
+			else:
+				if get_character_state() in ["walk"]:
+					input.dir.x = 0.0
+				else:
+					input.dir.x = dirx
+				input.A.pressed = true
+			if get_character_state() in ["walk_back","idle","turn"]:
+				if retreat_frames == 0:
+					dirx = -facing_dir_to_player
+				retreat_frames+=1
 			if retreat_frames >= RETREAT_FRAMES:
 				change_state(ADVANCE)
 
@@ -51,7 +63,6 @@ func change_state(new_state):
 	match state:
 		RETREAT:
 			retreat_frames = 0
-			dirx = -sign(dist.x)
 
 func get_character_state()->String:
 	return get_parent().state_machine.current.name
@@ -63,6 +74,7 @@ func on_character_state_changed(new_state):
 				change_state(ATTACK)
 			else:
 				change_state(RETREAT)
+
 		"hurt":
 			change_state(ATTACK)
 
@@ -72,4 +84,7 @@ func get_dist_to_player() -> Vector2:
 	if !is_instance_valid(player):
 		return Vector2.ZERO
 	return player.global_position - global_position
+
+func get_facing_dir_to_player() -> float:
+	return sign(get_dist_to_player().x)
 	

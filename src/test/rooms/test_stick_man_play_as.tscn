@@ -1,0 +1,120 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://src/terrain/one_way_terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/test/rooms/camera_limits.gd" type="Script" id=2]
+[ext_resource path="res://assets/texture/white_square.png" type="Texture" id=3]
+[ext_resource path="res://src/test/rooms/track_hud.gd" type="Script" id=4]
+[ext_resource path="res://src/test/fighter/restart_on_death.gd" type="Script" id=5]
+[ext_resource path="res://src/fighter/mook/walk_forward_controller.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/player/controller.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/fighter/mook/walker.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/enemy_spawner/despawn_when_not_visible.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/enemy_spawner/add_on_spawn.gd" type="Script" id=10]
+[ext_resource path="res://src/enemy_spawner/enemy_spawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/fighter/monk/pelado.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/test/rooms/track_enemy_hud.gd" type="Script" id=13]
+[ext_resource path="res://src/terrain/decoration.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/map/door/door.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/terrain/terrain.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/fighter/mook/runner.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/fighter/mook/stick_man.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/fighter/mook/stick_man_controller.tscn" type="PackedScene" id=19]
+
+[node name="kirby_1_1_room" type="Node2D"]
+
+[node name="background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="TextureRect" parent="background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="one_way_terrain" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 131079, 1, 1, 131080, 1, 3, 196615, 1, 65537, 196616, 1, 65539, 196649, 1, 1, 196650, 1, 2, 196651, 1, 3, 262151, 1, 65537, 262152, 1, 65539, 262185, 1, 65537, 262186, 1, 65538, 262187, 1, 65539, 327687, 1, 65537, 327688, 1, 65539, 327721, 1, 65537, 327722, 1, 65538, 327723, 1, 65539 )
+
+[node name="terrain" parent="." instance=ExtResource( 16 )]
+tile_data = PoolIntArray( -13, 2, 65537, -12, 2, 2, -11, 2, 2, -10, 2, 2, -9, 2, 2, -8, 2, 2, -7, 2, 2, -6, 2, 2, -5, 2, 2, -4, 2, 2, -3, 2, 2, -2, 2, 2, -1, 2, 2, -65536, 2, 2, -65535, 2, 2, -65534, 2, 2, -65533, 2, 2, -65532, 2, 2, -65531, 2, 2, -65530, 2, 2, -65529, 2, 2, -65528, 2, 2, -65527, 2, 2, -65526, 2, 2, -65525, 2, 2, -65524, 2, 2, -65523, 2, 2, -65522, 2, 2, -65521, 2, 2, -65520, 2, 2, -65519, 2, 2, -65518, 2, 2, -65517, 2, 2, -65516, 2, 2, -65515, 2, 2, -65514, 2, 2, -65513, 2, 2, -65512, 2, 2, -65511, 2, 2, -65510, 2, 2, -65509, 2, 2, -65508, 2, 2, -65507, 2, 2, -65506, 2, 2, -65505, 2, 2, -65504, 2, 2, -65503, 2, 2, -65502, 2, 2, -65501, 2, 2, -65500, 2, 2, -65499, 2, 2, -65498, 2, 2, -65497, 2, 2, -65496, 2, 2, -65495, 2, 2, -65494, 2, 2, -65493, 2, 2, -65492, 2, 2, -65491, 2, 2, -65490, 2, 65539, 65523, 2, 131072, 46, 2, 131072, 131059, 2, 131072, 65582, 2, 131072, 196595, 2, 131072, 131118, 2, 131072, 262131, 2, 131072, 196654, 2, 131072, 327667, 2, 131072, 327669, 2, 1, 327670, 2, 2, 327671, 2, 2, 327672, 2, 3, 262160, 2, 0, 262190, 2, 131072, 393203, 2, 131072, 327701, 2, 65537, 327702, 5, 131075, 327726, 2, 131072, 458739, 2, 131072, 393222, 2, 65537, 393223, 2, 65538, 393224, 2, 65538, 393225, 2, 65539, 393237, 2, 131073, 393238, 5, 196611, 393262, 2, 131072, 524275, 2, 131072, 524280, 2, 65537, 524281, 2, 65538, 524282, 2, 65538, 524283, 2, 65539, 458752, 2, 65537, 458753, 2, 65538, 458754, 2, 65538, 458755, 2, 65539, 458758, 2, 131073, 458759, 2, 131074, 458760, 2, 131074, 458761, 2, 131075, 458764, 2, 65537, 458765, 2, 65538, 458766, 2, 65539, 458769, 2, 65537, 458770, 2, 65539, 458773, 2, 131073, 458774, 2, 131075, 458777, 2, 65537, 458778, 2, 65538, 458779, 2, 65539, 458783, 2, 65537, 458784, 2, 65538, 458785, 2, 65539, 458789, 2, 65537, 458790, 2, 65538, 458791, 2, 65539, 458797, 2, 65537, 458798, 2, 131075, 589811, 2, 196608, 589816, 2, 196609, 589817, 2, 196610, 589818, 2, 196610, 589819, 2, 196611, 524288, 2, 196609, 524289, 2, 196610, 524290, 2, 196610, 524291, 2, 196611, 524294, 2, 196609, 524295, 2, 196610, 524296, 2, 196610, 524297, 2, 196611, 524300, 2, 196609, 524301, 2, 196610, 524302, 2, 196611, 524305, 2, 196609, 524306, 2, 196611, 524309, 2, 196609, 524310, 2, 196611, 524313, 2, 196609, 524314, 2, 196610, 524315, 2, 196611, 524319, 2, 196609, 524320, 2, 196610, 524321, 2, 196611, 524325, 2, 196609, 524326, 2, 196610, 524327, 2, 196611, 524333, 2, 196609, 524334, 2, 196611 )
+
+[node name="terrain2" parent="." instance=ExtResource( 16 )]
+tile_data = PoolIntArray( 196627, 2, 65537, 196628, 2, 65539, 262163, 2, 131073, 262164, 2, 131075, 327699, 2, 131073, 327700, 2, 131075, 393220, 5, 1, 393221, 2, 65539, 393226, 2, 65537, 393227, 5, 131075, 393235, 2, 131073, 393236, 2, 131075, 393256, 5, 2, 393257, 2, 65538, 393258, 2, 65538, 393259, 2, 65538, 393260, 5, 131075, 524276, 2, 65537, 524277, 2, 65538, 524278, 2, 65538, 524279, 2, 65539, 524284, 2, 65537, 524285, 2, 65538, 524286, 2, 65538, 524287, 2, 65539, 458756, 5, 65537, 458757, 2, 131075, 458762, 2, 131073, 458763, 5, 196611, 458767, 2, 65537, 458768, 2, 65539, 458771, 2, 131073, 458772, 2, 131075, 458775, 2, 65537, 458776, 2, 65539, 458780, 2, 65537, 458781, 2, 65538, 458782, 2, 65539, 458786, 2, 65537, 458787, 2, 65538, 458788, 2, 65539, 458792, 5, 65537, 458793, 2, 131074, 458794, 2, 131074, 458795, 2, 131074, 458796, 5, 196611, 589812, 2, 196609, 589813, 2, 196610, 589814, 2, 196610, 589815, 2, 196611, 589820, 2, 196609, 589821, 2, 196610, 589822, 2, 196610, 589823, 2, 196611, 524292, 2, 196609, 524293, 2, 196611, 524298, 2, 196609, 524299, 2, 196611, 524303, 2, 196609, 524304, 2, 196611, 524307, 2, 196609, 524308, 2, 196611, 524311, 2, 196609, 524312, 2, 196611, 524316, 2, 196609, 524317, 2, 196610, 524318, 2, 196611, 524322, 2, 196609, 524323, 2, 196610, 524324, 2, 196611, 524328, 2, 196609, 524329, 2, 196610, 524330, 2, 196610, 524331, 2, 196610, 524332, 2, 196611 )
+
+[node name="decoration" parent="." instance=ExtResource( 14 )]
+tile_data = PoolIntArray( 458742, 0, 1, 458743, 0, 3, 458746, 0, 1, 458747, 0, 3, 393218, 0, 1, 393219, 0, 3, 393229, 0, 1, 393230, 0, 3, 393233, 0, 1, 393234, 0, 3, 393242, 0, 1, 393243, 0, 3, 393247, 0, 1, 393248, 0, 3, 393252, 0, 1, 393253, 0, 3 )
+
+[node name="door" parent="." instance=ExtResource( 15 )]
+position = Vector2( 680, 88 )
+room = "res://src/test/rooms/kirby_1_2_room.tscn"
+
+[node name="stick_man" parent="." instance=ExtResource( 18 )]
+position = Vector2( 128, 21 )
+team = -1
+
+[node name="Camera2D" type="Camera2D" parent="stick_man" groups=["player_camera"]]
+current = true
+
+[node name="controller" parent="stick_man" instance=ExtResource( 7 )]
+
+[node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
+position = Vector2( -158, 52 )
+team = -1
+
+[node name="controller" parent="pelado" instance=ExtResource( 7 )]
+
+[node name="Camera2D" type="Camera2D" parent="pelado" groups=["player_camera"]]
+
+[node name="restart_on_death" type="Node" parent="pelado"]
+script = ExtResource( 5 )
+
+[node name="track_hud" type="Node" parent="pelado"]
+script = ExtResource( 4 )
+
+[node name="track_enemy_hud" type="Node" parent="pelado"]
+script = ExtResource( 13 )
+
+[node name="camera_limits" type="ReferenceRect" parent="."]
+margin_left = -192.0
+margin_right = 736.0
+margin_bottom = 144.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="spawner2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 376, 104 )
+SPAWN = ExtResource( 17 )
+trigger_on_screen = 1
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner2"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 6 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner2"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 9 )
+
+[node name="spawner4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 264, 56 )
+SPAWN = ExtResource( 8 )
+
+[node name="add_walk_forward_controller" type="Node" parent="spawner4"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 6 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner4"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 9 )
+
+[node name="spawner6" parent="." instance=ExtResource( 11 )]
+position = Vector2( -122, 103 )
+SPAWN = ExtResource( 18 )
+
+[node name="add_stick_man_controller" type="Node" parent="spawner6"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 19 )
+
+[node name="add_despawn_when_not_visible" type="Node" parent="spawner6"]
+script = ExtResource( 10 )
+CONTROLLER = ExtResource( 9 )

@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 			input.B.pressed = false
 			input.A.pressed = false
 			
-			if abs(dist.x)<64.0:
+			if abs(dist.x)<60.0:
 				change_state(ATTACK)
 		ATTACK:
 			input.dir.x = dist.x
@@ -46,10 +46,7 @@ func _physics_process(delta: float) -> void:
 				input.dir.x = -dirx
 				input.A.pressed = false
 			else:
-				if get_character_state() in ["walk"]:
-					input.dir.x = 0.0
-				else:
-					input.dir.x = dirx
+				input.dir.x = dirx
 				input.A.pressed = true
 			if get_character_state() in ["walk_back","idle","turn"]:
 				if retreat_frames == 0:

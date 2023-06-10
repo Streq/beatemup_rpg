@@ -7,6 +7,8 @@ export var just_pressed := false
 
 onready var input_state : InputState = get_node("%input_state")
 
+
+
 func check():
 	return (
 		(

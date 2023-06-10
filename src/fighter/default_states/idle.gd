@@ -6,13 +6,3 @@ func _physics_update(delta: float):
 		0, 
 		root.horizontal_decceleration * delta
 	)
-	
-	var dir = root.input_state.dir
-	#TODO MAKE THESE STATE TRANSITIONS
-	if dir.x:
-		if root.facing_dir == sign(dir.x):
-			goto("walk")
-			return
-		else:
-			goto("turn")
-			return

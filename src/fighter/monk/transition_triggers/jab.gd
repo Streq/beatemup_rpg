@@ -9,13 +9,14 @@ onready var matcher = RegexMatcher.new(accept_regex_states_from, reject_regex_st
 export var state_to : String
 
 onready var fighter : Fighter = owner
-onready var conditions = $conditions
+onready var conditions = get_children()
 
 
 func conditions_match():
-	if !is_instance_valid(conditions):
-		return false
-	return conditions.check()
+	for condition in conditions:
+		if !condition.check():
+			return false
+	return true
 
 func get_states_from(state_list)->Array:
 	var ret = []

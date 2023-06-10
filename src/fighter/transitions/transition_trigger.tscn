@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/fighter/monk/transition_triggers/jab.gd" type="Script" id=2]
+
+[node name="transition_trigger" type="Node"]
+script = ExtResource( 2 )
+state_to = "go_through_door"

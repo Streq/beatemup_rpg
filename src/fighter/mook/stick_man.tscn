@@ -7,12 +7,12 @@
 [ext_resource path="res://src/fighter/hitbox/hitbox.gd" type="Script" id=5]
 [ext_resource path="res://src/fighter/states/strike.gd" type="Script" id=6]
 [ext_resource path="res://src/fighter/mook/stepping.gd" type="Script" id=7]
-[ext_resource path="res://src/fighter/transitions/conditions/button_press.gd" type="Script" id=8]
 [ext_resource path="res://src/fighter/monk/transition_triggers/jab.gd" type="Script" id=9]
 [ext_resource path="res://src/fighter/states/strike_intro.gd" type="Script" id=10]
 [ext_resource path="res://src/fighter/default_states/walk_back.gd" type="Script" id=11]
 [ext_resource path="res://src/fighter/states/idle_can_walk_back.gd" type="Script" id=12]
 [ext_resource path="res://src/fighter/mook/walk_can_walk_back.gd" type="Script" id=13]
+[ext_resource path="res://src/fighter/transitions/conditions/button_press.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 10, 5 )
@@ -2282,7 +2282,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0.0, 1.0 ]
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=32]
@@ -2346,7 +2346,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0.0, 1.0 ]
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -2410,7 +2410,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0.0, 1.0 ]
+"values": [ 1.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=34]
@@ -2641,9 +2641,8 @@ move_strategy = "slide_snap_no_fall"
 
 [node name="walk" parent="state_machine" index="6"]
 script = ExtResource( 13 )
-animation = ""
 change_on_animation_finish = true
-move_strategy = "slide"
+move_strategy = "slide_snap_no_fall"
 
 [node name="turn" parent="state_machine" index="9"]
 animation = "turn"
@@ -2683,8 +2682,7 @@ script = ExtResource( 9 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "air", "air_fast_fall", "walk", "jump", "air_jump" )
 state_to = "strike_intro"
 
-[node name="conditions" type="Node" parent="transition_triggers/strike" index="0"]
-script = ExtResource( 8 )
+[node name="button_press" parent="transition_triggers/strike" index="0" instance=ExtResource( 15 )]
 button = "B"
 
 [node name="health" parent="." index="7"]
@@ -2693,3 +2691,7 @@ value = 4.0
 
 [node name="stepping" type="Node" parent="." index="13"]
 script = ExtResource( 7 )
+
+[editable path="transition_triggers/walk_back"]
+[editable path="transition_triggers/turn"]
+[editable path="transition_triggers/walk"]

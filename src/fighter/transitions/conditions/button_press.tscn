@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/fighter/transitions/conditions/button_press.gd" type="Script" id=1]
+
+[node name="button_press" type="Node"]
+script = ExtResource( 1 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transition_triggers.gd" type="Script" id=2]
@@ -19,10 +19,12 @@
 [ext_resource path="res://src/fighter/dead_free_anim.gd" type="Script" id=17]
 [ext_resource path="res://src/fighter/monk/transition_triggers/jab.gd" type="Script" id=18]
 [ext_resource path="res://src/fighter/fighter2.png" type="Texture" id=19]
+[ext_resource path="res://src/fighter/transitions/conditions/dpad.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/fighter/transitions/conditions/on_floor.gd" type="Script" id=21]
 [ext_resource path="res://src/fighter/transitions/conditions/dpad.gd" type="Script" id=22]
 [ext_resource path="res://src/fighter/default_states/jump.gd" type="Script" id=23]
-[ext_resource path="res://src/fighter/transitions/conditions/composite_conditions.gd" type="Script" id=25]
+[ext_resource path="res://src/fighter/transitions/conditions/button_press.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/fighter/transitions/transition_trigger.tscn" type="PackedScene" id=25]
 [ext_resource path="res://src/fighter/hurt.gd" type="Script" id=27]
 [ext_resource path="res://src/fighter/hurt_handler.gd" type="Script" id=28]
 [ext_resource path="res://src/fighter/transitions/conditions/on_empty_health.gd" type="Script" id=29]
@@ -2301,10 +2303,7 @@ accept_regex_states_from = PoolStringArray( ".*" )
 reject_regex_states_from = PoolStringArray( "hurt", "dead_air", "dead" )
 state_to = "dead_air"
 
-[node name="conditions" type="Node" parent="transition_triggers/dead"]
-script = ExtResource( 25 )
-
-[node name="on_empty_health" type="Node" parent="transition_triggers/dead/conditions"]
+[node name="on_empty_health" type="Node" parent="transition_triggers/dead"]
 script = ExtResource( 29 )
 
 [node name="air" type="Node" parent="transition_triggers"]
@@ -2312,7 +2311,7 @@ script = ExtResource( 18 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "walk" )
 state_to = "air"
 
-[node name="conditions" type="Node" parent="transition_triggers/air"]
+[node name="on_floor" type="Node" parent="transition_triggers/air"]
 script = ExtResource( 21 )
 
 [node name="jump" type="Node" parent="transition_triggers"]
@@ -2320,17 +2319,45 @@ script = ExtResource( 18 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "walk" )
 state_to = "jump"
 
-[node name="conditions" type="Node" parent="transition_triggers/jump"]
+[node name="dpad" type="Node" parent="transition_triggers/jump"]
 script = ExtResource( 22 )
 dir = Vector2( 0, -1 )
 just_pressed = true
 
+[node name="walk_back" parent="transition_triggers" instance=ExtResource( 25 )]
+accept_regex_states_from = PoolStringArray( "idle", "walk", "run" )
+state_to = "walk_back"
+
+[node name="dpad" parent="transition_triggers/walk_back" instance=ExtResource( 20 )]
+dir = Vector2( -1, 0 )
+
+[node name="button_press" parent="transition_triggers/walk_back" instance=ExtResource( 24 )]
+allow_hold = true
+
+[node name="turn" parent="transition_triggers" instance=ExtResource( 25 )]
+accept_regex_states_from = PoolStringArray( "idle", "walk", "run", "walk_back" )
+state_to = "turn"
+
+[node name="dpad" parent="transition_triggers/turn" instance=ExtResource( 20 )]
+dir = Vector2( -1, 0 )
+
+[node name="button_press" parent="transition_triggers/turn" instance=ExtResource( 24 )]
+pressed = false
+allow_hold = true
+
+[node name="walk" parent="transition_triggers" instance=ExtResource( 25 )]
+accept_regex_states_from = PoolStringArray( "idle", "walk_back", "walk" )
+state_to = "walk"
+
+[node name="dpad" parent="transition_triggers/walk" instance=ExtResource( 20 )]
+dir = Vector2( 1, 0 )
+
 [node name="idle" type="Node" parent="transition_triggers"]
 script = ExtResource( 18 )
-accept_regex_states_from = PoolStringArray( "air", "block", "air_fast_fall" )
+accept_regex_states_from = PoolStringArray( "air", "block", "air_fast_fall", "walk" )
 state_to = "idle"
 
-[node name="conditions" type="Node" parent="transition_triggers/idle"]
+[node name="on_floor" type="Node" parent="transition_triggers/idle"]
 script = ExtResource( 21 )
 should_be_on_floor = true
 
@@ -2443,3 +2470,7 @@ script = ExtResource( 30 )
 [connection signal="entered" from="state_machine/dead" to="dead_free_anim" method="play"]
 [connection signal="buffer_changed" from="input_state/input_buffer" to="debug_info/list/GridContainer/buffer_value" method="set_text"]
 [connection signal="value_changed" from="health" to="health_value" method="change_value"]
+
+[editable path="transition_triggers/walk_back"]
+[editable path="transition_triggers/turn"]
+[editable path="transition_triggers/walk"]

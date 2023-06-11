@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-
+var already_tracking := false
 onready var player_health: HBoxContainer = $"%player_health"
 onready var enemy_health: HBoxContainer = $"%enemy_health"
 

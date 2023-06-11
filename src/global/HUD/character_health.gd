@@ -4,6 +4,12 @@ onready var avatar: TextureRect = $avatar
 
 var current_fighter : Fighter = null
 
+func track_soft(fighter:Fighter):
+	if current_fighter:
+		return
+	track(fighter)
+
+
 func track(fighter:Fighter):
 	untrack()
 	
@@ -16,7 +22,8 @@ func track(fighter:Fighter):
 	bar.show()
 	avatar.show()
 	on_health_changed(health.value,health.max_value)
-	
+
+
 func untrack():
 	if is_instance_valid(current_fighter):
 		current_fighter.health.disconnect("value_changed",self,"on_health_changed")
@@ -27,7 +34,7 @@ func untrack():
 
 func _ready() -> void:
 	untrack()
-
+	
 func on_health_changed(value,max_value):
 	bar.set_max_value(max_value)
 	bar.set_value(value)

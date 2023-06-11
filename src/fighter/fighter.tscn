@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transition_triggers.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://src/fighter/default_states/jump.gd" type="Script" id=23]
 [ext_resource path="res://src/fighter/transitions/conditions/button_press.tscn" type="PackedScene" id=24]
 [ext_resource path="res://src/fighter/transitions/transition_trigger.tscn" type="PackedScene" id=25]
+[ext_resource path="res://src/death_particles/death_particles.tscn" type="PackedScene" id=26]
 [ext_resource path="res://src/fighter/hurt.gd" type="Script" id=27]
 [ext_resource path="res://src/fighter/hurt_handler.gd" type="Script" id=28]
 [ext_resource path="res://src/fighter/transitions/conditions/on_empty_health.gd" type="Script" id=29]
@@ -2464,6 +2465,9 @@ script = ExtResource( 28 )
 [node name="hitstun" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource( 30 )
+
+[node name="death_particles" parent="." instance=ExtResource( 26 )]
+unique_name_in_owner = true
 
 [connection signal="animation_started" from="state_animation" to="debug_info/list/GridContainer/animation_value" method="set_text"]
 [connection signal="state_changed" from="state_machine" to="debug_info/list/GridContainer/state_value" method="set_text"]

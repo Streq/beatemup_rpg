@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/death_particles/reparent_to_world.gd" type="Script" id=1]
+[ext_resource path="res://src/death_particles/death_particles.gd" type="Script" id=2]
+[ext_resource path="res://assets/texture/star8x8.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=85]
+max_value = 480.12
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.635514, 480.12 ), 0.0, 0.0, 0, 0, Vector2( 0.866822, 207.87 ), 120.618, 120.618, 0, 0 ]
+
+[sub_resource type="Animation" id=86]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=87]
+resource_name = "play"
+length = 0.0666667
+loop = true
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=91]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=89]
+resource_name = "disappear"
+step = 0.0333333
+tracks/0/type = "method"
+tracks/0/path = NodePath("flicker")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "play", -1, 1.0, false ],
+"method": "play"
+}, {
+"args": [ true ],
+"method": "stop"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="death_particles" type="CPUParticles2D"]
+emitting = false
+amount = 9
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 3 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+damping = 100.0
+damping_curve = SubResource( 85 )
+script = ExtResource( 2 )
+
+[node name="flicker" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 86 )
+anims/play = SubResource( 87 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 91 )
+anims/disappear = SubResource( 89 )
+
+[node name="reparent_to_world" type="Node" parent="."]
+script = ExtResource( 1 )
+owner_ancestry_until_world = 2
+
+[node name="lifetime" type="Timer" parent="."]
+process_mode = 0
+wait_time = 2.0
+one_shot = true
+
+[connection signal="trigger" from="." to="AnimationPlayer" method="play" binds= [ "disappear" ]]
+[connection signal="trigger" from="." to="reparent_to_world" method="trigger"]
+[connection signal="trigger" from="." to="lifetime" method="start"]
+[connection signal="timeout" from="lifetime" to="." method="queue_free"]

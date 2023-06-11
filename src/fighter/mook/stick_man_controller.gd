@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 			input.B.pressed = false
 			input.A.pressed = false
 			
-			if abs(dist.x)<60.0:
+			if abs(dist.x)<48.0:
 				change_state(ATTACK)
 		ATTACK:
 			input.dir.x = dist.x

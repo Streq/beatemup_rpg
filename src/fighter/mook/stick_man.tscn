@@ -2652,6 +2652,7 @@ script = ExtResource( 6 )
 animation = "strike"
 move_strategy = "slide_snap_no_fall"
 strike_state = "reverse_strike_intro"
+decceleration_multiplier = 2.0
 
 [node name="strike_intro" type="Node" parent="state_machine" index="11"]
 script = ExtResource( 10 )
@@ -2664,6 +2665,7 @@ script = ExtResource( 6 )
 animation = "reverse_strike"
 move_strategy = "slide_snap_no_fall"
 strike_state = "strike_intro"
+decceleration_multiplier = 2.0
 
 [node name="reverse_strike_intro" type="Node" parent="state_machine" index="13"]
 script = ExtResource( 10 )

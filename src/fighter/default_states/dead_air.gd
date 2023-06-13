@@ -11,9 +11,13 @@ func _enter(params):
 func _physics_update(delta: float):
 	frames += 1
 	
-	if frames == 20:
+	if frames > 22:
 		goto("dead")
 		return
+	if frames > 19:
+		root.velocity = Vector2()
+		return
+		
 	root.velocity*=1-delta*1.0
 #	var acceleration = (
 #		root.horizontal_decceleration
@@ -25,6 +29,6 @@ func _physics_update(delta: float):
 #		0, 
 #		acceleration * delta
 #	)
-	if root.grounded:
-		goto("dead")
-		return
+#	if root.grounded:
+#		goto("dead")
+#		return

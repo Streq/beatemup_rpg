@@ -136,7 +136,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7 ]
+"values": [ 8 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("pivot/display/Sprite:visible")
@@ -160,7 +160,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 22.0 ]
+"values": [ 26.0 ]
 }
 
 [sub_resource type="Animation" id=47]
@@ -199,7 +199,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7 ]
+"values": [ 8 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("pivot/display/Sprite:visible")
@@ -223,7 +223,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 36.0 ]
+"values": [ 40.0 ]
 }
 
 [sub_resource type="Animation" id=50]
@@ -451,7 +451,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7 ]
+"values": [ 8 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("pivot/display/Sprite:visible")
@@ -475,7 +475,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 21.0 ]
+"values": [ 25.0 ]
 }
 
 [sub_resource type="Animation" id=28]
@@ -2293,6 +2293,7 @@ move_strategy = "slide_snap"
 [node name="input_state" parent="." instance=ExtResource( 5 )]
 
 [node name="input_buffer" parent="input_state" instance=ExtResource( 12 )]
+process_priority = 0
 
 [node name="transition_triggers" type="Node" parent="."]
 script = ExtResource( 2 )

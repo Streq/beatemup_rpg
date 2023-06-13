@@ -30,7 +30,10 @@ func find_first_transition_match():
 	if !state_transitions_map.has(state_from):
 		return null
 	var state_transitions = state_transitions_map[state_from]
+#	if owner.name == "pelado":
+#		print("CHEQUEANDO JUGADOR")
 	for transition in state_transitions:
+#		print("checking:",transition.name)
 		if transition.conditions_match():
 			return transition.state_to
 	return null

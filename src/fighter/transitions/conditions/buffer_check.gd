@@ -25,6 +25,8 @@ func _ready() -> void:
 
 
 func check():
+#	if (get_parent().name == "grab" or get_parent().name == "jab") and input_buffer.buffer.ends_with("B"):
+#		breakpoint
 	return (
 		input_buffer.is_latest and
 		(

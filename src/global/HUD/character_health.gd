@@ -5,7 +5,7 @@ onready var avatar: TextureRect = $avatar
 var current_fighter : Fighter = null
 
 func track_soft(fighter:Fighter):
-	if current_fighter:
+	if is_instance_valid(current_fighter):
 		return
 	track(fighter)
 

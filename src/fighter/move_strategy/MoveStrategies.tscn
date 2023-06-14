@@ -1,15 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/test/slide_on_surface/move_strategies.gd" type="Script" id=1]
 [ext_resource path="res://src/test/slide_on_surface/move_and_slide_snap_strategy.gd" type="Script" id=2]
 [ext_resource path="res://src/test/slide_on_surface/move_and_slide_strategy.gd" type="Script" id=3]
 [ext_resource path="res://src/test/slide_on_surface/move_and_slide_snap_no_fall_strategy.gd" type="Script" id=4]
+[ext_resource path="res://src/fighter/move_strategy/no_move.gd" type="Script" id=5]
 
 [node name="MoveStrategies" type="Node"]
 script = ExtResource( 1 )
 
 [node name="slide" type="Node" parent="."]
 script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": "character can bounce, jump, fall off slopes, etc"
+}
+
+[node name="no_move" type="Node" parent="."]
+script = ExtResource( 5 )
 __meta__ = {
 "_editor_description_": "character can bounce, jump, fall off slopes, etc"
 }

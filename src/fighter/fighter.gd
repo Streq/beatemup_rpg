@@ -117,6 +117,9 @@ func shake_frame():
 func hitstun(frames):
 	emit_signal("hitstun", frames)
 
+func grabstun(grabber):
+	emit_signal("grabstun", grabber)
+
 func target_hit(target):
 	emit_signal("target_hit", target)
 

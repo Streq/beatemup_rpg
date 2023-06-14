@@ -350,6 +350,10 @@ Y={
 2d_physics/layer_6="one_way_terrain"
 2d_physics/layer_7="door"
 
+[network]
+
+limits/debugger_stdout/max_warnings_per_second=1000
+
 [physics]
 
 common/enable_pause_aware_picking=true

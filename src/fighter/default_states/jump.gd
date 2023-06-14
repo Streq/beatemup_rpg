@@ -6,6 +6,9 @@ var current_delay := 0.0
 var accum_press := 0.0
 var jumped = false
 var holding_jump := false
+
+export var failed_jump_state := "idle"
+
 func _enter(params):
 	current_delay = delay
 	jumped = false
@@ -24,7 +27,7 @@ func _physics_update(delta: float):
 			root.velocity.y = -root.jump_speed*modifier
 			return
 		else:
-			goto("idle")
+			goto(failed_jump_state)
 			return
 	holding_jump = holding_jump and root.input_state.dir.y < 0.0
 	if holding_jump:

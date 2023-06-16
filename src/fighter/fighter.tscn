@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://src/util/state_machine/state_machine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transition_triggers.gd" type="Script" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://src/fighter/transitions/conditions/on_empty_health.gd" type="Script" id=29]
 [ext_resource path="res://src/fighter/hitstun.gd" type="Script" id=30]
 [ext_resource path="res://src/fighter/default_states/grabbed.gd" type="Script" id=31]
+[ext_resource path="res://src/fighter/default_states/throw_stun.gd" type="Script" id=32]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
@@ -2247,6 +2248,11 @@ animation = "hurt"
 change_on_animation_finish = false
 on_finish_goto_state = "air"
 
+[node name="throw_stun" type="Node" parent="state_machine"]
+script = ExtResource( 32 )
+animation = "hurt"
+change_on_animation_finish = false
+
 [node name="grabbed" type="Node" parent="state_machine"]
 script = ExtResource( 31 )
 animation = "hurt"
@@ -2465,6 +2471,7 @@ margin_bottom = 44.0
 theme = ExtResource( 4 )
 
 [node name="dead_free_anim" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource( 17 )
 
 [node name="hurt_handler" type="Node" parent="."]

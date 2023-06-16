@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://src/fighter/fighter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/fighter/transitions/conditions/button_press.gd" type="Script" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://src/fighter/default_states/air.gd" type="Script" id=36]
 [ext_resource path="res://src/fighter/default_states/turn.gd" type="Script" id=37]
 [ext_resource path="res://src/fighter/transitions/conditions/button_press.tscn" type="PackedScene" id=38]
+[ext_resource path="res://src/fighter/monk/states/grabbing_throw.gd" type="Script" id=39]
 
 [sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 0.5, 1 )
@@ -620,7 +621,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.15 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 3.0, 4.0, 5.0 ]
+"values": [ 2.0, 3.0, 4.0 ]
 }
 
 [sub_resource type="Animation" id=40]
@@ -782,7 +783,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 9.0, 10.0, 11.0 ]
+"values": [ 8.0, 9.0, 10.0 ]
 }
 
 [sub_resource type="Animation" id=42]
@@ -932,7 +933,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 11.0, 12.0, 13.0 ]
+"values": [ 10.0, 12.0, 13.0 ]
 }
 
 [sub_resource type="Animation" id=46]
@@ -1061,9 +1062,8 @@ tracks/4/keys = {
 "values": [ 13.0 ]
 }
 
-[sub_resource type="Animation" id=45]
+[sub_resource type="Animation" id=47]
 length = 0.2
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("pivot/display/Sprite:texture")
 tracks/0/interp = 1
@@ -1122,19 +1122,109 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 14.0, 13.0 ]
+"values": [ 11.0, 10.0 ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("pivot/grab_pivot:position")
+tracks/5/type = "method"
+tracks/5/path = NodePath("state_machine/grabbing_throw")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "throw"
+} ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("pivot/grab_pivot:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -4, -12 ), Vector2( 9, -9 ) ]
+}
+
+[sub_resource type="Animation" id=45]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/grab_pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -12 ), Vector2( 0, -11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/display/Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 28 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/display/Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pivot/display/Sprite:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("pivot/display/Sprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = false
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pivot/display/Sprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -12 ), Vector2( 0, -11 ) ]
+"values": [ 14.0, 13.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -1549,7 +1639,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 16.0, 1.0, 2.0 ]
+"values": [ 63.0, 16.0, 1.0 ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -2518,7 +2608,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 6.0, 7.0, 8.0 ]
+"values": [ 5.0, 6.0, 7.0 ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -2859,7 +2949,7 @@ shape = SubResource( 38 )
 [node name="Sprite" parent="pivot/display" index="0"]
 texture = ExtResource( 28 )
 vframes = 8
-frame = 14
+frame = 10
 __meta__ = {
 "_aseprite_wizard_config_": {
 "layer": "",
@@ -2992,6 +3082,7 @@ anims/grab_missed = SubResource( 42 )
 anims/grab_successful = SubResource( 43 )
 anims/grabbing_air = SubResource( 46 )
 anims/grabbing_idle = SubResource( 44 )
+anims/grabbing_throw = SubResource( 47 )
 anims/grabbing_walk = SubResource( 45 )
 anims/hurt = SubResource( 10 )
 anims/idle_back = SubResource( 11 )
@@ -3041,12 +3132,6 @@ animation = "jump"
 change_on_animation_finish = false
 failed_jump_state = "grabbing_idle"
 
-[node name="air_jump" parent="state_machine" index="9"]
-animation = "air_jump_spin"
-
-[node name="animate_depending_dir" type="Node" parent="state_machine/air_jump" index="0"]
-script = ExtResource( 24 )
-
 [node name="jab" type="Node" parent="state_machine" index="10"]
 script = ExtResource( 5 )
 animation = "jab2"
@@ -3075,83 +3160,94 @@ script = ExtResource( 5 )
 animation = "grab_successful"
 on_finish_goto_state = "grabbing_idle"
 
-[node name="grab_missed" type="Node" parent="state_machine" index="15"]
+[node name="grabbing_throw" type="Node" parent="state_machine" index="15"]
+script = ExtResource( 39 )
+animation = "grabbing_throw"
+on_finish_goto_state = "air"
+
+[node name="grab_missed" type="Node" parent="state_machine" index="16"]
 script = ExtResource( 5 )
 animation = "grab_missed"
 on_finish_goto_state = "idle"
 
-[node name="lowercut" type="Node" parent="state_machine" index="16"]
+[node name="lowercut" type="Node" parent="state_machine" index="17"]
 script = ExtResource( 5 )
 animation = "lowercut2"
 on_finish_goto_state = "air"
 move_strategy = "slide_snap"
 
-[node name="block" type="Node" parent="state_machine" index="17"]
+[node name="block" type="Node" parent="state_machine" index="18"]
 script = ExtResource( 3 )
 animation = "block"
 change_on_animation_finish = false
 move_strategy = "slide_snap"
 
-[node name="grabbing_walk" type="Node" parent="state_machine" index="18"]
+[node name="grabbing_walk" type="Node" parent="state_machine" index="19"]
 script = ExtResource( 31 )
 animation = "grabbing_walk"
 change_on_animation_finish = false
 move_strategy = "slide_snap"
 
-[node name="retreat_jump" type="Node" parent="state_machine" index="21"]
+[node name="air_jump" parent="state_machine" index="20"]
+animation = "air_jump_spin"
+
+[node name="animate_depending_dir" type="Node" parent="state_machine/air_jump" index="0"]
+script = ExtResource( 24 )
+
+[node name="retreat_jump" type="Node" parent="state_machine" index="22"]
 script = ExtResource( 11 )
 animation = "retreat_jump"
 on_finish_goto_state = "air"
 
-[node name="wall_jump" type="Node" parent="state_machine" index="22"]
+[node name="wall_jump" type="Node" parent="state_machine" index="23"]
 script = ExtResource( 20 )
 animation = "air"
 on_finish_goto_state = "air"
 
-[node name="run" type="Node" parent="state_machine" index="24"]
+[node name="run" type="Node" parent="state_machine" index="25"]
 script = ExtResource( 14 )
 animation = "run_side"
 move_strategy = "slide_snap"
 
-[node name="ledge_grab" type="Node" parent="state_machine" index="25"]
+[node name="ledge_grab" type="Node" parent="state_machine" index="26"]
 script = ExtResource( 16 )
 animation = "ledge_grab"
 change_on_animation_finish = false
 
-[node name="ledge_up" type="Node" parent="state_machine" index="26"]
+[node name="ledge_up" type="Node" parent="state_machine" index="27"]
 script = ExtResource( 22 )
 animation = "up_ledge"
 on_finish_goto_state = "walk"
 
-[node name="wall_bounce" type="Node" parent="state_machine" index="27"]
+[node name="wall_bounce" type="Node" parent="state_machine" index="28"]
 script = ExtResource( 19 )
 animation = "wall_bounce"
 change_on_animation_finish = false
 DURATION_FRAMES = 10
 
-[node name="wall_bounce_backwards" type="Node" parent="state_machine" index="28"]
+[node name="wall_bounce_backwards" type="Node" parent="state_machine" index="29"]
 script = ExtResource( 19 )
 animation = "wall_bounce_backwards"
 change_on_animation_finish = false
 DURATION_FRAMES = 10
 
-[node name="go_through_door" type="Node" parent="state_machine" index="29"]
+[node name="go_through_door" type="Node" parent="state_machine" index="30"]
 script = ExtResource( 25 )
 animation = "go_through_door"
 change_on_animation_finish = false
 
-[node name="come_through_door" type="Node" parent="state_machine" index="30"]
+[node name="come_through_door" type="Node" parent="state_machine" index="31"]
 script = ExtResource( 27 )
 animation = "come_through_door"
 on_finish_goto_state = "idle"
 
-[node name="grabbing_turn" type="Node" parent="state_machine" index="31"]
+[node name="grabbing_turn" type="Node" parent="state_machine" index="32"]
 script = ExtResource( 37 )
 animation = "turn"
 on_finish_goto_state = "grabbing_idle"
 move_strategy = "slide_snap"
 
-[node name="turn" parent="state_machine" index="32"]
+[node name="turn" parent="state_machine" index="34"]
 animation = "turn"
 
 [node name="go_through_door" type="Node" parent="transition_triggers" index="1"]
@@ -3276,7 +3372,16 @@ state_to = "grabbing_air"
 [node name="on_floor" type="Node" parent="transition_triggers/grabbing_air" index="0"]
 script = ExtResource( 32 )
 
-[node name="grabbing_jump" type="Node" parent="transition_triggers" index="12"]
+[node name="grabbing_throw" type="Node" parent="transition_triggers" index="12"]
+script = ExtResource( 6 )
+accept_regex_states_from = PoolStringArray( "grabbing_idle", "grabbing_air", "grabbing_walk", "grabbing_turn", "grabbing_jump" )
+state_to = "grabbing_throw"
+
+[node name="button_press" type="Node" parent="transition_triggers/grabbing_throw" index="0"]
+script = ExtResource( 2 )
+button = "B"
+
+[node name="grabbing_jump" type="Node" parent="transition_triggers" index="13"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "grabbing_idle", "grabbing_walk", "grabbing_turn" )
 state_to = "grabbing_jump"
@@ -3286,7 +3391,7 @@ script = ExtResource( 13 )
 dir = Vector2( 0, -1 )
 just_pressed = true
 
-[node name="grabbing_turn" parent="transition_triggers" index="13" instance=ExtResource( 34 )]
+[node name="grabbing_turn" parent="transition_triggers" index="14" instance=ExtResource( 34 )]
 accept_regex_states_from = PoolStringArray( "grabbing_idle", "grabbing_walk" )
 state_to = "grabbing_turn"
 
@@ -3297,14 +3402,14 @@ dir = Vector2( -1, 0 )
 pressed = false
 allow_hold = true
 
-[node name="grabbing_walk" parent="transition_triggers" index="14" instance=ExtResource( 34 )]
+[node name="grabbing_walk" parent="transition_triggers" index="15" instance=ExtResource( 34 )]
 accept_regex_states_from = PoolStringArray( "grabbing_idle", "grabbing_walk" )
 state_to = "grabbing_walk"
 
 [node name="dpad" parent="transition_triggers/grabbing_walk" index="0" instance=ExtResource( 33 )]
 dir = Vector2( 1, 0 )
 
-[node name="grabbing_idle" type="Node" parent="transition_triggers" index="15"]
+[node name="grabbing_idle" type="Node" parent="transition_triggers" index="16"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "grabbing_air", "grabbing_walk" )
 state_to = "grabbing_idle"
@@ -3313,7 +3418,7 @@ state_to = "grabbing_idle"
 script = ExtResource( 32 )
 should_be_on_floor = true
 
-[node name="retreat_jump" type="Node" parent="transition_triggers" index="17"]
+[node name="retreat_jump" type="Node" parent="transition_triggers" index="18"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "block" )
 state_to = "retreat_jump"
@@ -3323,7 +3428,7 @@ script = ExtResource( 13 )
 dir = Vector2( -1, 0 )
 just_pressed = true
 
-[node name="block" type="Node" parent="transition_triggers" index="18"]
+[node name="block" type="Node" parent="transition_triggers" index="19"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "turn", "walk" )
 state_to = "block"
@@ -3332,7 +3437,7 @@ state_to = "block"
 script = ExtResource( 2 )
 allow_hold = true
 
-[node name="run" type="Node" parent="transition_triggers" index="19"]
+[node name="run" type="Node" parent="transition_triggers" index="20"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "turn", "walk" )
 state_to = "run"
@@ -3340,10 +3445,10 @@ state_to = "run"
 [node name="buffer_check" parent="transition_triggers/run" index="0" instance=ExtResource( 12 )]
 sequence = "66"
 
-[node name="jump" parent="transition_triggers" index="20"]
+[node name="jump" parent="transition_triggers" index="21"]
 accept_regex_states_from = PoolStringArray( "idle", "run", "walk", "turn" )
 
-[node name="idle" parent="transition_triggers" index="24"]
+[node name="idle" parent="transition_triggers" index="25"]
 accept_regex_states_from = PoolStringArray( "air", "block", "air_fast_fall", "air_jump", "walk" )
 
 [node name="health" parent="." index="8"]
@@ -3369,6 +3474,8 @@ margin_right = 132.0
 [node name="combo_value" parent="debug_info/list/GridContainer" index="7"]
 margin_right = 132.0
 
+[connection signal="despawned" from="." to="pivot/grab_pivot" method="drop"]
+[connection signal="entered" from="state_machine/hurt" to="pivot/grab_pivot" method="drop"]
 [connection signal="entered" from="state_machine/jab" to="transition_triggers/cross/jab_counter" method="increment_count"]
 [connection signal="exited" from="state_machine/jab" to="transition_triggers/cross/jab_counter" method="resume_timer"]
 [connection signal="entered" from="state_machine/cross" to="transition_triggers/cross/jab_counter" method="reset_count"]

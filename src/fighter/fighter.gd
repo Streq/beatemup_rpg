@@ -120,6 +120,10 @@ func hitstun(frames):
 func grabstun(grabber):
 	emit_signal("grabstun", grabber)
 
+signal stun(state, frames)
+func stun(state,frames):
+	emit_signal("stun", state, frames)
+
 func target_hit(target):
 	emit_signal("target_hit", target)
 

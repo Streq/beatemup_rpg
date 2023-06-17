@@ -2489,7 +2489,6 @@ unique_name_in_owner = true
 [connection signal="entered" from="state_machine/dead" to="dead_free_anim" method="play"]
 [connection signal="buffer_changed" from="input_state/input_buffer" to="debug_info/list/GridContainer/buffer_value" method="set_text"]
 [connection signal="value_changed" from="health" to="health_value" method="change_value"]
-[connection signal="trigger" from="death_particles" to="death_particles/reparent_to_world" method="trigger"]
 
 [editable path="transition_triggers/walk_back"]
 [editable path="transition_triggers/turn"]

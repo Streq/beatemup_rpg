@@ -8,9 +8,9 @@ func _physics_update(delta: float):
 		goto("air")
 	if root.is_on_floor() or root.is_on_wall() or root.is_on_ceiling():
 		print (root.health.value)
-		root.health.value -= 2
-		if root.health.empty():
-			dead_free_anim.play()
+		root.health.value -= 4
+#		if root.health.empty():
+#			dead_free_anim.play()
 			
 		root.freeze(5)
 		root.shake(5)

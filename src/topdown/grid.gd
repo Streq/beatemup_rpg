@@ -8,12 +8,11 @@ func attempt_move(entity: Node2D, direction: Vector2) -> bool:
 		sign(direction.x), sign(direction.y) if !direction.x else 0.0
 	)
 	if !step:
-		return false
-	return _attempt_move_one_step(entity, step)
+		return true
+	return _attempt_orthogonal_move_unit_step(entity, step)
 
 
-# Assumes unit orthogonal movement
-func _attempt_move_one_step(entity: Node2D, step: Vector2):
+func _attempt_orthogonal_move_unit_step(entity: Node2D, step: Vector2):
 	var old_position = world_to_map(entity.position)
 	var new_position = old_position + step
 	var cell = get_cellv(new_position)

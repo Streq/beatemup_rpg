@@ -51,11 +51,6 @@ func move():
 				tween.tween_property(self, "position", final_position, step_speed)
 				if !trailing_step:
 					emit_signal("step_finished")
-#				else:
-#					var tween2 = create_tween()
-#					tween2.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-#					tween2.tween_interval(0.2)
-#					tween2.tween_callback(self,"emit_signal",["step_finished"])
 				goto(STEP)
 			elif state == IDLE:
 				goto(FAILED_STEP)
@@ -69,13 +64,7 @@ func goto(new_state):
 	state = new_state
 	
 	match state:
-		STEP, FAILED_STEP:
-			sprite.flip_h = false
-			if facing_dir.x < 0:
-				sprite.flip_h = true
-			if facing_dir.y:
-				sprite.flip_h = right_leg_step
-		IDLE:
+		IDLE, STEP, FAILED_STEP:
 			sprite.flip_h = false
 			if facing_dir.x < 0:
 				sprite.flip_h = true
@@ -92,6 +81,8 @@ func goto(new_state):
 
 func _on_animation_finished(animation):
 	match state:
+		IDLE:
+			pass
 		STEP, FAILED_STEP:
 			emit_signal("step_finished")
 			right_leg_step = !right_leg_step

@@ -20,9 +20,7 @@ func _attempt_orthogonal_move_unit_step(entity: Node2D, step: Vector2):
 		return false
 	entity.global_position = map_to_world(new_position) + Vector2(8, 8)
 	set_cellv(new_position, tile_set.find_tile_by_name("character"))
-#	entity.connect(
-#		"step_finished", self, "_free_space", [old_position], CONNECT_ONESHOT
-#	)
+	yield(entity, "step_finished")
 	_free_space(old_position)
 	return true
 

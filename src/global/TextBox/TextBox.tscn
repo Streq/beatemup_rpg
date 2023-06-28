@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/texture/textbox.png" type="Texture" id=1]
+[ext_resource path="res://assets/font/Eurostile/ZX Eurostile.res" type="BitmapFont" id=2]
+[ext_resource path="res://src/global/TextBox/TextBox.gd" type="Script" id=3]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 128
+script = ExtResource( 3 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 48 )
+texture = ExtResource( 1 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="label_margin" type="MarginContainer" parent="NinePatchRect"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -8.0
+
+[node name="label" type="Label" parent="NinePatchRect/label_margin"]
+unique_name_in_owner = true
+margin_right = 232.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/line_spacing = 8
+custom_fonts/font = ExtResource( 2 )
+text = "Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga."
+autowrap = true
+clip_text = true

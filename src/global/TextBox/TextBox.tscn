@@ -1,8 +1,78 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/texture/textbox.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/Eurostile/ZX Eurostile.res" type="BitmapFont" id=2]
 [ext_resource path="res://src/global/TextBox/TextBox.gd" type="Script" id=3]
+[ext_resource path="res://assets/texture/down_arrow.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "scroll_one_line"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 8, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 0, 8 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "new_line"
+} ]
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 128
@@ -12,6 +82,7 @@ script = ExtResource( 3 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -48.0
 grow_vertical = 0
 rect_min_size = Vector2( 0, 48 )
 texture = ExtResource( 1 )
@@ -25,18 +96,71 @@ unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
-margin_top = 16.0
-margin_right = -16.0
+margin_top = 8.0
+margin_right = -8.0
 margin_bottom = -8.0
 
-[node name="label" type="Label" parent="NinePatchRect/label_margin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/label_margin"]
+margin_right = 240.0
+margin_bottom = 32.0
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/label_margin/HBoxContainer"]
+margin_right = 228.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 8
+custom_constants/margin_bottom = 0
+
+[node name="lines_container" type="VBoxContainer" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-margin_right = 232.0
+margin_top = 8.0
+margin_right = 228.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="line0" type="Label" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer/lines_container"]
+margin_right = 228.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/line_spacing = 8
+custom_fonts/font = ExtResource( 2 )
+text = "que miras puto"
+autowrap = true
+clip_text = true
+
+[node name="line1" type="Label" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer/lines_container"]
+margin_top = 16.0
+margin_right = 228.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/line_spacing = 8
 custom_fonts/font = ExtResource( 2 )
-text = "Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga.Ah pero vos no das más de puto hermano qué querés que te diga."
+text = "Hola"
 autowrap = true
 clip_text = true
+
+[node name="Control" type="MarginContainer" parent="NinePatchRect/label_margin/HBoxContainer"]
+margin_left = 232.0
+margin_right = 240.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 3
+
+[node name="arrow" type="TextureRect" parent="NinePatchRect/label_margin/HBoxContainer/Control"]
+unique_name_in_owner = true
+margin_top = 24.0
+margin_right = 8.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 8
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 1 )
+anims/scroll_one_line = SubResource( 2 )

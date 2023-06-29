@@ -1,55 +1,122 @@
 extends CanvasLayer
-onready var label: Label = $"%label"
-onready var label_margin: MarginContainer = $"%label_margin"
-signal next()
+
+onready var lines_container: VBoxContainer = $"%lines_container"
+
+onready var arrow: TextureRect = $"%arrow"
+
+signal next
 
 
-func display_text(text: String):
-	label.text
+func _ready():
+	yield(wait_for_input(), "completed")
+	display_text("hola amigos de youtube yo soy santi requena pero pueden decirme santicapo y vengo a enseñarles como instalar el sims 4 con crack")
+#	scroll_one_line()
 
-func _ready() -> void:
-	var text = label.text
-	label.text = ""
-	print(label.get_line_count())
-	print(label.get_visible_line_count())
-	
-	var index = 0
-	var words = text.split(" ")
-	label.visible_characters = 0
-	while index < words.size():
-		while label.get_line_count() - label.lines_skipped < 3 and index < words.size():
-			label.text += words[index]
-			index += 1
-			label.text += " "
-		#remove last word
-		#TODO
+
+func display_text(text:String):
+	var texts = text.split("\n", false)
+
+	var line_labels = lines_container.get_children()
+
+	for paragraph in texts:
+		line_index = 0
+		reset_labels_text()
+		set_word_source(paragraph)
+
+		if !has_next_word():
+			continue
 		
-		while label.visible_characters < label.get_total_character_count():
-			print(label.visible_characters)
-			label.visible_characters += 3
-			yield(get_tree().create_timer(0.1),"timeout")
-		yield(self, "next")
-		yield(scroll(),"completed")
+		line_labels[0].text = get_next_word()
+
+		while has_next_word():
+			if next_word_overflows_line():
+				line_index += 1
+				if line_index >= max_lines:
+					yield(show_characters_one_by_one(), "completed")
+			
+					arrow.show()
+					yield(wait_for_input(), "completed")
+
+					arrow.hide()
+					yield(scroll_one_line(), "completed")
+				
+			line_labels[line_index].text += " " + get_next_word()
+
+		yield(show_characters_one_by_one(), "completed")
+		yield(wait_for_input(), "completed")
+
+
+var words: PoolStringArray
+var line_index := 0
+onready var max_lines := lines_container.get_child_count()
+
+
+func set_word_source(paragraph: String):
+	words = paragraph.split(" ", false)
+
+
+
+
+func reset_labels_text():
+	for label in lines_container.get_children():
+		label.text = ""
+
+
+onready var animation_player: AnimationPlayer = $"%AnimationPlayer"
+
+
+func scroll_one_line():
+	animation_player.play("scroll_one_line")
+	yield(animation_player, "animation_finished")
+	line_index-=1
+	pass
+
+
+func new_line():
+	var lines = lines_container.get_children()
+	for i in lines.size() - 1:
+		lines[i].text = lines[i + 1].text
+	lines[-1].text = ""
+
+
+func has_next_word():
+	return words.size() > 0
+
+
+func next_word_overflows_line() -> bool:
+	var lines = lines_container.get_children()
+	var line : Label = lines[line_index]
+	var aux = line.text
+	line.text += words[0]
+	var ret = (line.get_line_count() > 1)
+	line.text = aux
+	return ret
+
+
+func get_next_word() -> String:
+	var ret = words[0]
+	words.remove(0)
+	return ret
+
+
+func wait_for_input():
+	yield(self, "next")
+
+
+func show_characters_one_by_one():
+	var aux = []
+	var lines = lines_container.get_children()
+	for line in lines:
+		aux.append(line.text)
+		line.text = ""
+	for i in aux.size():
+		var text = aux[i]
+		var line = lines[i]
+		for c in text:
+			yield(get_tree().create_timer(0.05), "timeout")
+			line.text += c
+			
+		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("A"):
 		emit_signal("next")
-
-func scroll():
-	label_margin.rect_position.y = 8
-	yield(get_tree().create_timer(0.1),"timeout")
-	label_margin.rect_position.y = 16
-	label.lines_skipped += 1
-	yield(get_tree().create_timer(0.1),"timeout")
-
-
-#class WordFindResult:
-#	var position : int = 0
-#	var word : String = ""
-#	func _init(_word,_position):
-#		word = _word
-#		position = _position
-#func get_word(text: String, index: int) -> WordFindResult:
-#	var first_space = text.find(" ", index)
-#	var second_space = text.find(" ", first_space)
-#	var word = text.substr(first_space + 1, first_space + second_space)
-#	return WordFindResult.new(word, first_space+1)

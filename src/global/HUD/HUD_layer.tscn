@@ -11,7 +11,7 @@
 [ext_resource path="res://src/global/palette_filter/palettes/black_white.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/global/palette_filter/bad_shader_rounding_workaround.gd" type="Script" id=10]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 uniform int palette_size = 4;
 uniform float offset : hint_range(-3, 3, 1);
@@ -36,7 +36,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=8]
+[sub_resource type="Image" id=9]
 data = {
 "data": PoolByteArray( 0, 0, 3, 255, 126, 126, 1, 255, 63, 63, 2, 255, 255, 255, 0, 255 ),
 "format": "RGBA8",
@@ -45,18 +45,18 @@ data = {
 "width": 4
 }
 
-[sub_resource type="ImageTexture" id=7]
+[sub_resource type="ImageTexture" id=8]
 flags = 0
 flags = 0
-image = SubResource( 8 )
+image = SubResource( 9 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 1 )
+shader = SubResource( 6 )
 shader_param/palette_size = 4
 shader_param/offset = null
 shader_param/blue_index_offset = 0.0
-shader_param/palette = SubResource( 7 )
+shader_param/palette = SubResource( 8 )
 
 [node name="HUD_layer" type="CanvasLayer"]
 layer = 100

@@ -219,6 +219,7 @@ Fade="*res://src/global/fade/fade.tscn"
 HudLayer="*res://src/global/HUD/HUD_layer.tscn"
 PaletteFilter="*res://src/global/palette_filter/PaletteFilter.tscn"
 MoveStrategies="*res://src/fighter/move_strategy/MoveStrategies.tscn"
+TextBox="*res://src/global/TextBox/TextBox.tscn"
 
 [display]
 

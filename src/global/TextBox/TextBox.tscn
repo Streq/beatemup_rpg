@@ -1,9 +1,56 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/texture/textbox.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/Eurostile/ZX Eurostile.res" type="BitmapFont" id=2]
 [ext_resource path="res://src/global/TextBox/TextBox.gd" type="Script" id=3]
 [ext_resource path="res://assets/texture/down_arrow.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "blink"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -34,7 +81,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "scroll_one_line"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
 tracks/0/interp = 1
@@ -91,6 +138,22 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
+[node name="arrow" type="TextureRect" parent="NinePatchRect"]
+unique_name_in_owner = true
+margin_left = 240.0
+margin_top = 40.0
+margin_right = 248.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 8
+texture = ExtResource( 4 )
+
+[node name="arrow_animation" type="AnimationPlayer" parent="NinePatchRect/arrow"]
+unique_name_in_owner = true
+anims/RESET = SubResource( 3 )
+anims/blink = SubResource( 4 )
+anims/hide = SubResource( 5 )
+
 [node name="label_margin" type="MarginContainer" parent="NinePatchRect"]
 unique_name_in_owner = true
 anchor_right = 1.0
@@ -105,7 +168,7 @@ margin_right = 240.0
 margin_bottom = 32.0
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/label_margin/HBoxContainer"]
-margin_right = 228.0
+margin_right = 240.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -115,14 +178,14 @@ custom_constants/margin_bottom = 0
 [node name="lines_container" type="VBoxContainer" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 margin_top = 8.0
-margin_right = 228.0
+margin_right = 240.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
 
 [node name="line0" type="Label" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer/lines_container"]
-margin_right = 228.0
+margin_right = 240.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -134,7 +197,7 @@ clip_text = true
 
 [node name="line1" type="Label" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer/lines_container"]
 margin_top = 16.0
-margin_right = 228.0
+margin_right = 240.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -144,23 +207,8 @@ text = "Hola"
 autowrap = true
 clip_text = true
 
-[node name="Control" type="MarginContainer" parent="NinePatchRect/label_margin/HBoxContainer"]
-margin_left = 232.0
-margin_right = 240.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 8, 8 )
-size_flags_vertical = 3
-
-[node name="arrow" type="TextureRect" parent="NinePatchRect/label_margin/HBoxContainer/Control"]
-unique_name_in_owner = true
-margin_top = 24.0
-margin_right = 8.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 8, 8 )
-size_flags_vertical = 8
-texture = ExtResource( 4 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+method_call_mode = 1
 anims/RESET = SubResource( 1 )
 anims/scroll_one_line = SubResource( 2 )

@@ -15,75 +15,70 @@ func move_to_top():
 func move_to_bottom():
 	box.set_anchors_and_margins_preset(Control.PRESET_BOTTOM_WIDE)
 	box.grow_vertical = Control.GROW_DIRECTION_BEGIN
+func auto_adjust_position():
+	var player :CanvasItem = Group.get_one("player")
+	if player:
+		var v_pos = player.get_global_transform_with_canvas().get_origin().y
+		var v_center = player.get_viewport_rect().size.y/2.0
+		if v_pos > v_center :
+			move_to_top()
+		else:
+			move_to_bottom()
 
-func set_display_name(display_name:String):
+
+func _set_display_name(display_name:String):
 	if display_name:
 		name_label.text = " "+display_name+" "
 	else:
 		name_label.text = ""
-		
+
 func _ready():
 	move_to_bottom()
 	hide()
-	yield(_wait_for_input(), "completed")
-	set_display_name("Gordo")
-	text(
-		"""Hola amigos de youtube yo soy santicapogaming pero pueden decirme santicapo. 
-		Y vengo a enseñarles como instalar el sims 4 con crack.
-		Yo no lo descargo porque ya lo tengo."""
-	)
-	yield(self, "finished")
-	set_display_name("Capinho Jr")
-	move_to_top()
-	text("que puto que so")
-	text("so putisimo")
-	yield(self, "finished")
-	move_to_bottom()
-	set_display_name("Edgardo")
-	text("cuchame fresco")
-	yield(self, "finished")
-	set_display_name("El Pibe")
-	text("si que queres")
-	yield(self, "finished")
-	set_display_name("Edgardo")
-	text("quiero a tu hermana boludo")
-	
-	yield(self, "finished")
-	set_display_name("Jojo")
-	move_to_top()
-	text("cucha wachin")
-	text("quiero flashear ser pabre")
 
-	yield(self, "finished")
-	set_display_name("")
-	text("nada yo no soy nadie")
 
 var text_queue = []
 
 
 func _process(delta: float) -> void:
-	if displaying:
-		return
-	if text_queue.empty():
-		pause_client.unpause()
-		emit_signal("finished")
-		return
-	_display_text(text_queue.pop_front())
+	pass
 
-func text(text: String):
+func text(name:String, text: String):
+	name = name.strip_edges()
 	text = text.strip_edges()
 	if !text:
 		return
-	text_queue.append(text)
-
+	var msg = Message.new(name, text)
+	
+	text_queue.append(msg)
+	if !displaying:
+		_display()
+	
 
 var displaying := false
 
-
-func _display_text(text: String):
-	pause_client.pause()
-	show()
+func _display():
+	_set_display_name(text_queue[0].name)
+	_reset_labels_text()
+	_hide_arrow()
 	displaying = true
+	pause_client.pause()
+	yield(get_tree().create_timer(0.1), "timeout")
+	show()
+	
+	while !text_queue.empty():
+		yield(_display_text(text_queue.pop_front()), "completed")
+	
+	yield(get_tree(),"idle_frame")
+	hide()
+	displaying = false
+	pause_client.unpause()
+	emit_signal("finished")
+	
+
+func _display_text(message: Message):
+	_set_display_name(message.name)
+	var text = message.text
 	var texts = text.split("\n", false)
 
 	var line_labels = lines_container.get_children()
@@ -97,7 +92,7 @@ func _display_text(text: String):
 		_hide_arrow()
 		_reset_labels_text()
 
-		yield(get_tree().create_timer(0.1), "timeout")
+		yield(get_tree().create_timer(0.3), "timeout")
 		if !_has_next_word():
 			continue
 
@@ -122,8 +117,6 @@ func _display_text(text: String):
 		if current_paragraph < texts.size() - 1:
 			_show_arrow()
 		yield(_wait_for_input(), "completed")
-	hide()
-	displaying = false
 
 
 var words: PoolStringArray
@@ -189,8 +182,8 @@ func _wait_for_input():
 
 var shown_lines := 0
 var characters_shown_since_last_frame := 0
-var fast_chars_per_frame = 5
-var normal_chars_per_frame = 1
+var fast_chars_per_frame = 10
+var normal_chars_per_frame = 3
 var chars_per_frame = 0
 
 
@@ -223,6 +216,10 @@ func _show_characters_one_by_one():
 				yield(get_tree().create_timer(0.05), "timeout")
 				_refresh_chars_per_frame()
 		shown_lines += 1
+	
+	#prevents error when yielding for this function to complete
+	#in case the other yield above never fires
+	yield(get_tree().create_timer(0.0), "timeout")
 
 
 func _input(event: InputEvent) -> void:
@@ -239,3 +236,10 @@ func _show_arrow():
 
 func _hide_arrow():
 	arrow_animation.play("hide")
+
+class Message:
+	var name:=""
+	var text:=""
+	func _init(_name, _text):
+		name = _name
+		text = _text

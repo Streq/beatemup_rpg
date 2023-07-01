@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/topdown/grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/texture/white_square.png" type="Texture" id=2]
 [ext_resource path="res://src/topdown/grid.gd" type="Script" id=3]
 [ext_resource path="res://src/topdown/dude.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/test/topdown/say.gd" type="Script" id=5]
 [ext_resource path="res://src/test/topdown/controller.gd" type="Script" id=8]
 [ext_resource path="res://src/test/topdown/controller2.gd" type="Script" id=9]
 
@@ -23,7 +24,6 @@ tile_data = PoolIntArray( -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 
 script = ExtResource( 3 )
 
 [node name="dude" parent="grid" instance=ExtResource( 4 )]
-trailing_step = false
 
 [node name="controller" type="Node" parent="grid/dude"]
 script = ExtResource( 8 )
@@ -35,6 +35,42 @@ current = true
 [node name="dude2" parent="grid" instance=ExtResource( 4 )]
 position = Vector2( 72, 40 )
 step_speed = 0.4
+turn_lag = false
 
 [node name="controller" type="Node" parent="grid/dude2"]
+script = ExtResource( 9 )
+
+[node name="say" type="Node" parent="grid/dude2"]
+script = ExtResource( 5 )
+text_name = "Pepito"
+text = "Gordo puto te voy a matar
+Pasa que sabes lo que pasa?
+no tenes huevos
+eso pasa gilastrun de milanesa con pepino y no se que"
+
+[node name="dude3" parent="grid" instance=ExtResource( 4 )]
+position = Vector2( 184, 72 )
+step_speed = 0.4
+turn_lag = false
+
+[node name="say" type="Node" parent="grid/dude3"]
+script = ExtResource( 5 )
+text = "Siempre que voy a un restaurante pido milanesa napolitana"
+
+[node name="controller" type="Node" parent="grid/dude3"]
+script = ExtResource( 9 )
+
+[node name="dude4" parent="grid" instance=ExtResource( 4 )]
+position = Vector2( 200, 216 )
+step_speed = 0.4
+turn_lag = false
+
+[node name="say" type="Node" parent="grid/dude4"]
+script = ExtResource( 5 )
+text = "Hola Bife, acá está la hinchada de Boca.
+La hinchada más infeliz del mundo.
+Así que metete si sos vivo la concha de tu madre.
+La concha de tu madre."
+
+[node name="controller" type="Node" parent="grid/dude4"]
 script = ExtResource( 9 )

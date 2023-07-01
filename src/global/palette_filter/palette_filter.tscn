@@ -34,7 +34,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=73]
+[sub_resource type="Image" id=69]
 data = {
 "data": PoolByteArray( 255, 255, 0, 255, 126, 126, 1, 255, 59, 59, 2, 255, 0, 0, 3, 255 ),
 "format": "RGBA8",
@@ -46,7 +46,7 @@ data = {
 [sub_resource type="ImageTexture" id=70]
 flags = 0
 flags = 0
-image = SubResource( 73 )
+image = SubResource( 69 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=43]
@@ -81,7 +81,7 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=74]
+[sub_resource type="Image" id=71]
 data = {
 "data": PoolByteArray( 255, 255, 255, 255, 255, 230, 66, 255, 221, 147, 82, 255, 33, 16, 16, 255 ),
 "format": "RGBA8",
@@ -93,7 +93,7 @@ data = {
 [sub_resource type="ImageTexture" id=72]
 flags = 0
 flags = 0
-image = SubResource( 74 )
+image = SubResource( 71 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=65]
@@ -329,6 +329,14 @@ color0 = Color( 1, 1, 1, 1 )
 color1 = Color( 0.678431, 0.678431, 0.678431, 1 )
 color2 = Color( 0.321569, 0.321569, 0.321569, 1 )
 color3 = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+
+[node name="black_white2" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.498039, 0.498039, 0.498039, 1, 0.341176, 0.341176, 0.341176, 1, 0.160784, 0.160784, 0.160784, 1, 0.03, 0.03, 0.03, 1 )
+string_val = "[\"ffffffff\",\"ffadadad\",\"ff525252\",\"ff000000\"]"
+color0 = Color( 0.498039, 0.498039, 0.498039, 1 )
+color1 = Color( 0.341176, 0.341176, 0.341176, 1 )
+color2 = Color( 0.160784, 0.160784, 0.160784, 1 )
+color3 = Color( 0.03, 0.03, 0.03, 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0

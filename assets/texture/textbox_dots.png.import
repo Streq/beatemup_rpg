@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/textbox_pokemon.png-85e29e9a254f97fe05d0c01752687641.stex"
+path="res://.import/textbox_dots.png-d94cd395b850354217322dadaca91890.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/textbox_pokemon.png"
-dest_files=[ "res://.import/textbox_pokemon.png-85e29e9a254f97fe05d0c01752687641.stex" ]
+source_file="res://assets/texture/textbox_dots.png"
+dest_files=[ "res://.import/textbox_dots.png-d94cd395b850354217322dadaca91890.stex" ]
 
 [params]
 

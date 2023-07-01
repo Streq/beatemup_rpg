@@ -26,7 +26,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "blink"
-length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -35,7 +34,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -188,10 +187,13 @@ margin_right = 128.0
 grow_horizontal = 2
 rect_min_size = Vector2( 0, 48 )
 texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 24, 24 )
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [node name="arrow" type="TextureRect" parent="box"]
 unique_name_in_owner = true
@@ -267,8 +269,8 @@ clip_text = true
 
 [node name="name" type="Label" parent="box"]
 unique_name_in_owner = true
-margin_left = 8.0
-margin_right = 8.0
+margin_left = 16.0
+margin_right = 16.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -282,12 +284,14 @@ anchor_bottom = 1.0
 texture = ExtResource( 8 )
 expand = true
 
-[node name="palette_filter" parent="box/name" instance=ExtResource( 6 )]
+[node name="palette_filter" parent="." instance=ExtResource( 6 )]
 unique_name_in_owner = true
+visible = false
 material = SubResource( 9 )
+margin_top = 96.0
 palette = PoolColorArray( 0, 0, 0.0117647, 1, 0.498039, 0.498039, 0.00392157, 1, 0.25098, 0.25098, 0.00784314, 1, 1, 1, 0, 1 )
 
-[node name="bad_shader_rounding_workaround" type="Node" parent="box/name/palette_filter"]
+[node name="bad_shader_rounding_workaround" type="Node" parent="palette_filter"]
 script = ExtResource( 5 )
 
 [node name="scroll_animation" type="AnimationPlayer" parent="."]

@@ -1,30 +1,62 @@
 extends CanvasLayer
 signal next
-
+signal finished
 onready var lines_container: VBoxContainer = $"%lines_container"
 
 onready var arrow: TextureRect = $"%arrow"
 
 onready var pause_client: Node = $"%pause_client"
+onready var name_label: Label = $"%name"
 
+onready var box: NinePatchRect = $"%box"
+func move_to_top():
+	box.set_anchors_and_margins_preset(Control.PRESET_TOP_WIDE)
+	box.grow_vertical = Control.GROW_DIRECTION_END
+func move_to_bottom():
+	box.set_anchors_and_margins_preset(Control.PRESET_BOTTOM_WIDE)
+	box.grow_vertical = Control.GROW_DIRECTION_BEGIN
 
+func set_display_name(display_name:String):
+	if display_name:
+		name_label.text = " "+display_name+" "
+	else:
+		name_label.text = ""
+		
 func _ready():
+	move_to_bottom()
 	hide()
 	yield(_wait_for_input(), "completed")
+	set_display_name("Gordo")
 	text(
-		"""Hola, amigos de youtube! yo soy santi requena pero pueden decirme santicapo. 
+		"""Hola amigos de youtube yo soy santicapogaming pero pueden decirme santicapo. 
 		Y vengo a enseñarles como instalar el sims 4 con crack.
-		Lo primero que tienen que hacer es descargar el sims 4 de taringa.
 		Yo no lo descargo porque ya lo tengo."""
 	)
+	yield(self, "finished")
+	set_display_name("Capinho Jr")
+	move_to_top()
 	text("que puto que so")
-	text("hola chupaverga")
-	text("PIBE: cuchame fresco")
-	text("BETO: si que queres")
-	text("PIBE: quiero a tu hermana boludo")
-	text("PIBE: cucha wachin")
-	text("PIBE: quiero flashear ser pabre")
+	text("so putisimo")
+	yield(self, "finished")
+	move_to_bottom()
+	set_display_name("Edgardo")
+	text("cuchame fresco")
+	yield(self, "finished")
+	set_display_name("El Pibe")
+	text("si que queres")
+	yield(self, "finished")
+	set_display_name("Edgardo")
+	text("quiero a tu hermana boludo")
+	
+	yield(self, "finished")
+	set_display_name("Jojo")
+	move_to_top()
+	text("cucha wachin")
+	text("quiero flashear ser pabre")
 
+	yield(self, "finished")
+	set_display_name("")
+	text("nada yo no soy nadie")
 
 var text_queue = []
 
@@ -34,9 +66,9 @@ func _process(delta: float) -> void:
 		return
 	if text_queue.empty():
 		pause_client.unpause()
+		emit_signal("finished")
 		return
 	_display_text(text_queue.pop_front())
-
 
 func text(text: String):
 	text = text.strip_edges()
@@ -108,14 +140,12 @@ func _reset_labels_text():
 		label.text = ""
 
 
-onready var animation_player: AnimationPlayer = $"%AnimationPlayer"
-
-
+onready var scroll_animation: AnimationPlayer = $"%scroll_animation"
 func _scroll_one_line():
-	animation_player.play("scroll_one_line")
+	scroll_animation.play("scroll_one_line")
 	line_index -= 1
 	shown_lines -= 1
-	yield(animation_player, "animation_finished")
+	yield(scroll_animation, "animation_finished")
 	pass
 
 

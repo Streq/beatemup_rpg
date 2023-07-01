@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/texture/textbox.png" type="Texture" id=1]
 [ext_resource path="res://assets/font/Eurostile/ZX Eurostile.res" type="BitmapFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/global/palette_filter/bad_shader_rounding_workaround.gd" type="Script" id=5]
 [ext_resource path="res://src/global/palette_filter/palettes/black_white.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/util/global/pause/pause_client.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/texture/white_square.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -80,9 +81,9 @@ void fragment(){
 	
 }"
 
-[sub_resource type="Image" id=10]
+[sub_resource type="Image" id=12]
 data = {
-"data": PoolByteArray( 255, 255, 0, 255, 126, 126, 1, 255, 63, 63, 2, 255, 0, 0, 3, 255 ),
+"data": PoolByteArray( 0, 0, 3, 255, 126, 126, 1, 255, 63, 63, 2, 255, 255, 255, 0, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -92,7 +93,7 @@ data = {
 [sub_resource type="ImageTexture" id=11]
 flags = 0
 flags = 0
-image = SubResource( 10 )
+image = SubResource( 12 )
 size = Vector2( 4, 1 )
 
 [sub_resource type="ShaderMaterial" id=9]
@@ -105,7 +106,7 @@ shader_param/palette = SubResource( 11 )
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
+tracks/0/path = NodePath("box/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -117,7 +118,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_top")
+tracks/1/path = NodePath("box/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -133,7 +134,7 @@ tracks/1/keys = {
 resource_name = "scroll_one_line"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
+tracks/0/path = NodePath("box/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_bottom")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -145,7 +146,7 @@ tracks/0/keys = {
 "values": [ 0, 8, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("NinePatchRect/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_top")
+tracks/1/path = NodePath("box/label_margin/HBoxContainer/MarginContainer:custom_constants/margin_top")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -175,13 +176,16 @@ tracks/2/keys = {
 layer = 127
 script = ExtResource( 3 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="box" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = -16.0
+margin_left = -128.0
+margin_top = -48.0
+margin_right = 128.0
 grow_horizontal = 2
-grow_vertical = 0
 rect_min_size = Vector2( 0, 48 )
 texture = ExtResource( 1 )
 patch_margin_left = 8
@@ -189,23 +193,26 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="arrow" type="TextureRect" parent="NinePatchRect"]
+[node name="arrow" type="TextureRect" parent="box"]
 unique_name_in_owner = true
-margin_left = 240.0
-margin_top = 40.0
-margin_right = 248.0
-margin_bottom = 48.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -24.0
+margin_top = -8.0
+margin_right = -16.0
 rect_min_size = Vector2( 8, 8 )
 size_flags_vertical = 8
 texture = ExtResource( 4 )
 
-[node name="arrow_animation" type="AnimationPlayer" parent="NinePatchRect/arrow"]
+[node name="arrow_animation" type="AnimationPlayer" parent="box/arrow"]
 unique_name_in_owner = true
 anims/RESET = SubResource( 3 )
 anims/blink = SubResource( 4 )
 anims/hide = SubResource( 5 )
 
-[node name="label_margin" type="MarginContainer" parent="NinePatchRect"]
+[node name="label_margin" type="MarginContainer" parent="box"]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -214,11 +221,11 @@ margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -8.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/label_margin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="box/label_margin"]
 margin_right = 240.0
 margin_bottom = 32.0
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/label_margin/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="box/label_margin/HBoxContainer"]
 margin_right = 240.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
@@ -226,7 +233,7 @@ size_flags_vertical = 3
 custom_constants/margin_top = 8
 custom_constants/margin_bottom = 0
 
-[node name="lines_container" type="VBoxContainer" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer"]
+[node name="lines_container" type="VBoxContainer" parent="box/label_margin/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 margin_top = 8.0
 margin_right = 240.0
@@ -235,7 +242,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
 
-[node name="line0" type="Label" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer/lines_container"]
+[node name="line0" type="Label" parent="box/label_margin/HBoxContainer/MarginContainer/lines_container"]
 margin_right = 240.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
@@ -246,7 +253,7 @@ text = "que miras puto"
 autowrap = true
 clip_text = true
 
-[node name="line1" type="Label" parent="NinePatchRect/label_margin/HBoxContainer/MarginContainer/lines_container"]
+[node name="line1" type="Label" parent="box/label_margin/HBoxContainer/MarginContainer/lines_container"]
 margin_top = 16.0
 margin_right = 240.0
 margin_bottom = 24.0
@@ -258,16 +265,32 @@ text = "Hola"
 autowrap = true
 clip_text = true
 
-[node name="palette_filter" parent="NinePatchRect" instance=ExtResource( 6 )]
+[node name="name" type="Label" parent="box"]
 unique_name_in_owner = true
-visible = false
-material = SubResource( 9 )
-palette = PoolColorArray( 1, 1, 0, 1, 0.498039, 0.498039, 0.00392157, 1, 0.25098, 0.25098, 0.00784314, 1, 0, 0, 0.0117647, 1 )
+margin_left = 8.0
+margin_right = 8.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/line_spacing = 8
+custom_fonts/font = ExtResource( 2 )
 
-[node name="bad_shader_rounding_workaround" type="Node" parent="NinePatchRect/palette_filter"]
+[node name="TextureRect" type="TextureRect" parent="box/name"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="palette_filter" parent="box/name" instance=ExtResource( 6 )]
+unique_name_in_owner = true
+material = SubResource( 9 )
+palette = PoolColorArray( 0, 0, 0.0117647, 1, 0.498039, 0.498039, 0.00392157, 1, 0.25098, 0.25098, 0.00784314, 1, 1, 1, 0, 1 )
+
+[node name="bad_shader_rounding_workaround" type="Node" parent="box/name/palette_filter"]
 script = ExtResource( 5 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="scroll_animation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 method_call_mode = 1
 anims/RESET = SubResource( 1 )

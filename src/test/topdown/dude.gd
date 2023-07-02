@@ -93,11 +93,17 @@ var interact = false
 var interacting = false
 
 func face_toward(character):
-	var from = grid.get_current_tile(self)
-	var to = grid.get_current_tile(character)
-	facing_dir = make_single_dir(to - from)
+	facing_dir = direction_to(character)
 	goto(IDLE)
 	
+	
+func direction_to(character):
+	var from = grid.get_current_tile(self)
+	var to = grid.world_to_map(character.position)
+	var dir = make_single_dir(to - from)
+	
+	print(dir)
+	return dir
 func move():
 	if !aim_dir:
 		return

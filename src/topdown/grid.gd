@@ -51,5 +51,8 @@ func _free_space(old_position):
 #	print(tile_to_entity_map)
 
 func _ready() -> void:
-	for child in get_children():
+	for child in $entities.get_children():
+		child.grid = self
 		_occuppy(child, world_to_map(child.position))
+	for tile in tile_set.get_tiles_ids():
+		tile_set.tile_set_modulate(tile, Color.transparent)

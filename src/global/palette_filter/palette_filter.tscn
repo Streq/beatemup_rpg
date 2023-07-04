@@ -112,7 +112,6 @@ script = ExtResource( 7 )
 
 [node name="poke_cerulean" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.533333, 0.627451, 0.941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff88a0f0\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -121,7 +120,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_pallet" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.784314, 0.878431, 0.847059, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffc8e0d8\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -130,7 +128,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_routes" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.658824, 0.878431, 0.345098, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffa8e058\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -139,7 +136,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_viridian" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.533333, 0.815686, 0.0941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff88d018\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -148,7 +144,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_pewter" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.533333, 0.627451, 0.941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff88a0f0\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -157,7 +152,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_lavender" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.847059, 0.627451, 0.847059, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffd8a0d8\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -166,7 +160,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_vermilion" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.941176, 0.564706, 0, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"fff09000\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -175,7 +168,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_celadon" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.501961, 0.941176, 0.690196, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ff80f0b0\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -184,7 +176,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_fuchsia" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.972549, 0.470588, 0.690196, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"fff878b0\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -193,7 +184,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_cinnabar" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.815686, 0.313726, 0.188235, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffd05030\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -202,7 +192,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_indigo" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.690196, 0.439216, 0.752941, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffb070c0\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )
@@ -211,7 +200,6 @@ color3 = Color( 0.0941176, 0.0627451, 0.0627451, 1 )
 
 [node name="poke_saffron" parent="palettes" instance=ExtResource( 8 )]
 colors = PoolColorArray( 0.972549, 0.909804, 0.972549, 1, 0.627451, 0.815686, 0.972549, 1, 0.847059, 0.847059, 0.0941176, 1, 0.0941176, 0.0627451, 0.0627451, 1 )
-enabled = false
 string_val = "[\"fff8e8f8\",\"ffa0d0f8\",\"ffd8d818\",\"ff181010\"]"
 color0 = Color( 0.972549, 0.909804, 0.972549, 1 )
 color1 = Color( 0.627451, 0.815686, 0.972549, 1 )

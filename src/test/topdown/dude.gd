@@ -50,7 +50,7 @@ var anims = {
 
 onready var controller: Node = $controller
 
-
+ 
 func _physics_process(delta: float) -> void:
 	if interacting:
 		return

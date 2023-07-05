@@ -5,6 +5,8 @@ onready var follow = get_node(follow_path)
 
 
 func get_dir():
+	if !follow:
+		return Vector2()
 	var dir = get_parent().direction_to(follow)
 	var grid = get_parent().grid
 	var target_tile = grid.get_current_tile(get_parent()) + dir

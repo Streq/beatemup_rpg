@@ -50,9 +50,11 @@ func _free_space(old_position):
 	set_cellv(old_position, -1)
 #	print(tile_to_entity_map)
 
+export var hide_tiles := false
 func _ready() -> void:
 	for child in $entities.get_children():
 		child.grid = self
 		_occuppy(child, world_to_map(child.position))
-	for tile in tile_set.get_tiles_ids():
-		tile_set.tile_set_modulate(tile, Color.transparent)
+	if hide_tiles:
+		for tile in tile_set.get_tiles_ids():
+			tile_set.tile_set_modulate(tile, Color.transparent)

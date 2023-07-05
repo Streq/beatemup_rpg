@@ -102,7 +102,7 @@ func direction_to(character):
 	var to = grid.world_to_map(character.position)
 	var dir = make_single_dir(to - from)
 	
-	print(dir)
+#	print(dir)
 	return dir
 func move():
 	if !aim_dir:

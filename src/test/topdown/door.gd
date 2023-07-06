@@ -1,6 +1,8 @@
 extends Node2D
 
 export (String, FILE, "*.tscn") var scene : String
+export var to_indoors := false
+
 
 var triggering := false
 
@@ -19,5 +21,8 @@ func trigger(entity):
 	
 	yield(entity, "step_finished")
 
+	var darkness_level = 3 if to_indoors else -3
+	Fade.fade_and_come_back(darkness_level, 0.3, 0.1, 0.3)
+	yield(Fade, "fade_out_completed")
 	get_tree().change_scene(scene) 
 	triggering = false

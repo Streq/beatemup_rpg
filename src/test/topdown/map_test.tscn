@@ -185,3 +185,4 @@ script = ExtResource( 9 )
 position = Vector2( 216, 200 )
 script = ExtResource( 3 )
 scene = "res://src/test/topdown/room_test.tscn"
+to_indoors = true

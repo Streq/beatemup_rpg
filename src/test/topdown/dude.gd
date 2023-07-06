@@ -86,7 +86,7 @@ func interacted_with(by):
 
 enum { IDLE, STEP, FAILED_STEP, TURN }
 var state = IDLE
-var facing_dir = Vector2.DOWN
+export var facing_dir = Vector2.DOWN
 var aim_dir = Vector2.ZERO
 
 var interact = false

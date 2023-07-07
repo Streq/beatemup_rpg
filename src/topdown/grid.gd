@@ -3,6 +3,8 @@ extends TileMap
 var tile_to_entity_map := {} 
 var entity_to_tile_map := {}
 
+onready var entities := $entities
+
 func get_entity_at_tile(tile: Vector2):
 	return tile_to_entity_map.get(tile)
 
@@ -52,9 +54,21 @@ func _free_space(old_position):
 
 export var hide_tiles := false
 func _ready() -> void:
-	for child in $entities.get_children():
+	for child in entities.get_children():
 		child.grid = self
 		_occuppy(child, world_to_map(child.position))
 	if hide_tiles:
 		for tile in tile_set.get_tiles_ids():
 			tile_set.tile_set_modulate(tile, Color.transparent)
+
+func _physics_process(delta: float) -> void:
+	_clean_dead_entities()
+
+func _clean_dead_entities():
+	for key in entity_to_tile_map.keys():
+		var entity = key
+		if !is_instance_valid(entity) or !entities.is_a_parent_of(entity):
+			var tile = entity_to_tile_map[key]
+			entity_to_tile_map.erase(key)
+			tile_to_entity_map.erase(tile)
+			set_cellv(tile, -1)

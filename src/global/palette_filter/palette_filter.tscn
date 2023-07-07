@@ -326,6 +326,14 @@ color1 = Color( 0.341176, 0.341176, 0.341176, 1 )
 color2 = Color( 0.160784, 0.160784, 0.160784, 1 )
 color3 = Color( 0.03, 0.03, 0.03, 1 )
 
+[node name="white_black" parent="palettes" instance=ExtResource( 8 )]
+colors = PoolColorArray( 0.0627451, 0.0627451, 0.0627451, 1, 0.321569, 0.321569, 0.321569, 1, 0.678431, 0.678431, 0.678431, 1, 1, 1, 1, 1 )
+string_val = "[\"ff101010\",\"ff525252\",\"ffadadad\",\"ffffffff\"]"
+color0 = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+color1 = Color( 0.321569, 0.321569, 0.321569, 1 )
+color2 = Color( 0.678431, 0.678431, 0.678431, 1 )
+color3 = Color( 1, 1, 1, 1 )
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0

@@ -4,8 +4,9 @@ export (String, FILE, "*.tscn") var scene : String
 export var to_indoors := false
 
 export var id := ""
+export var door_to_id := ""
 export var on_entry_walk_dir := Vector2()
-
+export var facing_dir := Vector2()
 func _ready() -> void:
 	add_to_group("door")
 
@@ -30,6 +31,5 @@ func trigger(entity):
 	Fade.fade_and_come_back(darkness_level, 0.3, 0.1, 0.3)
 	yield(Fade, "fade_out_completed")
 	entity.controller.enable()
-	
-	get_tree().change_scene(scene) 
+	RoomGlobal.goto_map(scene, door_to_id)
 	triggering = false

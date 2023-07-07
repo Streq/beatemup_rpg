@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="a8931798-f647-421c-a23b-731f8a9c39e3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/test/topdown/map_test.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/topdown/map_test.tscn" afterDir="false" />

@@ -114,11 +114,11 @@ func move():
 			pass
 		IDLE:
 			if !turn_lag or facing_dir == aim_dir:
-				attempt_step()
+				step(aim_dir)
 			else:
 				turn()
 		FAILED_STEP:
-			attempt_step()
+			step(aim_dir)
 	pass
 
 
@@ -127,9 +127,9 @@ func turn():
 	goto(TURN)
 
 
-func attempt_step():
-	facing_dir = aim_dir
-	if grid.attempt_move(self, facing_dir):
+func step(dir):
+	facing_dir = dir
+	if grid.attempt_move(self, dir):
 		var final_position = self.position
 		self.position = self.position - facing_dir * 16.0
 		var tween = create_tween()
@@ -140,7 +140,6 @@ func attempt_step():
 		goto(STEP)
 	elif state == IDLE:
 		goto(FAILED_STEP)
-
 
 var right_leg_step := false
 

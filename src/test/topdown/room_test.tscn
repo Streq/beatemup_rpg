@@ -31,7 +31,6 @@ tile_data = PoolIntArray( 2, 2, 262146, 3, 2, 262146, 4, 2, 262146, 5, 2, 262146
 
 [node name="dude" parent="grid/entities" instance=ExtResource( 4 )]
 position = Vector2( 104, 88 )
-trailing_step = false
 facing_dir = Vector2( 0, -1 )
 
 [node name="controller" type="Node" parent="grid/entities/dude"]

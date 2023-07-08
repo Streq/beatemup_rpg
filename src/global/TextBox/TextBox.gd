@@ -7,6 +7,7 @@ onready var arrow: TextureRect = $"%arrow"
 
 onready var pause_client: Node = $"%pause_client"
 onready var name_label: Label = $"%name"
+onready var name_panel: HBoxContainer = $"%name_panel"
 
 onready var box: NinePatchRect = $"%box"
 func move_to_top():
@@ -28,13 +29,17 @@ func auto_adjust_position():
 
 func _set_display_name(display_name:String):
 	if display_name:
-		name_label.text = " "+display_name+" "
+#		name_label.text = " "+display_name+" "
+		name_label.text = display_name
+		name_panel.show()
 	else:
 		name_label.text = ""
+		name_panel.hide()
 
 func _ready():
 	move_to_bottom()
 	hide()
+	_set_display_name("")
 
 
 var text_queue = []

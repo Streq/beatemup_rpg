@@ -83,7 +83,7 @@ void fragment(){
 
 [sub_resource type="Image" id=74]
 data = {
-"data": PoolByteArray( 255, 255, 255, 255, 255, 230, 66, 255, 221, 147, 82, 255, 33, 16, 16, 255 ),
+"data": PoolByteArray( 126, 126, 126, 255, 86, 86, 86, 255, 40, 40, 40, 255, 7, 7, 7, 255 ),
 "format": "RGBA8",
 "height": 1,
 "mipmaps": false,
@@ -105,6 +105,8 @@ shader_param/palette = SubResource( 72 )
 
 [node name="palette_filter" type="Node"]
 script = ExtResource( 5 )
+current = 26
+current_name = "black_white2"
 
 [node name="palettes" type="Node" parent="."]
 unique_name_in_owner = true
@@ -362,5 +364,6 @@ layer = 128
 
 [node name="palette_filter" parent="palette_layer" instance=ExtResource( 1 )]
 unique_name_in_owner = true
+modulate = Color( 0.498039, 0.498039, 0.498039, 1 )
 material = SubResource( 65 )
-palette = PoolColorArray( 1, 1, 1, 1, 1, 0.905882, 0.258824, 1, 0.870588, 0.580392, 0.321569, 1, 0.129412, 0.0627451, 0.0627451, 1 )
+palette = PoolColorArray( 0.498039, 0.498039, 0.498039, 1, 0.341176, 0.341176, 0.341176, 1, 0.160784, 0.160784, 0.160784, 1, 0.03, 0.03, 0.03, 1 )

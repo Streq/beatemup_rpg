@@ -23,7 +23,7 @@ tile_data = PoolIntArray( -131075, 1, 65537, -131074, 1, 2, -131073, 1, 2, -1966
 z_index = 1
 
 [node name="dude" parent="grid/entities" groups=["overworld_player"] instance=ExtResource( 4 )]
-position = Vector2( 216, 216 )
+position = Vector2( 104, 72 )
 
 [node name="controller" type="Node" parent="grid/entities/dude"]
 script = ExtResource( 8 )
@@ -39,6 +39,7 @@ turn_lag = false
 
 [node name="say" type="Node" parent="grid/entities/dude5"]
 script = ExtResource( 5 )
+text_name = "Pelado1"
 text = "Bueno muchachos a ver si se corren un poquito, no puedo ni respirar"
 
 [node name="controller" type="Node" parent="grid/entities/dude5"]

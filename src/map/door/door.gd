@@ -1,8 +1,8 @@
 extends Node2D
 class_name Door
 
-export var id := 0
-export var dest_door_id := 0
+export var id := ""
+export var dest_door_id := ""
 export (String, FILE, "*room.tscn") var room : String
 
 

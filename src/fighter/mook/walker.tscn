@@ -2335,7 +2335,7 @@ anims/walk_side = SubResource( 77 )
 anims/wall_bounce = SubResource( 78 )
 anims/wall_bounce_backwards = SubResource( 79 )
 
-[node name="turn" parent="state_machine" index="9"]
+[node name="turn" parent="state_machine" index="11"]
 animation = "turn"
 
 [node name="health" parent="." index="7"]
@@ -2343,3 +2343,7 @@ __meta__ = {
 "_edit_pinned_properties_": [ "max_value" ]
 }
 max_value = 4.0
+
+[editable path="transition_triggers/walk_back"]
+[editable path="transition_triggers/turn"]
+[editable path="transition_triggers/walk"]

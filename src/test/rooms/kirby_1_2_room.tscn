@@ -51,7 +51,7 @@ room = "res://src/test/rooms/kirby_1_1_room.tscn"
 
 [node name="door2" parent="." instance=ExtResource( 15 )]
 position = Vector2( 256, 136 )
-id = 2
+id = "2"
 room = "res://src/test/rooms/kirby_1_2_1_room.tscn"
 
 [node name="final_door" parent="." instance=ExtResource( 15 )]

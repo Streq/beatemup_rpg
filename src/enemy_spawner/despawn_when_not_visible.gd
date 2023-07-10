@@ -1,15 +1,11 @@
 extends VisibilityNotifier2D
 
-func _ready() -> void:
-	set_process(false)
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	yield(get_tree(),"idle_frame")
-	set_process(true)
+var frames = 0
 
 func _process(delta: float) -> void:
+	if frames < 5:
+		frames += 1
+		return
 	if !is_on_screen():
 		despawn()
 

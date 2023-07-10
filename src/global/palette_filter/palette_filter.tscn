@@ -105,8 +105,6 @@ shader_param/palette = SubResource( 72 )
 
 [node name="palette_filter" type="Node"]
 script = ExtResource( 5 )
-current = 24
-current_name = "orange"
 
 [node name="palettes" type="Node" parent="."]
 unique_name_in_owner = true

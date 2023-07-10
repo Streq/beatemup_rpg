@@ -10,7 +10,7 @@ func remove_fighter_player():
 	if fighter_player:
 		fighter_player.get_parent().remove_child(fighter_player)
 
-func goto_room(path: String, door_id: int):
+func goto_room(path: String, door_id):
 	if !fighter_player:
 		fighter_player = Group.get_one("player")
 	fighter_player.hide()
@@ -46,6 +46,8 @@ func remove_overworld_player():
 
 func add_overworld_player(door_id):
 	var entities = Group.get_one("entities")
+	if !entities:
+		return
 	var grid = entities.get_parent()
 	var door = get_door_by_id(door_id)
 	entities.add_child(overworld_player)
@@ -67,3 +69,5 @@ func get_door_by_id(door_id):
 			return door
 	return null
 	
+func change_scene(scene_path: String, door_id: String):
+	pass

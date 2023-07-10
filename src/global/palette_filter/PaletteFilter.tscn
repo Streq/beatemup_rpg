@@ -7,3 +7,5 @@
 script = ExtResource( 2 )
 
 [node name="palette_filter" parent="." instance=ExtResource( 1 )]
+current = 14
+current_name = "kirby_ripple_field"

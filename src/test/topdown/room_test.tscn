@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/topdown/grid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/topdown/tiles/tiles.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/test/topdown/door.gd" type="Script" id=3]
+[ext_resource path="res://src/topdown/door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/topdown/dude.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/test/topdown/say.gd" type="Script" id=5]
 [ext_resource path="res://assets/texture/black_square.png" type="Texture" id=6]
@@ -42,9 +42,4 @@ script = ExtResource( 9 )
 
 [node name="triggers" type="YSort" parent="grid"]
 
-[node name="door" type="Node2D" parent="grid/triggers"]
-position = Vector2( 104, 104 )
-script = ExtResource( 3 )
-scene = "res://src/test/topdown/map_test.tscn"
-on_entry_walk_dir = Vector2( 0, -1 )
-facing_dir = Vector2( 0, -1 )
+[node name="door" parent="grid/triggers" instance=ExtResource( 3 )]

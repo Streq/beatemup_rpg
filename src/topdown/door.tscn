@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/test/topdown/door.gd" type="Script" id=1]
+
+[node name="door" type="Node2D"]
+position = Vector2( 104, 104 )
+script = ExtResource( 1 )
+scene = "res://src/test/topdown/map_test.tscn"
+door_to_id = "boca"
+on_entry_walk_dir = Vector2( 0, -1 )
+facing_dir = Vector2( 0, -1 )

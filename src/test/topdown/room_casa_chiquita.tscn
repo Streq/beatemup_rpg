@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/test/topdown/overworld_room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/topdown/dude.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/topdown/controller/do_nothing.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/topdown/interact/say.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/topdown/door.tscn" type="PackedScene" id=5]
+
+[node name="Node2D" instance=ExtResource( 1 )]
+
+[node name="CanvasLayer" parent="." index="0"]
+visible = true
+
+[node name="grid" parent="." index="1"]
+tile_data = PoolIntArray( 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 196611, 0, 0, 196617, 0, 0, 262147, 0, 0, 262153, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 393222, 0, 0 )
+
+[node name="tiles" parent="grid" index="0"]
+tile_data = PoolIntArray( 131076, 6, 262146, 131077, 6, 262146, 131078, 6, 262146, 131079, 6, 262146, 131080, 6, 262146, 196612, 4, 0, 196613, 4, 0, 196614, 4, 0, 196615, 4, 0, 196616, 4, 0, 262148, 4, 0, 262149, 4, 0, 262150, 4, 0, 262151, 4, 0, 262152, 4, 0, 327686, 0, 0 )
+
+[node name="dude" parent="grid/entities" index="0" instance=ExtResource( 2 )]
+position = Vector2( 104, 56 )
+
+[node name="say" parent="grid/entities/dude" index="2" instance=ExtResource( 4 )]
+text = "Si ya se que mi casa es chiquita :("
+
+[node name="controller" parent="grid/entities/dude" index="3" instance=ExtResource( 3 )]
+
+[node name="door" parent="grid/triggers" index="0" instance=ExtResource( 5 )]
+position = Vector2( 104, 88 )
+door_to_id = "casachica"

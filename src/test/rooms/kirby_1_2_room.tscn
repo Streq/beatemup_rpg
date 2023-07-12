@@ -22,6 +22,16 @@
 
 [node name="kirby_1_2_room" type="Node2D"]
 
+[node name="camera_limits" type="ReferenceRect" parent="."]
+margin_left = -176.0
+margin_top = 32.0
+margin_right = 1024.0
+margin_bottom = 176.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="background" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -56,7 +66,9 @@ room = "res://src/test/rooms/kirby_1_2_1_room.tscn"
 
 [node name="final_door" parent="." instance=ExtResource( 15 )]
 position = Vector2( 984, 88 )
-room = "res://src/test/rooms/test_second_room.tscn"
+id = "exit"
+dest_door_id = "outskirt"
+room = "res://src/test/topdown/map_test.tscn"
 
 [node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
 position = Vector2( -64, 72 )
@@ -75,13 +87,6 @@ script = ExtResource( 4 )
 
 [node name="track_enemy_hud" type="Node" parent="pelado"]
 script = ExtResource( 13 )
-
-[node name="camera_limits" type="ReferenceRect" parent="."]
-margin_left = -176.0
-margin_top = 32.0
-margin_right = 1024.0
-margin_bottom = 176.0
-script = ExtResource( 2 )
 
 [node name="spawner" parent="." instance=ExtResource( 11 )]
 position = Vector2( -24, 104 )

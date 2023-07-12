@@ -29,7 +29,7 @@ func _physics_update(delta: float):
 		else:
 			goto(failed_jump_state)
 			return
-	holding_jump = holding_jump and root.input_state.dir.y < 0.0
+	holding_jump = holding_jump and root.input_state.A.is_pressed()
 	if holding_jump:
 		accum_press += delta
 	current_delay -= delta

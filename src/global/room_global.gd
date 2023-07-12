@@ -4,6 +4,8 @@ signal room_changed()
 signal player_entered(player)
 onready var tree = get_tree()
 
+onready var overworld_player_manager = $overworld_player_manager
+onready var fighting_player_manager = $fighting_player_manager
 
 var fighter_player : Fighter
 func remove_fighter_player():
@@ -71,8 +73,6 @@ func get_door_by_id(door_id):
 	return null
 
 
-onready var overworld_player_manager = $overworld_player_manager
-onready var fighting_player_manager = $fighting_player_manager
 
 
 func goto_map(path: String, door_id: String):

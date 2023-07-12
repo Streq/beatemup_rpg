@@ -2367,6 +2367,7 @@ state_to = "turn"
 dir = Vector2( -1, 0 )
 
 [node name="button_press" parent="transition_triggers/turn" instance=ExtResource( 24 )]
+disabled = true
 pressed = false
 allow_hold = true
 
@@ -2406,7 +2407,6 @@ value = 50.0
 script = ExtResource( 14 )
 
 [node name="debug_info" type="MarginContainer" parent="."]
-visible = false
 margin_left = -94.0
 margin_top = -71.0
 margin_right = 6.0

@@ -8,11 +8,15 @@ onready var matcher = RegexMatcher.new(accept_regex_states_from, reject_regex_st
 
 export var state_to : String
 
+export var disabled := false
+
 onready var fighter : Fighter = owner
 onready var conditions = get_children()
 
 
 func conditions_match():
+	if disabled:
+		return false
 	for condition in conditions:
 		if !condition.check():
 			return false

@@ -19,7 +19,7 @@ func _physics_update(delta: float):
 		root.velocity.y = root.fast_fall_speed
 		goto("air_fast_fall")
 		return
-	if can_air_jump and input_state.is_y_just_pressed(-1.0) and root.available_air_jumps:
+	if can_air_jump and input_state.A.is_just_pressed() and root.available_air_jumps:
 		goto("air_jump")
 		return
 	root.velocity.x = move_toward(

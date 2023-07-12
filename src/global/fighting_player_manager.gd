@@ -11,10 +11,7 @@ func remove_from_map():
 		player.get_parent().remove_child(player)
 
 func add_to_map(door):
-	if !player:
-		player = PLAYER.instance()
-		_populate(player)
-	
+	refresh_player()
 	get_tree().call_group("player", "queue_free")
 	
 	door.get_parent().add_child(player)
@@ -33,3 +30,12 @@ func _populate(player:Node):
 		player.add_child(child)
 	player.team = -1
 	player.add_to_group("player")
+
+func get_player():
+	refresh_player()
+	return player
+
+func refresh_player():
+	if !is_instance_valid(player):
+		player = PLAYER.instance()
+		_populate(player)

@@ -3374,10 +3374,7 @@ script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "grabbing_idle", "grabbing_walk", "grabbing_turn" )
 state_to = "grabbing_jump"
 
-[node name="dpad" type="Node" parent="transition_triggers/grabbing_jump" index="0"]
-script = ExtResource( 13 )
-dir = Vector2( 0, -1 )
-just_pressed = true
+[node name="button_press" parent="transition_triggers/grabbing_jump" index="0" instance=ExtResource( 38 )]
 
 [node name="grabbing_turn" parent="transition_triggers" index="14" instance=ExtResource( 34 )]
 accept_regex_states_from = PoolStringArray( "grabbing_idle", "grabbing_walk" )
@@ -3408,18 +3405,20 @@ should_be_on_floor = true
 
 [node name="retreat_jump" type="Node" parent="transition_triggers" index="18"]
 script = ExtResource( 6 )
-accept_regex_states_from = PoolStringArray( "block" )
+accept_regex_states_from = PoolStringArray( "block", "turn", "idle", "walk", "run" )
 state_to = "retreat_jump"
 
-[node name="dpad" type="Node" parent="transition_triggers/retreat_jump" index="0"]
-script = ExtResource( 13 )
-dir = Vector2( -1, 0 )
-just_pressed = true
+[node name="button_press" parent="transition_triggers/retreat_jump" index="0" instance=ExtResource( 38 )]
+disabled = true
+
+[node name="buffer_check" parent="transition_triggers/retreat_jump" index="1" instance=ExtResource( 12 )]
+sequence = "4+A"
 
 [node name="block" type="Node" parent="transition_triggers" index="19"]
 script = ExtResource( 6 )
 accept_regex_states_from = PoolStringArray( "idle", "run", "block", "turn", "walk" )
 state_to = "block"
+disabled = true
 
 [node name="button_press" type="Node" parent="transition_triggers/block" index="0"]
 script = ExtResource( 2 )
@@ -3435,6 +3434,14 @@ sequence = "66"
 
 [node name="jump" parent="transition_triggers" index="21"]
 accept_regex_states_from = PoolStringArray( "idle", "run", "walk", "turn" )
+
+[node name="dpad" parent="transition_triggers/jump" index="0"]
+disabled = true
+
+[node name="button_press" parent="transition_triggers/jump" index="1" instance=ExtResource( 38 )]
+
+[node name="walk_back" parent="transition_triggers" index="22"]
+disabled = true
 
 [node name="idle" parent="transition_triggers" index="25"]
 accept_regex_states_from = PoolStringArray( "air", "block", "air_fast_fall", "air_jump", "walk" )

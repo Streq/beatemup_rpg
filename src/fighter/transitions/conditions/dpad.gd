@@ -3,14 +3,14 @@ extends Node
 
 export var dir := Vector2()
 export var just_pressed := false
-
+export var disabled := false
 
 onready var input_state : InputState = get_node("%input_state")
 
 
 
 func check():
-	return (
+	return disabled or (
 		(
 			!dir.x or 
 			(

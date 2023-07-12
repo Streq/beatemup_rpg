@@ -33,7 +33,7 @@
 1/shapes = [  ]
 1/z_index = 0
 
-[node name="grid" type="TileMap"]
+[node name="grid" type="TileMap" groups=["grid"]]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1

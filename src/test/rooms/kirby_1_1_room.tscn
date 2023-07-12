@@ -45,6 +45,12 @@ tile_data = PoolIntArray( 458742, 0, 1, 458743, 0, 3, 458746, 0, 1, 458747, 0, 3
 position = Vector2( 680, 88 )
 room = "res://src/test/rooms/kirby_1_2_room.tscn"
 
+[node name="door2" parent="." instance=ExtResource( 15 )]
+position = Vector2( -168, 104 )
+id = "town"
+dest_door_id = "level"
+room = "res://src/test/topdown/map_test.tscn"
+
 [node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]
 position = Vector2( -168, 104 )
 team = -1

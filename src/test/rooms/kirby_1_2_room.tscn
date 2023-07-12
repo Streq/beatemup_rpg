@@ -56,7 +56,6 @@ room = "res://src/test/rooms/kirby_1_2_1_room.tscn"
 
 [node name="final_door" parent="." instance=ExtResource( 15 )]
 position = Vector2( 984, 88 )
-id = 1
 room = "res://src/test/rooms/test_second_room.tscn"
 
 [node name="pelado" parent="." groups=["player"] instance=ExtResource( 12 )]

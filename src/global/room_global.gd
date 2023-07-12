@@ -10,7 +10,7 @@ func remove_fighter_player():
 	if fighter_player:
 		fighter_player.get_parent().remove_child(fighter_player)
 
-func goto_room(path: String, door_id):
+func goto_room2(path: String, door_id):
 	if !fighter_player:
 		fighter_player = Group.get_one("player")
 	fighter_player.hide()
@@ -31,7 +31,7 @@ func goto_room(path: String, door_id):
 		emit_signal("player_entered",fighter_player)
 	yield(Fade.fade_to_darkness_level(0,0.3),"finished")
 
-func goto_map(path: String, door_id: String):
+func goto_map2(path: String, door_id: String):
 	remove_overworld_player()
 	remove_fighter_player()
 	tree.change_scene(path)
@@ -42,7 +42,8 @@ var overworld_player : Node2D
 func remove_overworld_player():
 	if !overworld_player:
 		overworld_player = Group.get_one("overworld_player")
-	overworld_player.get_parent().remove_child(overworld_player)
+	if overworld_player.is_inside_tree():
+		overworld_player.get_parent().remove_child(overworld_player)
 
 func add_overworld_player(door_id):
 	var entities = Group.get_one("entities")
@@ -68,6 +69,41 @@ func get_door_by_id(door_id):
 		if door.id == door_id:
 			return door
 	return null
+
+
+onready var overworld_player_manager = $overworld_player_manager
+onready var fighting_player_manager = $fighting_player_manager
+
+
+func goto_map(path: String, door_id: String):
+	goto_room(path, door_id)
+
+func goto_room(scene_path: String, door_id: String):
+	if is_overworld_map():
+		exit_overworld_map()
+	else:
+		exit_fighting_map()
+
+	tree.change_scene(scene_path)
+	yield(tree,"idle_frame")
+
+	var door = get_door_by_id(door_id)
+
+	if is_overworld_map():
+		enter_overworld_map(door)
+	else:
+		enter_fighting_map(door)
+
+func is_overworld_map():
+	return tree.has_group("grid")
 	
-func change_scene(scene_path: String, door_id: String):
-	pass
+func exit_overworld_map():
+	overworld_player_manager.remove_from_map()
+func exit_fighting_map():
+	fighting_player_manager.remove_from_map()
+	
+func enter_overworld_map(door):
+	overworld_player_manager.add_to_map(door)
+func enter_fighting_map(door):
+	fighting_player_manager.add_to_map(door)
+

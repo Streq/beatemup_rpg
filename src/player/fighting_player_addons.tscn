@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/test/fighter/restart_on_death.gd" type="Script" id=1]
+[ext_resource path="res://src/test/rooms/track_enemy_hud.gd" type="Script" id=2]
+[ext_resource path="res://src/test/rooms/track_hud.gd" type="Script" id=3]
+[ext_resource path="res://src/player/controller.tscn" type="PackedScene" id=4]
+
+[node name="fighting_player_addons" type="Node"]
+
+[node name="controller" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["player_camera"]]
+current = true
+
+[node name="restart_on_death" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="track_hud" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="track_enemy_hud" type="Node" parent="."]
+script = ExtResource( 2 )

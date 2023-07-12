@@ -3,4 +3,5 @@
 [ext_resource path="res://src/util/global/gif_recorder/gif_recorder.gd" type="Script" id=1]
 
 [node name="gif_recorder" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
